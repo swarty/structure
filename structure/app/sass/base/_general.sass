@@ -1,0 +1,752 @@
+@import "variables"
+@import "typography"
+@import "helpers"
+@import "button"
+
+
+.body-overflow
+  overflow: hidden
+
+
+.container
+  max-width: 1280px
+  width: 100%
+  position: relative
+  margin: 0 auto
+  padding: 0 76px
+  +r(999)
+    padding: 0 25px
+  +r(767)
+    padding: 0 16px
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  line-height: 1
+  font-family: 'Roboto'
+  // font-weight: 900
+  // font-style: italic
+
+
+button, a
+  outline: none
+
+
+a
+  text-decoration: none
+  color: inherit
+  background-color: transparent
+  -webkit-text-decoration-skip: objects
+
+b,
+strong
+  font-weight: inherit
+
+b,
+strong
+  font-weight: bolder
+
+ul,ol
+  list-style: none
+
+
+.body-overflow
+  overflow: hidden
+
+.fw
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+
+label.error
+  position: absolute
+  bottom: -15px
+  right: 0
+  color: #ed3713
+  font-size: 14px
+  font-weight: 400
+  text-align: right
+  font-size: 12px
+
+
+.two-lines
+  position: relative
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    width: 0px
+    background: #000407
+    left: 0
+    top: 0
+    transition: width 0.8s cubic-bezier(1,.01,.76,.84)
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    width: 0px
+    background: #000407
+    right: 0
+    bottom: 0
+    transition: width 0.8s cubic-bezier(1,.01,.76,.84)
+
+  &.scroll-active
+    &::before
+      width: 130px
+      height: 1px
+
+    &::after
+      width: 130px
+      height: 1px
+
+
+
+// .two-lines-active
+//   &::before
+//     width: 130px
+//     height: 1px
+//
+//   &::after
+//     width: 130px
+//     height: 1px
+//
+//
+.s-list-container
+  max-width: 1206px
+  margin: 0 auto
+  position: relative
+  padding: 0px 20px
+
+.cube
+  margin-left: 15px
+  margin-bottom: 10px
+  &_line
+    background: -moz-linear-gradient(left, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 44%, rgba(217,216,217,0.2) 100%)
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(217,216,217,1)), color-stop(0%, rgba(217,216,217,1)), color-stop(0%, rgba(217,216,217,1)), color-stop(44%, rgba(217,216,217,1)), color-stop(100%, rgba(217,216,217,0.2)))
+    background: -webkit-linear-gradient(left, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 44%, rgba(217,216,217,0.2) 100%)
+    background: -o-linear-gradient(left, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 44%, rgba(217,216,217,0.2) 100%)
+    background: -ms-linear-gradient(left, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 44%, rgba(217,216,217,0.2) 100%)
+    background: linear-gradient(to right, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 0%, rgba(217,216,217,1) 44%, rgba(217,216,217,0.2) 100%)
+    width: 0px
+    height: 0px
+    position: relative
+    transition: width 1s ease-in-out
+    &::before
+      content: ""
+      position: absolute
+      display: block
+      border: 1px solid  #d9d8d9
+      width: 12px
+      height: 12px
+      left: -15px
+      top: 50%
+      transform: translateY(-50%) rotate(45deg)
+
+
+
+.cube_line
+  &.scroll-active
+      width: 250px
+      height: 1px
+
+
+.s_about-cube_line
+  &.scroll-active
+    width: 250px
+    height: 1px
+
+
+
+.line-right, .line-left
+  position: relative
+  &::before
+    position: absolute
+    content: ""
+    display: block
+    background: #000407
+
+
+.line-right
+  &::before
+    right: -110px
+
+  &.scroll-active
+    &::before
+      width: 56px
+      height: 1px
+
+
+
+.line-left
+  &::before
+    top: 10px
+    transform: translateY(0%)
+    left: -100px
+
+  &.scroll-active
+    &::before
+      width: 56px
+      height: 1px
+
+
+
+.price-select-options
+  height: 120px
+  overflow-y: auto
+
+
+@media screen and (max-width:1199px)
+  .s_about-cube_line
+    &.scroll-active
+      width: 170px
+      height: 1px
+
+
+
+@media screen and (max-width:999px)
+  .s-list-container
+    padding: 0px
+
+  .two-lines
+    &.scroll-active
+      &::before
+        width: 48px
+        height: 1px
+
+      &::after
+        width: 48px
+        height: 1px
+
+
+
+
+.nav-btn-up
+  position: fixed
+  bottom: 80px
+  right: 30px
+  width: 40px
+  height: 30px
+  display: none
+  opacity: 0.3
+  //background: #58552c
+  background: url(../img/nav-up.jpg) no-repeat center center
+  background-size: cover
+  transition: opacity 0.2s ease-in-out
+  cursor: pointer
+  z-index: 27
+  &:hover
+    opacity: 0.8
+
+  &-arrow
+    border: 13px solid transparent
+    border-bottom: 13px solid #e4e4e2
+    position: absolute
+    left: 50%
+    top: 29%
+    transform: translate(-50%,-50%)
+
+
+.video-doctor
+  max-width: 800px
+
+@media screen and (max-width:999px)
+  .nav-btn-up
+    right: 13px
+
+
+@media screen and (max-width:639px)
+  .container
+    padding: 0 10px
+
+  .two-lines
+    &.scroll-active
+      &::before
+        left: 50%
+        top: 0
+        transform: translateX(-50%)
+
+      &::after
+        left: 50%
+        bottom: 0
+        transform: translateX(-50%)
+
+
+
+  // .two-lines-active
+  //   &::before
+  //     left: 50%
+  //     top: 0
+  //     transform: translateX(-50%)
+  //
+  //   &::after
+  //     left: 50%
+  //     bottom: 0
+  //     transform: translateX(-50%)
+  //
+  //
+  .line-left
+    &::before
+      left: 0
+
+
+  .line-right
+    &::before
+      right: 0
+
+
+  .cube
+
+    &_line
+      &::before
+        width: 8px
+        height: 8px
+        left: -12px
+
+
+
+
+@media screen and (max-width:479px)
+  .cube_line-active
+    // width: 100px
+    // height: 1px
+
+  .nav-btn-up
+    width: 30px
+    height: 30px
+    right: 4px
+
+
+/**********form***********/
+
+
+/*******next btn********/
+.btn-next
+  position: absolute
+  left: 50%
+  bottom: 30px
+  transform: translateX(-50%)
+  flex-direction: column
+  align-items: center
+  cursor: pointer
+  max-width: 150px
+  width: 100%
+  margin: 0 auto
+
+  &_text
+    font-size: 9px
+    color: $c_black
+    font-family: 'Roboto'
+    font-weight: 300
+    text-transform: uppercase
+    margin-bottom: 5px
+    transition: all 0.3s ease-in-out
+
+    &--max
+      font-size: 12px
+      text-transform: none
+
+
+
+  &_arrow
+    height: auto
+    &--first
+      animation: arrow-move-first 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite
+
+    &--second
+      animation: arrow-move-second 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite
+      margin-top: -10px
+
+
+    &-wrapp
+      flex-direction: column
+      align-items: center
+
+
+  &:hover
+    .btn-next_text
+      letter-spacing: 0.16em
+      color: #6a5a57
+
+
+
+
+@keyframes arrow-move-second
+  0%
+    transform: translateY(0)
+
+  50%
+    transform: translateY(60%)
+
+  100%
+    transform: translateY(0)
+
+
+
+@keyframes arrow-move-first
+  0%
+    transform: translateY(0)
+
+  50%
+    transform: translateY(35%)
+
+  100%
+    transform: translateY(0)
+
+
+
+//form input style
+
+.light-input
+  height: 40px
+  outline: none
+  display: inline-block
+  width: 100%
+  padding: 0 10px
+  box-shadow: none
+  border: 2px solid #efefef
+  color: $c_black
+  font-family: 'Roboto'
+  font-weight: 100
+  font-size: 13px
+  background-color: transparent
+  transition: all .3s ease
+
+  &:focus
+    background-color: #fafafa
+    border-color: #fafafa
+
+
+  &::-webkit-input-placeholder
+    color: #bababa
+
+
+  &:-moz-placeholder  /* Firefox 18- */
+    color: #bababa
+
+
+  &::-moz-placeholder   /* Firefox 19+ */
+    color: #bababa
+
+
+  &:-ms-input-placeholder
+    color: #bababa
+
+
+
+
+/***********anim-bg***********/
+
+.site-anim_bg
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  position: absolute
+  object-fit: cover
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -1
+
+
+@keyframes animate-bg
+  0%
+    transform: scale(1)
+
+  50%
+    transform: scale(1.05)
+
+  100%
+    transform: scale(1)
+
+
+
+
+/********button for video*********/
+
+.play-video_btn
+  max-width: 125px
+  width: 100%
+  flex-direction: column
+  align-items: center
+  cursor: pointer
+  margin: 0 auto
+
+  &:hover
+    .play-video_btn-icon
+      svg
+        .play-svg
+          fill: #3e3f40
+
+        .circle-svg
+          stroke-width: 2px
+          stroke-dashoffset: 0
+          stroke-dasharray: 200
+          border-radius: 100%
+
+
+
+      @media all and (max-width: 639px)
+        svg
+          .play-svg
+            fill: #3e3f40
+
+          .circle-svg
+            stroke-width: 0
+            stroke-dashoffset: 0
+            stroke-dasharray: 0
+            border-radius: 100%
+
+
+
+
+
+
+  &-text
+    color: $c_black
+    font-size: 14px
+    font-family: 'Roboto'
+    font-weight: 300
+    margin-bottom: 20px
+    text-transform: uppercase
+
+  &-icon
+    position: relative
+    color: red
+    max-width: 56.5px
+    width: 100%
+    height: 56.5px
+    border-radius: 50%
+    background: url('../img/play-video.png') no-repeat center center
+    background-size: cover
+    overflow: hidden
+    z-index: 10
+
+    svg
+      width: 100%
+      height: auto
+      .circle-svg
+        stroke-dasharray: 0 540
+        stroke-dashoffset: 0
+        stroke-width: 3px
+        stroke: rgba(62, 63, 64, .7)
+        border-radius: 100%
+        transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray .5s
+
+      .play-svg
+        transition: all 1s ease-in-out
+        fill: rgba(0,0,0, .22)
+
+
+
+
+.about-body
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  background-attachment: fixed
+
+body
+  font-family: 'Roboto'
+
+
+.s-footer-about
+  background: transparent
+
+.s-footer__wrap-menu-about
+  background: transparent
+
+
+
+
+@keyframes loader
+  0%
+    -webkit-transform: rotate(0deg)
+    -moz-transform: rotate(0deg)
+    transform: rotate(0deg)
+
+
+  100%
+    -webkit-transform: rotate(360deg)
+    -moz-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+
+
+
+@keyframes loading-left
+  0%
+    transform:rotate(0deg)
+
+  25%
+    transform:rotate(180deg)
+
+  50%
+    transform:rotate(180deg)
+
+  75%
+    transform:rotate(180deg)
+
+  100%
+    transform:rotate(180deg)
+
+
+
+/********canvas control********/
+
+//.imgplay-controls
+//  display: none
+//
+
+.canvas-wrapp, .canvas-wrapp_load
+  position: absolute
+  top: 450px
+  right: 0
+  transform: translate(0,-50%)
+  max-width: 750px
+  width: 100%
+  height: 936px
+  z-index: 30
+  display: block
+
+  &__img, &__end
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: auto
+
+
+
+
+.s_slider-block-arrow
+  position: absolute
+  bottom: 15%
+
+
+.s_slider-block__prev-img
+  left: 30%
+
+.s_slider-block__next-img
+  left: 40%
+
+
+
+#preloader
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: none
+    z-index: 100
+    background: rgba(0,0,0,0.75)
+#loader
+    display: block
+    position: relative
+    left: 50%
+    top: 50%
+    width: 150px
+    height: 150px
+    margin: -75px 0 0 -75px
+    border-radius: 50%
+    border: 3px solid transparent
+    border-top-color: #9370DB
+    -webkit-animation: spin 2s linear infinite
+    animation: spin 2s linear infinite
+
+#loader:before
+    content: ""
+    position: absolute
+    top: 5px
+    left: 5px
+    right: 5px
+    bottom: 5px
+    border-radius: 50%
+    border: 3px solid transparent
+    border-top-color: #BA55D3
+    -webkit-animation: spin 3s linear infinite
+    animation: spin 3s linear infinite
+
+#loader:after
+    content: ""
+    position: absolute
+    top: 15px
+    left: 15px
+    right: 15px
+    bottom: 15px
+    border-radius: 50%
+    border: 3px solid transparent
+    border-top-color: #FF00FF
+    -webkit-animation: spin 1.5s linear infinite
+    animation: spin 1.5s linear infinite
+
+@-webkit-keyframes spin
+    0%
+        -webkit-transform: rotate(0deg)
+        -ms-transform: rotate(0deg)
+        transform: rotate(0deg)
+
+    100%
+        -webkit-transform: rotate(360deg)
+        -ms-transform: rotate(360deg)
+        transform: rotate(360deg)
+
+
+@keyframes spin
+    0%
+        -webkit-transform: rotate(0deg)
+        -ms-transform: rotate(0deg)
+        transform: rotate(0deg)
+
+    100%
+        -webkit-transform: rotate(360deg)
+        -ms-transform: rotate(360deg)
+        transform: rotate(360deg)
+
+.smallUp
+    -webkit-animation-name: smallUp
+    animation-name: smallUp
+
+
+@-webkit-keyframes smallUp
+    0%
+        opacity: 0
+        -webkit-transform: translate3d(0,100px,0)
+        transform: translate3d(0,100px,0)
+    to
+        opacity: 1
+        -webkit-transform: none
+        transform: none
+
+
+// .slick-slide
+//    transition: opacity 300ms ease-in-out
+//    opacity: 0
+// .slick-slide.opacidown
+//   opacity: 0
+// .slick-active.opacidown
+//   opacity: 1
+
+.slick-slide
+   opacity: 0
+   transition: opacity .5s ease-in-out
+
+.slick-slide.opacidown
+  opacity: 0
+
+
+.slick-current
+   opacity: 1
+   transition: opacity 1s ease-in-out
+
+
+.slick-active
+   opacity: 1
+   transition: opacity 1s ease-in-out
+   &:nth-of-type(2)
+     background: red

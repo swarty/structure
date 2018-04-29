@@ -19,7 +19,6 @@ const gulp        = require('gulp'),
 
 // Static Server + watching sass/html files
 gulp.task('serve', ['sass', 'pug'], function() {
-  .pipe(plumber())
   browserSync.init({
     server: 'app'
   });

@@ -1,2 +1,48 @@
+@import "helpers"
+   
++font-face('Heuristica-italic', '../../fonts/heuristica-italic')
++font-face('Heuristica-regular', '../../fonts/heuristica-regular')
++font-face('Lato-bold', '../../fonts/Lato-Bold')
++font-face('Lato-regular', '../../fonts/Lato-Regular')
++font-face('OpenSans-ExtraBold', '../../fonts/OpenSans-ExtraBold')
++font-face('OpenSans-Regular', '../../fonts/OpenSans-Regular')
+
+=hi
+   font-family: "Heuristica-italic", sans-serif
+
+=hr
+   font-family: "Heuristica-regular", sans-serif
+
+=lb
+   font-family: "Lato-bold", sans-serif
+
+=lr
+   font-family: "Lato-regular", sans-serif
+
+=oe
+   font-family: "OpenSans-ExtraBold", sans-serif
+
+=or
+   font-family: "OpenSans-Regular", sans-serif
+
 h1,h2,h3,h4,h5,h6,p,span
    margin: 0
+
+h1
+   color: $white
+   +oe
+   font-size: 60px
+
+h2
+   color: $white
+   +oe
+   font-size: 38px
+
+h3
+   color: $white
+   +lb
+   font-size: 24px
+
+p
+   +hr
+   font-size: 22px

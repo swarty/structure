@@ -7,11 +7,12 @@ const gulp        = require('gulp'),
       imageminJpegRecompress = require('imagemin-jpeg-recompress'),
       imageminPngquant = require('imagemin-pngquant'),
       debug = require('gulp-debug'),
-      plumber = require('gulp-plumber'),
+      // plumber = require('gulp-plumber'),
       babel = require('gulp-babel'),
       minify = require('gulp-babel-minify'),
       pug = require('gulp-pug'),
       del = require('del'),
+      wait = require('gulp-wait'),
       gutil = require('gulp-util');
 // var gulpSequence = require('gulp-sequence').use(gulp);
 // var shell = require('gulp-shell');
@@ -31,7 +32,8 @@ gulp.task('serve', ['sass', 'pug'], function() {
 
 gulp.task('pug', function() {
     return gulp.src('app/pug/*.pug')
-      .pipe(plumber())
+      // .pipe(plumber())
+      .pipe(wait(1500))
       .pipe(pug({pretty: true}))
       .pipe(gulp.dest('app'))
       .pipe(browserSync.reload({stream: true}))
@@ -39,7 +41,8 @@ gulp.task('pug', function() {
 
 gulp.task('babel', function(){
     return gulp.src('app/js/*')
-      .pipe(plumber())
+      // .pipe(plumber())
+      .pipe(wait(1500))
       .pipe(babel({
           presets: ['es2015']
       }))
@@ -50,7 +53,8 @@ gulp.task('babel', function(){
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
     return gulp.src("app/sass/**/*.sass")
-      .pipe(plumber())
+      // .pipe(plumber())
+      .pipe(wait(1500))
       .pipe(sass({outputStyle: 'compressed'}))
       .pipe(autoprefixer({browsers: ['last 2 version', '> 2%', 'firefox 15', 'safari 5', 'ie 6', 'ie 7', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}))
       .pipe(gulp.dest("app/css"))
@@ -60,7 +64,8 @@ gulp.task('sass', function() {
 
 gulp.task('images', () =>
     gulp.src('app/img/*')
-      .pipe(plumber())
+      // .pipe(plumber())
+      .pipe(wait(1500))
       .pipe(imagemin({
         interlaced: true,
         progressive: true,
@@ -73,7 +78,8 @@ gulp.task('images', () =>
 // Таск для оптимизации изображений
 gulp.task('img:prod', function () {
   return gulp.src('app/img/*') //Выберем наши картинки
-    .pipe(plumber())
+    // .pipe(plumber())
+    .pipe(wait(1500))
     .pipe(debug({title: 'building img:', showFiles: true}))
     .pipe(gulp.dest('dist/img')) //Копируем изображения заранее, imagemin может пропустить парочку )
     .pipe(imagemin([

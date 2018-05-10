@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "\"start structure for dev\"",
   "main": "gulpfile.js",
-  "dependencies": {},
+  "dependencies": {
+    "gulp-wait": "0.0.2"
+  },
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",

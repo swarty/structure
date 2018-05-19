@@ -1,0 +1,18 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "files.autoSave": "off",
+    "editor.tabSize": 2,
+    "editor.minimap.enabled": false,
+    "team.showWelcomeMessage": false,
+    "window.zoomLevel": 0,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "explorer.confirmDelete": false,
+    "[html]": {},
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "window.menuBarVisibility": "toggle",
+    "workbench.editor.tabSizing": "shrink",
+    "editor.detectIndentation": false,
+		"editor.insertSpaces": false,
+		"editor.glyphMargin": false,
+		"editor.smoothScrolling": true
+	}

@@ -97,7 +97,7 @@ gulp.task('scripts-deploy', function() {
 //compiling our SCSS files
 gulp.task('styles', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
-    return gulp.src('app/styles/scss/init.scss')
+    return gulp.src('app/styles/scss/main.scss')
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber({
                   errorHandler: function (err) {
@@ -133,7 +133,7 @@ gulp.task('styles', function() {
 //compiling our SCSS files for deployment
 gulp.task('styles-deploy', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
-    return gulp.src('app/styles/scss/init.scss')
+    return gulp.src('app/styles/scss/main.scss')
                 .pipe(plumber())
                 //include SCSS includes folder
                 .pipe(sass({
@@ -215,10 +215,10 @@ gulp.task('scaffold', function() {
 //  compress all scripts and SCSS files
 gulp.task('default', ['browserSync', 'scripts', 'pug', 'styles'], function() {
 	//a list of watchers, so it will watch all of the following files waiting for changes
-	gulp.watch('app/pug/*.pug', ['pug']);
     gulp.watch('app/scripts/src/**', ['scripts']);
     gulp.watch('app/styles/scss/**', ['styles']);
-    gulp.watch('app/images/**', ['images']);
+	gulp.watch('app/images/**', ['images']);
+	gulp.watch('app/pug/*.pug', ['pug']);
     gulp.watch('app/*.html', ['html']);
 });
 

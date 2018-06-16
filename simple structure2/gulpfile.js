@@ -58,9 +58,9 @@ gulp.task('pug', function () {
       pretty: true
     }))
     .pipe(gulp.dest('app'))
-    .pipe(browserSync.reload({
-      stream: true
-    }))
+    // .pipe(browserSync.reload({
+    //   stream: true
+    // }))
 })
 
 
@@ -213,8 +213,9 @@ gulp.task('scaffold', function() {
 //  startup the web server,
 //  start up browserSync
 //  compress all scripts and SCSS files
-gulp.task('default', ['browserSync', 'scripts', 'styles', 'pug'], function() {
-    //a list of watchers, so it will watch all of the following files waiting for changes
+gulp.task('default', ['browserSync', 'scripts', 'pug', 'styles'], function() {
+	//a list of watchers, so it will watch all of the following files waiting for changes
+	gulp.watch('app/pug/*.pug', ['pug']);
     gulp.watch('app/scripts/src/**', ['scripts']);
     gulp.watch('app/styles/scss/**', ['styles']);
     gulp.watch('app/images/**', ['images']);

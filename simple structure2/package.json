@@ -24,6 +24,7 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-uglify": "^2.0.1",
     "gulp-util": "^3.0.8",
-    "gulp-wait": "0.0.2"
+    "gulp-wait": "0.0.2",
+    "uglify-js": "^3.4.1"
   }
 }

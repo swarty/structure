@@ -50,7 +50,7 @@ gulp.task('babel', function () {
 		  ['minify']
 		]
 	  }))
-	  .pipe(gulp.dest('dist/scripts'))
+	//   .pipe(gulp.dest('dist/scripts'))
   });
 
 
@@ -94,6 +94,8 @@ gulp.task('scripts', function() {
                 .pipe(plumber())
                 //this is the filename of the compressed version of our JS
                 .pipe(concat('app.js'))
+                // babel
+                .pipe(babel())
                 //catch errors
                 .on('error', gutil.log)
                 //where we will store our finalized, compressed script
@@ -112,7 +114,8 @@ gulp.task('scripts-deploy', function() {
                 .pipe(concat('app.js'))
 				//compress :D
 				.pipe(babel())
-				// .pipe(uglify())
+                // cath errors
+                .on('error', gutil.log)
                 //where we will store our finalized, compressed script
                 .pipe(gulp.dest('dist/scripts'));
 });
@@ -150,7 +153,7 @@ gulp.task('styles', function() {
                 //get our sources via sourceMaps
                 .pipe(sourceMaps.write())
                 //where to save our final, compressed css file
-                .pipe(gulp.dest('app/styles'))
+                .pipe(gulp.dest('app/styles/'))
                 //notify browserSync to refresh
                 .pipe(browserSync.reload({stream: true}));
 });
@@ -175,7 +178,7 @@ gulp.task('styles-deploy', function() {
                 // .pipe(concat('styles.css'))
                 .pipe(minifyCSS())
                 //where to save our final, compressed css file
-                .pipe(gulp.dest('dist/styles'));
+                .pipe(gulp.dest('dist/styles/'));
 });
 
 //basically just keeping an eye on all HTML files
@@ -249,4 +252,4 @@ gulp.task('default', ['browserSync', 'scripts', 'pug', 'styles'], function() {
 });
 
 //this is our deployment task, it will set everything for deployment-ready files
-gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy', 'babel'], 'html-deploy'));
+gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'html-deploy'));

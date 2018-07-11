@@ -36,7 +36,7 @@ gulp.task('browserSync', function() {
 
 // new task babel
 gulp.task('babel', function () {
-	return gulp.src('app/scripts/app.js')
+	return gulp.src('dist/scripts/app.js')
 	  // .pipe(plumber())
 	  .pipe(babel({
 		"presets": [
@@ -48,7 +48,7 @@ gulp.task('babel', function () {
 		  ['minify']
 		]
 	  }))
-	//   .pipe(gulp.dest('dist/scripts'))
+	  .pipe(gulp.dest('dist/scripts/'))
   });
 
 
@@ -92,7 +92,7 @@ gulp.task('scripts', function() {
                 //this is the filename of the compressed version of our JS
                 .pipe(concat('app.js'))
                 // babel
-                .pipe(babel())
+                // .pipe(babel())
                 //catch errors
                 .on('error', gutil.log)
                 //where we will store our finalized, compressed script
@@ -110,7 +110,7 @@ gulp.task('scripts-deploy', function() {
                 //this is the filename of the compressed version of our JS
                 .pipe(concat('app.js'))
 				//compress :D
-				.pipe(babel())
+				// .pipe(babel())
                 // cath errors
                 .on('error', gutil.log)
                 //where we will store our finalized, compressed script
@@ -258,4 +258,4 @@ gulp.task('default', ['browserSync', 'scripts', 'pug', 'styles'], function() {
 });
 
 //this is our deployment task, it will set everything for deployment-ready files
-gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'minify-css', 'html-deploy'));
+gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'html-deploy'));

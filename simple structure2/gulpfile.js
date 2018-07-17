@@ -116,63 +116,64 @@ gulp.task('scripts-deploy', function() {
 });
 
 //compiling our SCSS files
-gulp.task('styles', function () {
+gulp.task('styles', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
-    return gulp.src('app/styles/scss/init.scss')
-        //prevent pipe breaking caused by errors from gulp plugins
-        .pipe(plumber({
-            errorHandler: function (err) {
-                console.log(err);
-                this.emit('end');
-            }
-        }))
-        //get sourceMaps ready
-        .pipe(sourceMaps.init())
-        //include SCSS and list every "include" folder
-        .pipe(sass({
-            errLogToConsole: true,
-            includePaths: [
-                'app/styles/scss/'
-            ]
-        }))
-        .pipe(autoprefixer({
-            browsers: autoPrefixBrowserList,
-            cascade: true
-        }))
-        //catch errors
-        .on('error', gutil.log)
-        //the final filename of our combined css file
-        .pipe(concat('styles.css'))
-        //get our sources via sourceMaps
-        .pipe(sourceMaps.write())
-        //where to save our final, compressed css file
-        .pipe(gulp.dest('app/styles'))
-        //notify browserSync to refresh
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+    return gulp.src('app/styles/scss/*.scss')
+                //prevent pipe breaking caused by errors from gulp plugins
+                .pipe(plumber({
+                  errorHandler: function (err) {
+                    console.log(err);
+                    this.emit('end');
+                  }
+				}))
+                //get sourceMaps ready
+                .pipe(sourceMaps.init())
+                //include SCSS and list every "include" folder
+                .pipe(sass({
+                      errLogToConsole: true,
+                      includePaths: [
+                          'app/styles/scss/'
+                      ],
+                      outputStyle: 'compact'
+                }))
+                .pipe(autoprefixer({
+                   browsers: autoPrefixBrowserList,
+                   cascade:  true
+                }))
+                //catch errors
+                .on('error', gutil.log)
+                //the final filename of our combined css file
+                // .pipe(concat('styles.css'))
+                //get our sources via sourceMaps
+                .pipe(sourceMaps.write())
+                //where to save our final, compressed css file
+                .pipe(gulp.dest('app/styles/'))
+                //notify browserSync to refresh
+                .pipe(browserSync.reload({stream: true}));
 });
 
 //compiling our SCSS files for deployment
-gulp.task('styles-deploy', function () {
+gulp.task('styles-deploy', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
-    return gulp.src('app/styles/scss/init.scss')
-        .pipe(plumber())
-        //include SCSS includes folder
-        .pipe(sass({
-            includePaths: [
-                'app/styles/scss',
-            ]
-        }))
-        .pipe(autoprefixer({
-            browsers: autoPrefixBrowserList,
-            cascade: true
-        }))
-        //the final filename of our combined css file
-        .pipe(concat('styles.css'))
-        .pipe(minifyCSS())
-        //where to save our final, compressed css file
-        .pipe(gulp.dest('dist/styles'));
+    return gulp.src('app/styles/scss/*.scss')
+                .pipe(plumber())
+				//include SCSS includes folder
+                .pipe(sass({
+                      includePaths: [
+                          'app/styles/scss/',
+                      ],
+                      outputStyle: 'compact'
+                }))
+                .pipe(autoprefixer({
+                  browsers: autoPrefixBrowserList,
+                  cascade:  true,
+                  
+                }))
+                //the final filename of our combined css file
+                // .pipe(concat('styles.css'))
+                .pipe(minifyCSS())
+                //where to save our final, compressed css file
+                .pipe(gulp.dest('dist/styles/'));
 });
 
 //basically just keeping an eye on all HTML files

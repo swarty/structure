@@ -22,7 +22,7 @@ gulpSequence = require('gulp-sequence').use(gulp);
 shell = require('gulp-shell');
 plumber = require('gulp-plumber');
 
-gulp.task('browserSync', function () {
+gulp.task('browserSync', function() {
     browserSync({
         server: {
             baseDir: "app/"
@@ -40,19 +40,16 @@ gulp.task('babel', function () {
     return gulp.src('dist/scripts/app.js')
         // .pipe(plumber())
         .pipe(babel({
-            "presets": [
-                ["env", {
-                    "targets": {
-                        "browsers": ["last 2 versions", "safari >= 7"]
-                    }
-                }],
-                ['minify']
-            ]
-        }))
+            "presets": [["minify", {
+              "mangle": {
+                "exclude": ["ParserError", "NetworkError"]
+              }
+            }]]
+          }))
       .pipe(gulp.dest('dist/scripts'))
 });
 
-gulp.task('minify-css', function() {
+gulp.task('css', function() {
 
     return gulp.src('dist/styles/*.css')
             .pipe(plumber())
@@ -60,26 +57,37 @@ gulp.task('minify-css', function() {
             .pipe(gulp.dest('dist/styles/'));
 })
 
+
 //compressing images & handle SVG files
-gulp.task('images', function (tmp) {
+gulp.task('images', function(tmp) {
     gulp.src(['app/images/*.jpg', 'app/images/*.png'])
         //prevent pipe breaking caused by errors from gulp plugins
         .pipe(plumber())
-        .pipe(imagemin({
-            optimizationLevel: 5,
-            progressive: true,
-            interlaced: true
-        }))
+        .pipe(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
         .pipe(gulp.dest('app/images'));
 });
 
 //compressing images & handle SVG files
-gulp.task('images-deploy', function () {
+gulp.task('images-deploy', function() {
     gulp.src(['app/images/**/*', '!app/images/README'])
         //prevent pipe breaking caused by errors from gulp plugins
         .pipe(plumber())
         .pipe(gulp.dest('dist/images'));
 });
+
+
+gulp.task('pug', function () {
+  return gulp.src('app/pug/*.pug')
+	.pipe(plumber())
+    .pipe(pug({
+      pretty: true
+    }))
+    .pipe(gulp.dest('app'))
+    // .pipe(browserSync.reload({
+    //   stream: true
+    // }))
+})
+
 
 //compiling our Javascripts
 gulp.task('scripts', function() {
@@ -94,7 +102,7 @@ gulp.task('scripts', function() {
                 //catch errors
                 .on('error', gutil.log)
                 //where we will store our finalized, compressed script
-                .pipe(gulp.dest('app/scripts/'))
+                .pipe(gulp.dest('app/scripts'))
                 //notify browserSync to refresh
                 .pipe(browserSync.reload({stream: true}));
 });
@@ -112,10 +120,11 @@ gulp.task('scripts-deploy', function() {
                 // cath errors
                 .on('error', gutil.log)
                 //where we will store our finalized, compressed script
-                .pipe(gulp.dest('dist/scripts/'));
+                .pipe(gulp.dest('dist/scripts'));
 });
 
 
+//compiling our SCSS files
 gulp.task('styles', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
     return gulp.src('app/styles/scss/*.scss')
@@ -176,20 +185,19 @@ gulp.task('styles-deploy', function() {
                 .pipe(gulp.dest('dist/styles/'));
 });
 
+
 //basically just keeping an eye on all HTML files
-gulp.task('html', function () {
+gulp.task('html', function() {
     //watch any and all HTML files and refresh when something changes
     return gulp.src('app/*.html')
         .pipe(plumber())
-        .pipe(browserSync.reload({
-            stream: true
-        }))
+        .pipe(browserSync.reload({stream: true}))
         //catch errors
         .on('error', gutil.log);
 });
 
 //migrating over all HTML files for deployment
-gulp.task('html-deploy', function () {
+gulp.task('html-deploy', function() {
     //grab everything, which should include htaccess, robots, etc
     gulp.src('app/*')
         //prevent pipe breaking caused by errors from gulp plugins
@@ -215,21 +223,22 @@ gulp.task('html-deploy', function () {
 });
 
 //cleans our dist directory in case things got deleted
-gulp.task('clean', function () {
+gulp.task('clean', function() {
     return shell.task([
-        'rm -rf dist'
+      'rm -rf dist'
     ]);
 });
 
 //create folders using shell
-gulp.task('scaffold', function () {
-    return shell.task([
-        'mkdir dist',
-        'mkdir dist/fonts',
-        'mkdir dist/images',
-        'mkdir dist/scripts',
-        'mkdir dist/styles'
-    ]);
+gulp.task('scaffold', function() {
+  return shell.task([
+      'mkdir dist',
+      'mkdir dist/fonts',
+      'mkdir dist/images',
+      'mkdir dist/scripts',
+      'mkdir dist/styles'
+    ]
+  );
 });
 
 //this is our master task when you run `gulp` in CLI / Terminal
@@ -238,13 +247,14 @@ gulp.task('scaffold', function () {
 //  startup the web server,
 //  start up browserSync
 //  compress all scripts and SCSS files
-gulp.task('default', ['browserSync', 'scripts', 'styles'], function () {
-    //a list of watchers, so it will watch all of the following files waiting for changes
+gulp.task('default', ['browserSync', 'scripts', 'pug', 'styles'], function() {
+	//a list of watchers, so it will watch all of the following files waiting for changes
     gulp.watch('app/scripts/src/**', ['scripts']);
     gulp.watch('app/styles/scss/**', ['styles']);
-    gulp.watch('app/images/**', ['images']);
+	gulp.watch('app/images/**', ['images']);
+	gulp.watch('app/pug/*.pug', ['pug']);
     gulp.watch('app/*.html', ['html']);
 });
 
 //this is our deployment task, it will set everything for deployment-ready files
-gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'babel', 'minify-css', 'html-deploy'));
+gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'babel', 'css', 'html-deploy'));

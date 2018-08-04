@@ -1,5 +1,5 @@
 //initialize all of our variables
-var app, babel, babelPreset, minify, pug, base, concat, directory, gulp, gutil, hostname, path, refresh, sass, imagemin, minifyCSS, del, browserSync, autoprefixer, gulpSequence, shell, sourceMaps, plumber;
+var app, wait, babel, babelPreset, minify, pug, base, concat, directory, gulp, gutil, hostname, path, refresh, sass, imagemin, minifyCSS, del, browserSync, autoprefixer, gulpSequence, shell, sourceMaps, plumber;
 
 var autoPrefixBrowserList = ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'];
 
@@ -21,6 +21,7 @@ autoprefixer = require('gulp-autoprefixer');
 gulpSequence = require('gulp-sequence').use(gulp);
 shell = require('gulp-shell');
 plumber = require('gulp-plumber');
+wait = require('gulp-wait');
 
 gulp.task('browserSync', function () {
     browserSync({
@@ -52,7 +53,7 @@ gulp.task('babel', function () {
       .pipe(gulp.dest('dist/scripts'))
 });
 
-gulp.task('minify-css', function() {
+gulp.task('css', function() {
 
     return gulp.src('dist/styles/*.css')
             .pipe(plumber())
@@ -115,11 +116,23 @@ gulp.task('scripts-deploy', function() {
                 .pipe(gulp.dest('dist/scripts/'));
 });
 
+gulp.task('pug', function () {
+	return gulp.src('app/pug/*.pug')
+	  .pipe(plumber())
+	  .pipe(pug({
+		pretty: true
+	  }))
+	  .pipe(gulp.dest('app'))
+	  // .pipe(browserSync.reload({
+	  //   stream: true
+	  // }))
+  })
 
 gulp.task('styles', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
     return gulp.src('app/styles/scss/*.scss')
-                //prevent pipe breaking caused by errors from gulp plugins
+				//prevent pipe breaking caused by errors from gulp plugins
+				.pipe(wait(500))
                 .pipe(plumber({
                   errorHandler: function (err) {
                     console.log(err);
@@ -242,9 +255,10 @@ gulp.task('default', ['browserSync', 'scripts', 'styles'], function () {
     //a list of watchers, so it will watch all of the following files waiting for changes
     gulp.watch('app/scripts/src/**', ['scripts']);
     gulp.watch('app/styles/scss/**', ['styles']);
-    gulp.watch('app/images/**', ['images']);
+	gulp.watch('app/images/**', ['images']);
+	gulp.watch('app/pug/*.pug', ['pug']);
     gulp.watch('app/*.html', ['html']);
 });
 
 //this is our deployment task, it will set everything for deployment-ready files
-gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'babel', 'minify-css', 'html-deploy'));
+gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'babel', 'css', 'html-deploy'));

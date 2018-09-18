@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+    <g fill="none" fill-rule="evenodd">
+        <circle cx="25" cy="25" r="25" fill="#FCAF17" opacity=".298"/>
+        <circle cx="25" cy="25" r="16.667" fill="#FFF"/>
+        <circle cx="25" cy="25" r="8.333" fill="#FCAF17"/>
+    </g>
+</svg>

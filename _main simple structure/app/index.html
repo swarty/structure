@@ -14,112 +14,90 @@
     <meta property="og:description" content="">
     <link rel="shoutcut icon" type="img/ico" href="img/favicon32.ico" sizes="32x32">
     <link rel="icon" type="img/ico" href="img/favicon16.ico" sizes="16x12">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <p>ready for start</p>
-    <script src="scripts/app.js"></script>
-    <canvas>
-      <div class="triangle-1"></div>
-      <div class="triangle-2"></div>
-      <div class="triangle-3"></div>
-      <div class="triangle-4"></div>
-      <div class="triangle-5"></div>
-      <div class="triangle-6"></div>
-      <div class="triangle-7"></div>
-      <div class="triangle-8"></div>
-      <div class="triangle-9"></div>
-      <div class="triangle-10"></div>
-      <div class="triangle-11"></div>
-      <div class="triangle-12"></div>
-      <div class="triangle-13"></div>
-      <div class="triangle-14"></div>
-      <div class="triangle-15"></div>
-      <div class="triangle-16"></div>
-      <div class="triangle-17"></div>
-      <div class="triangle-18"></div>
-      <div class="triangle-19"></div>
-      <div class="triangle-20"></div>
-      <div class="triangle-21"></div>
-      <div class="triangle-22"></div>
-      <div class="triangle-23"></div>
-      <div class="triangle-24"></div>
-      <div class="triangle-25"></div>
-      <div class="triangle-26"></div>
-      <div class="triangle-27"></div>
-      <div class="triangle-28"></div>
-      <div class="triangle-29"></div>
-      <div class="triangle-30"></div>
-      <div class="triangle-31"></div>
-      <div class="triangle-32"></div>
-      <div class="triangle-33"></div>
-      <div class="triangle-34"></div>
-      <div class="triangle-35"></div>
-      <div class="triangle-36"></div>
-      <div class="triangle-37"></div>
-      <div class="triangle-38"></div>
-      <div class="triangle-39"></div>
-      <div class="triangle-40"></div>
-      <div class="triangle-41"></div>
-      <div class="triangle-42"></div>
-      <div class="triangle-43"></div>
-      <div class="triangle-44"></div>
-      <div class="triangle-45"></div>
-      <div class="triangle-46"></div>
-      <div class="triangle-47"></div>
-      <div class="triangle-48"></div>
-      <div class="triangle-49"></div>
-      <div class="triangle-50"></div>
-      <div class="triangle-51"></div>
-      <div class="triangle-52"></div>
-      <div class="triangle-53"></div>
-      <div class="triangle-54"></div>
-      <div class="triangle-55"></div>
-      <div class="triangle-56"></div>
-      <div class="triangle-57"></div>
-      <div class="triangle-58"></div>
-      <div class="triangle-59"></div>
-      <div class="triangle-60"></div>
-      <div class="triangle-61"></div>
-      <div class="triangle-62"></div>
-      <div class="triangle-63"></div>
-      <div class="triangle-64"></div>
-      <div class="triangle-65"></div>
-      <div class="triangle-66"></div>
-      <div class="triangle-67"></div>
-      <div class="triangle-68"></div>
-      <div class="triangle-69"></div>
-      <div class="triangle-70"></div>
-      <div class="triangle-71"></div>
-      <div class="triangle-72"></div>
-      <div class="triangle-73"></div>
-      <div class="triangle-74"></div>
-      <div class="triangle-75"></div>
-      <div class="triangle-76"></div>
-      <div class="triangle-77"></div>
-      <div class="triangle-78"></div>
-      <div class="triangle-79"></div>
-      <div class="triangle-80"></div>
-      <div class="triangle-81"></div>
-      <div class="triangle-82"></div>
-      <div class="triangle-83"></div>
-      <div class="triangle-84"></div>
-      <div class="triangle-85"></div>
-      <div class="triangle-86"></div>
-      <div class="triangle-87"></div>
-      <div class="triangle-88"></div>
-      <div class="triangle-89"></div>
-      <div class="triangle-90"></div>
-      <div class="triangle-91"></div>
-      <div class="triangle-92"></div>
-      <div class="triangle-93"></div>
-      <div class="triangle-94"></div>
-      <div class="triangle-95"></div>
-      <div class="triangle-96"></div>
-      <div class="triangle-97"></div>
-      <div class="triangle-98"></div>
-      <div class="triangle-99"></div>
-      <div class="triangle-100"></div>
-    </canvas>
+    
+	<section class="map-wr">
+        <h2>Мережа АЗК БРСМ-Нафта</h2>
+
+        <div id="map-searcher" class="map-form__wrapper">
+            <div class="map-form__container">
+                <form @submit.prevent="filterPins" class="map-form__this fw js-map__form">
+                    <div class="map-form__col js-map__from  map-form__col--65" :class="{'map-form__col--32': routesFromTo}">
+                        <label for="" class="inputs map-form__inputs">
+                            <input @click="initSelectorFrom" type="text" :placeholder="regionHint" v-model="region_filter" data-text="Регион отправления" data-back="Регион" class="map-form__input map-form__input--region js-google__from">
+                        </label>
+                    </div>
+                    <div class="map-form__col js-map__to  map-form__col--65" v-show="routesFromTo" :class="{'map-form__col--32': routesFromTo}">
+                        <label for="" class="inputs  map-form__inputs">
+                            <input @click="initSelectorTo" type="text" v-model="region_end" placeholder="Виберіть пункт прибуття" class="map-form__input map-form__input--region js-google__to">
+                        </label>
+                    </div>
+                    <div class="map-form__col map-form__col--selector js-map__drop map-form__col--15" @click="filterOpened = !filterOpened">
+                        <div class="inputs map-form__inputs">
+                            <div class="map-form__select">
+                                <div for="" class="inputs map-form__inputs map-form__inputs--select" :class="{'map-form__inputs--active': filterOpened}">
+                                    <p>Параметри</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-form__col map-form__col--10">
+                        <button @click.prevent="createRoute" class="map-form__search  map-form__inputs js-map__form1">
+                            <img src="<?= get_template_directory_uri() ?>/images/search.svg" class="svg"  alt="search">
+                        </button>
+                    </div>
+                    <div class="map-form__col map-form__col--10">
+                        <div @click="routesEnable" class="map-form__details js-map__details">
+                            <img src="<?= get_template_directory_uri() ?>/images/d.svg" class="map-form__details--desct " alt="details">
+                            <img src="<?= get_template_directory_uri() ?>/images/d2.svg" class="map-form__details--mob " alt="details">
+                        </div>
+                        <div @click="routesDisable" class="map-form__details map-form__details--close js-details__close1" :class="{'map-form__details--display': routesFromTo}">
+                            <div class="map-form__close map-form__close--center"></div>
+                        </div>
+                    </div>
+
+                    <div class="map-form__col map-form__dropdown fw" :class="{'map-form__dropdown--show': filterOpened}">
+                    <!--    <div class="map-form__close map-form__close--dropdown js-select__close">
+                            
+                        </div> -->
+                        <div class="map-form__block fw">
+                            <p class="map-form__block-descr">Види пального:</p>
+
+                            <label v-for="(fuel, index) in fuelTypes" :for="fuel.name" :key=index class="map-form__block-checkbox inputs">
+                                <input v-model="selected_fuel" :id="fuel.name" :value="fuel.id" type="checkbox">
+                                <p>
+                                    {{fuel.name}}
+                                </p>
+                            </label>
+    
+                        </div>
+                        <div class="map-form__block fw">
+                            <p class="map-form__block-descr">Сервіс:</p>
+
+                            <label v-for="(service, index) in services" :for="service.name" :key=index class="map-form__block-checkbox map-form__block-checkbox--full inputs">
+                                <input v-model="selected_service" :id="service.name" :value="service.id"  type="checkbox">
+                                <p>
+                                    {{service.name}}
+                                </p>
+                            </label>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="map">
+            <div id="map"></div>
+        </div>
+	</section>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJzKZjPJCzXMrH9yzVVffDgaI7oJf_Gqw&libraries=places"
+	 ></script>
+	<script src="scripts/app.js" defer></script>
   </body>
 </html>

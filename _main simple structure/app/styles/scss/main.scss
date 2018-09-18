@@ -1,9 +1,6 @@
-//misc settings
 @import 'general/settings';
 
-//pages
-@import 'pages/index';
-
-
-
-
+@import 'components/main';
+@import 'components/map-form';
+@import 'components/popup';
+@import 'components/inputs';

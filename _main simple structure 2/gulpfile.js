@@ -41,33 +41,32 @@ gulp.task('browserSync', function() {
 // new task babel
 gulp.task('babel', function () {
     return gulp.src('dist/scripts/app.js')
-        // .pipe(plumber())
-        .pipe(babel({
-            "presets": [["minify", {
-              "mangle": {
-                "exclude": ["ParserError", "NetworkError"]
-              }
-            }]]
-          }))
-      .pipe(gulp.dest('dist/scripts'))
+    // .pipe(plumber())
+    .pipe(babel({
+        "presets": [["minify", {
+          "mangle": {
+            "exclude": ["ParserError", "NetworkError"]
+          }
+        }]]
+      }))
+  .pipe(gulp.dest('dist/scripts'))
 });
 
 gulp.task('css', function() {
-
     return gulp.src('dist/styles/*.css')
-            .pipe(plumber())
-            .pipe(minifyCSS())
-            .pipe(gulp.dest('dist/styles/'));
+    .pipe(plumber())
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('dist/styles/'));
 })
 
 
 //compressing images & handle SVG files
 gulp.task('images', function(tmp) {
     gulp.src(['app/images/*.jpg', 'app/images/*.png'])
-        //prevent pipe breaking caused by errors from gulp plugins
-        .pipe(plumber())
-        .pipe(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
-        .pipe(gulp.dest('app/images'));
+    //prevent pipe breaking caused by errors from gulp plugins
+    .pipe(plumber())
+    .pipe(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
+    .pipe(gulp.dest('app/images'));
 });
 
 //compressing images & handle SVG files
@@ -95,7 +94,7 @@ gulp.task('pug', function () {
 //compiling our Javascripts
 gulp.task('scripts', function() {
     //this is where our dev JS scripts are
-    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js'])
+    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js', '!app/scripts/**/reame.md'])
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber())
                 //this is the filename of the compressed version of our JS
@@ -113,7 +112,7 @@ gulp.task('scripts', function() {
 //compiling our Javascripts for deployment
 gulp.task('scripts-deploy', function() {
     //this is where our dev JS scripts are
-    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js'])
+    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js', '!app/scripts/**/reame.md'])
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber())
                 //this is the filename of the compressed version of our JS
@@ -220,9 +219,6 @@ gulp.task('html-parts', function() {
             basepath: '@file'
         }))
         .pipe(gulp.dest('app/'))
-        .pipe(connect.reload());
-        //catch errors
-        .on('error', gutil.log);
 });
 
 //migrating over all HTML files for deployment
@@ -286,4 +282,4 @@ gulp.task('default', ['browserSync', 'scripts', 'pug', 'html-parts', 'styles'], 
 });
 
 //this is our deployment task, it will set everything for deployment-ready files
-gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'babel', 'css', 'html-deploy'));
+gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy', 'babel', 'css'], 'html-deploy'));

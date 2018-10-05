@@ -1,0 +1,71 @@
+@include font-face('MuseoSansCyr-light', '../fonts/museosanscyrl-100-webfont');
+@include font-face('MuseoSansCyr-medium', '../fonts/museosanscyrl-500-webfont');
+@include font-face('MuseoSansCyr-black', '../fonts/museosanscyrl_0-webfont');
+
+@mixin ml{
+	font-family: 'MuseoSansCyr-light', sans-serif;
+}
+
+@mixin mm{
+	font-family: 'MuseoSansCyr-medium', sans-serif;
+}
+
+@mixin mb{
+	font-family: 'MuseoSansCyr-black', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+	margin: 0;
+	padding: 0;
+	color: #1a2731;
+}
+
+p{
+	font-size: 14px;
+	line-height: 1.5em;
+	@include ml;
+}
+	
+
+h1,h2,h3,h4,h5,h6{
+	@include mm;
+}
+
+img{
+	max-width: 100%;
+	display: block;
+	height: auto;
+}
+
+h1{
+	font-size: 50px;
+	line-height: 1.2em;
+	font-weight: 300;
+	@include r(767){
+		font-size: 30px;
+	}
+}
+
+h2{
+	font-size: 34px;
+	line-height: 1.3em;
+	font-weight: 300;
+	@include r(999){
+		line-height: 1.2em;
+	}
+	@include r(767){
+		font-size: 30px;
+	}
+}
+
+h3
+	{font-size: 23px;
+	font-weight: 300;
+	@include r(767){
+		font-size: 19px;
+	}
+}
+
+h4{
+	font-size: 16px;
+}

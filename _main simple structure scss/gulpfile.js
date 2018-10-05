@@ -22,8 +22,8 @@ gulpSequence = require('gulp-sequence').use(gulp);
 shell = require('gulp-shell');
 plumber = require('gulp-plumber');
 wait = require('gulp-wait');
-include = require('gulp-file-include');
-include = require('gulp-connect');
+fileInclude = require('gulp-file-include');
+connect = require('gulp-connect');
 
 gulp.task('browserSync', function() {
     browserSync({
@@ -213,12 +213,12 @@ gulp.task('html', function() {
 gulp.task('html-parts', function() {
     //watch any and all HTML files and refresh when something changes
     return gulp.src('app/html/*.html')
-        .pipe(plumber())
-        .pipe(fileinclude({
+        .pipe(fileInclude({
             prefix: '@@',
             basepath: '@file'
         }))
-        .pipe(gulp.dest('app/'))
+				.pipe(gulp.dest('app/'))
+				.pipe(browserSync.reload({stream: true}))
 });
 
 //migrating over all HTML files for deployment
@@ -278,6 +278,7 @@ gulp.task('default', ['browserSync', 'scripts', 'pug', 'html-parts', 'styles'], 
     gulp.watch('app/styles/scss/**', ['styles']);
 	gulp.watch('app/images/**', ['images']);
 	gulp.watch('app/pug/*.pug', ['pug']);
+	gulp.watch('app/html/*.html', ['html-parts']);
     gulp.watch('app/*.html', ['html']);
 });
 

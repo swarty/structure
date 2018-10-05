@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "Description of your project",
   "dependencies": {
-    "bower": "^1.8.4"
+    "bower": "^1.8.4",
+    "gulp-connect": "^5.6.1",
+    "gulp-file-include": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.18.7",
+    "browser-sync": "^2.24.7",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^7.0.1",
@@ -25,6 +27,6 @@
     "gulp-uglify": "^2.0.1",
     "gulp-util": "^3.0.8",
     "gulp-wait": "0.0.2",
-    "uglify-js": "^3.4.1"
+    "uglify-js": "^3.4.9"
   }
 }

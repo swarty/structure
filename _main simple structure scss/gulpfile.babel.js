@@ -1,5 +1,5 @@
 //initialize all of our variables
-var include, connect, app, wait, babel, babelPreset, minify, pug, base, concat, directory, gulp, gutil, hostname, path, refresh, sass, imagemin, minifyCSS, del, browserSync, autoprefixer, gulpSequence, shell, sourceMaps, plumber;
+var fileInclude, connect, app, wait, babel, babelPreset, minify, pug, base, concat, directory, gulp, gutil, hostname, path, refresh, sass, imagemin, minifyCSS, del, browserSync, autoprefixer, gulpSequence, shell, sourceMaps, plumber;
 
 var autoPrefixBrowserList = ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'];
 
@@ -94,7 +94,7 @@ gulp.task('pug', function () {
 //compiling our Javascripts
 gulp.task('scripts', function() {
     //this is where our dev JS scripts are
-    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js', '!app/scripts/**/reame.md'])
+    return gulp.src(['app/scripts/src/_libs/**/*.js', 'app/scripts/src/**/*.js', '!app/scripts/**/reame.md'])
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber())
                 //this is the filename of the compressed version of our JS
@@ -112,7 +112,7 @@ gulp.task('scripts', function() {
 //compiling our Javascripts for deployment
 gulp.task('scripts-deploy', function() {
     //this is where our dev JS scripts are
-    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js', '!app/scripts/**/reame.md'])
+    return gulp.src(['app/scripts/src/_libs/**/*.js', 'app/scripts/src/**/*.js', '!app/scripts/**/reame.md'])
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber())
                 //this is the filename of the compressed version of our JS

@@ -65,7 +65,12 @@ gulp.task('images', function(tmp) {
     gulp.src(['app/images/*.jpg', 'app/images/*.png'])
     //prevent pipe breaking caused by errors from gulp plugins
     .pipe(plumber())
-    .pipe(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
+		// .pipe(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
+		.pipe(webp({
+			quality: 80,
+			preset: 'photo',
+			method: 6
+		}))
     .pipe(gulp.dest('app/images'));
 });
 

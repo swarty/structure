@@ -1,57 +1,57 @@
-+font-face('MuseoSansCyr-light', '../fonts/museosanscyrl-100-webfont')
-+font-face('MuseoSansCyr-medium', '../fonts/museosanscyrl-500-webfont')
-+font-face('MuseoSansCyr-black', '../fonts/museosanscyrl_0-webfont')
+// +font-face('MuseoSansCyr-light', '../fonts/museosanscyrl-100-webfont')
+// +font-face('MuseoSansCyr-medium', '../fonts/museosanscyrl-500-webfont')
+// +font-face('MuseoSansCyr-black', '../fonts/museosanscyrl_0-webfont')
 
-=ml
-	font-family: 'MuseoSansCyr-light', sans-serif
+=regular
+	font-family: 'PT Sans', sans-serif
+	font-weight: 400
 
-=mm
-	font-family: 'MuseoSansCyr-medium', sans-serif
+=bold
+	font-family: 'PT Sans', sans-serif
+	font-weight: 700
 
-=mb
-	font-family: 'MuseoSansCyr-black', sans-serif
 
 h1,h2,h3,h4,h5,h6,p
 	margin: 0
 	padding: 0
-	color: #1a2731
+	color: $black
+	line-height: 1.2
 
+a
+	+regular
+	
 p
-	font-size: 14px
-	line-height: 1.5em
-	+ml
+	font-size: 18px
+	line-height: 1.56
+	+regular
+	color: $black
+	+r(767)
+		font-size: 14px
 	
 
 h1,h2,h3,h4,h5,h6
-	+mm
+	+bold
+	line-height: 1.25
 
 img
 	max-width: 100%
 	display: block
 	height: auto
 
-h1
-	font-size: 50px
-	line-height: 1.2em
-	font-weight: 300
+h1,
+.h1
+	font-size: 64px
 	+r(767)
-		font-size: 30px
+		font-size: 36px
 
 h2
-	font-size: 34px
-	line-height: 1.3em
-	font-weight: 300
-	+r(999)
-		line-height: 1.2em
+	font-size: 64px
 	+r(767)
-		font-size: 30px
+		font-size: 36px
 
 h3
-	font-size: 23px
-	font-weight: 300
-	+r(767)
-		font-size: 19px
+	font-size: 24px
+	+r(1023)
+		font-size: 18px
 
-h4
-	font-size: 16px
 

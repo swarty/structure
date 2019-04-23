@@ -3,18 +3,32 @@
 .body-overflow
   overflow: hidden
 
+.wrapper
+	display: flex
+	flex-direction: column
+	align-items: stretch
+	justify-content: flex-start
+	min-height: 100vh
+	background-color: #f9f9f9
+
+footer
+	margin-top: auto
+
 .container
-  max-width: 1230px
-  width: 100%
-  position: relative
-  margin: 0 auto
-  padding: 0 15px
-  +r(1365)
-    padding: 0 30px
-  +r(767)
-    padding: 0 20px
-  &--small
-    max-width: 830px
+	max-width: 1680px
+	width: 100%
+	position: relative
+	margin: 0 auto
+	padding: 0 40px
+	+r(767)
+		padding: 0 20px
+
+.visibility--hidden
+	position: absolute
+	clip: rect(0 0 0 0)
+	width: 1px
+	height: 1px
+	margin: -1px
 
 *
   box-sizing: border-box
@@ -54,3 +68,13 @@ i
   justify-content: space-between
   align-items: flex-start
 
+.text-center
+	text-align: center
+
+@keyframes fadeInUp
+	0%
+		opacity: 0
+		transform: translateY(30%)
+	100%
+		opacity: 1
+		transform: translateY(0%)

@@ -1,3 +1,3 @@
-export function app() {
+export default function main() {
 	console.log('init app!!')
 }

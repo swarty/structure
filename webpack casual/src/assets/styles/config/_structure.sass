@@ -1,0 +1,80 @@
+// Add your settings here
+
+.body-overflow
+  overflow: hidden
+
+.wrapper
+	display: flex
+	flex-direction: column
+	align-items: stretch
+	justify-content: flex-start
+	min-height: 100vh
+	background-color: #f9f9f9
+
+footer
+	margin-top: auto
+
+.container
+	max-width: 1680px
+	width: 100%
+	position: relative
+	margin: 0 auto
+	padding: 0 40px
+	+r(767)
+		padding: 0 20px
+
+.visibility--hidden
+	position: absolute
+	clip: rect(0 0 0 0)
+	width: 1px
+	height: 1px
+	margin: -1px
+
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+button, a
+  outline: none
+
+a
+  text-decoration: none
+  color: inherit
+  background-color: transparent
+  -webkit-text-decoration-skip: objects
+
+b,
+strong
+  font-size: inherit
+  font-weight: inherit
+
+b,
+strong
+  font-weight: bolder
+
+ul,ol
+  list-style: none
+
+i
+  font-family: inherit
+  font-size: inherit
+  font-weight: inherit
+
+.fw
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+
+.text-center
+	text-align: center
+
+@keyframes fadeInUp
+	0%
+		opacity: 0
+		transform: translateY(30%)
+	100%
+		opacity: 1
+		transform: translateY(0%)

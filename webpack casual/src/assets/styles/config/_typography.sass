@@ -1,0 +1,57 @@
+// +font-face('MuseoSansCyr-light', '../fonts/museosanscyrl-100-webfont')
+// +font-face('MuseoSansCyr-medium', '../fonts/museosanscyrl-500-webfont')
+// +font-face('MuseoSansCyr-black', '../fonts/museosanscyrl_0-webfont')
+
+=regular
+	font-family: 'PT Sans', sans-serif
+	font-weight: 400
+
+=bold
+	font-family: 'PT Sans', sans-serif
+	font-weight: 700
+
+
+h1,h2,h3,h4,h5,h6,p
+	margin: 0
+	padding: 0
+	color: $black
+	line-height: 1.2
+
+a
+	+regular
+	
+p
+	font-size: 18px
+	line-height: 1.56
+	+regular
+	color: $black
+	+r(767)
+		font-size: 14px
+	
+
+h1,h2,h3,h4,h5,h6
+	+bold
+	line-height: 1.25
+
+img
+	max-width: 100%
+	display: block
+	height: auto
+
+h1,
+.h1
+	font-size: 64px
+	+r(767)
+		font-size: 36px
+
+h2
+	font-size: 64px
+	+r(767)
+		font-size: 36px
+
+h3
+	font-size: 24px
+	+r(1023)
+		font-size: 18px
+
+

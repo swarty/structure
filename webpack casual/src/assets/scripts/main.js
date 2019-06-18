@@ -1,3 +1,3 @@
 export default function main() {
-	console.log('init app!!')
+	console.log('init app!!');
 }

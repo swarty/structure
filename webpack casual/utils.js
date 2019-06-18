@@ -12,8 +12,8 @@ exports.pages = function (env, folder = '') {
       return false;
 
     const viewName = view.split('.')[0];
-		// const fileName = folder === '' ? `${viewName}.html` : `${viewName}.html`;
-		const fileName = folder === '' ? `${viewName}/index.html` : `${folder}/${viewName}/index.html`;
+		const fileName = folder === '' ? `${viewName}.html` : `${viewName}.html`;
+		// const fileName = folder === '' ? `${viewName}/index.html` : `${folder}/${viewName}/index.html`;
     const options = {
       filename: fileName,
       template: `views/${rootPagesFolderName}/${folder}/${view}`,

@@ -88,7 +88,10 @@ module.exports = env => {
 					test: /\.pug$/,
 					use: [
 						{
-							loader: 'pug-loader'
+							loader: 'pug-loader',
+							options: {
+								pretty: true
+							}
 						}
 					]
 				},
@@ -167,7 +170,7 @@ module.exports = env => {
 			}),
 
 			...utils.pages(env),
-			...utils.pages(env, 'blog'),
+			// ...utils.pages(env, 'blog'),
 
 			// new webpack.ProvidePlugin({
 			//   $: 'jquery',

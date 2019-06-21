@@ -2,342 +2,249 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-/*  jQuery Nice Select - v1.0
-    https://github.com/hernansartorio/jquery-nice-select
-    Made by Hernán Sartorio  */
-!function (e) {
-    e.fn.niceSelect = function (t) {
-        function s(t) {
-            t.after(e("<div></div>").addClass("nice-select").addClass(t.attr("class") || "").addClass(t.attr("disabled") ? "disabled" : "").attr("tabindex", t.attr("disabled") ? null : "0").html('<span class="current"></span><ul class="list"></ul>'));var s = t.next(),
-                n = t.find("option"),
-                i = t.find("option:selected");s.find(".current").html(i.data("display") || i.text()), n.each(function (t) {
-                var n = e(this),
-                    i = n.data("display");s.find("ul").append(e("<li></li>").attr("data-value", n.val()).attr("data-display", i || null).addClass("option" + (n.is(":selected") ? " selected" : "") + (n.is(":disabled") ? " disabled" : "")).html(n.text()));
-            });
-        }if ("string" == typeof t) return "update" == t ? this.each(function () {
-            var t = e(this),
-                n = e(this).next(".nice-select"),
-                i = n.hasClass("open");n.length && (n.remove(), s(t), i && t.next().trigger("click"));
-        }) : "destroy" == t ? (this.each(function () {
-            var t = e(this),
-                s = e(this).next(".nice-select");s.length && (s.remove(), t.css("display", ""));
-        }), 0 == e(".nice-select").length && e(document).off(".nice_select")) : console.log('Method "' + t + '" does not exist.'), this;this.hide(), this.each(function () {
-            var t = e(this);t.next().hasClass("nice-select") || s(t);
-        }), e(document).off(".nice_select"), e(document).on("click.nice_select", ".nice-select", function (t) {
-            var s = e(this);e(".nice-select").not(s).removeClass("open"), s.toggleClass("open"), s.hasClass("open") ? (s.find(".option"), s.find(".focus").removeClass("focus"), s.find(".selected").addClass("focus")) : s.focus();
-        }), e(document).on("click.nice_select", function (t) {
-            0 === e(t.target).closest(".nice-select").length && e(".nice-select").removeClass("open").find(".option");
-        }), e(document).on("click.nice_select", ".nice-select .option:not(.disabled)", function (t) {
-            var s = e(this),
-                n = s.closest(".nice-select");n.find(".selected").removeClass("selected"), s.addClass("selected");var i = s.data("display") || s.text();n.find(".current").text(i), n.prev("select").val(s.data("value")).trigger("change");
-        }), e(document).on("keydown.nice_select", ".nice-select", function (t) {
-            var s = e(this),
-                n = e(s.find(".focus") || s.find(".list .option.selected"));if (32 == t.keyCode || 13 == t.keyCode) return s.hasClass("open") ? n.trigger("click") : s.trigger("click"), !1;if (40 == t.keyCode) {
-                if (s.hasClass("open")) {
-                    var i = n.nextAll(".option:not(.disabled)").first();i.length > 0 && (s.find(".focus").removeClass("focus"), i.addClass("focus"));
-                } else s.trigger("click");return !1;
-            }if (38 == t.keyCode) {
-                if (s.hasClass("open")) {
-                    var l = n.prevAll(".option:not(.disabled)").first();l.length > 0 && (s.find(".focus").removeClass("focus"), l.addClass("focus"));
-                } else s.trigger("click");return !1;
-            }if (27 == t.keyCode) s.hasClass("open") && s.trigger("click");else if (9 == t.keyCode && s.hasClass("open")) return !1;
-        });var n = document.createElement("a").style;return n.cssText = "pointer-events:auto", "auto" !== n.pointerEvents && e("html").addClass("no-csspointerevents"), this;
+self.fetch || (self.fetch = function (e, n) {
+    return n = n || {}, new Promise(function (t, s) {
+        var r = new XMLHttpRequest(),
+            o = [],
+            u = [],
+            i = {},
+            a = function a() {
+            return { ok: 2 == (r.status / 100 | 0), statusText: r.statusText, status: r.status, url: r.responseURL, text: function text() {
+                    return Promise.resolve(r.responseText);
+                }, json: function json() {
+                    return Promise.resolve(JSON.parse(r.responseText));
+                }, blob: function blob() {
+                    return Promise.resolve(new Blob([r.response]));
+                }, clone: a, headers: { keys: function keys() {
+                        return o;
+                    }, entries: function entries() {
+                        return u;
+                    }, get: function get(e) {
+                        return i[e.toLowerCase()];
+                    }, has: function has(e) {
+                        return e.toLowerCase() in i;
+                    } } };
+        };for (var c in r.open(n.method || "get", e, !0), r.onload = function () {
+            r.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm, function (e, n, t) {
+                o.push(n = n.toLowerCase()), u.push([n, t]), i[n] = i[n] ? i[n] + "," + t : t;
+            }), t(a());
+        }, r.onerror = s, r.withCredentials = "include" == n.credentials, n.headers) {
+            r.setRequestHeader(c, n.headers[c]);
+        }r.send(n.body || null);
+    });
+});
+// Production steps of ECMA-262, Edition 5, 15.4.4.18
+// Reference: http://es5.github.io/#x15.4.4.18
+if (!Array.prototype.forEach) {
+
+    Array.prototype.forEach = function (callback /*, thisArg*/) {
+
+        var T, k;
+
+        if (this == null) {
+            throw new TypeError('this is null or not defined');
+        }
+
+        // 1. Let O be the result of calling toObject() passing the
+        // |this| value as the argument.
+        var O = Object(this);
+
+        // 2. Let lenValue be the result of calling the Get() internal
+        // method of O with the argument "length".
+        // 3. Let len be toUint32(lenValue).
+        var len = O.length >>> 0;
+
+        // 4. If isCallable(callback) is false, throw a TypeError exception. 
+        // See: http://es5.github.com/#x9.11
+        if (typeof callback !== 'function') {
+            throw new TypeError(callback + ' is not a function');
+        }
+
+        // 5. If thisArg was supplied, let T be thisArg; else let
+        // T be undefined.
+        if (arguments.length > 1) {
+            T = arguments[1];
+        }
+
+        // 6. Let k be 0.
+        k = 0;
+
+        // 7. Repeat while k < len.
+        while (k < len) {
+
+            var kValue;
+
+            // a. Let Pk be ToString(k).
+            //    This is implicit for LHS operands of the in operator.
+            // b. Let kPresent be the result of calling the HasProperty
+            //    internal method of O with argument Pk.
+            //    This step can be combined with c.
+            // c. If kPresent is true, then
+            if (k in O) {
+
+                // i. Let kValue be the result of calling the Get internal
+                // method of O with argument Pk.
+                kValue = O[k];
+
+                // ii. Call the Call internal method of callback with T as
+                // the this value and argument list containing kValue, k, and O.
+                callback.call(T, kValue, k, O);
+            }
+            // d. Increase k by 1.
+            k++;
+        }
+        // 8. return undefined.
     };
-}(jQuery);
-!function (t) {
-    if ("object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module) module.exports = t();else if ("function" == typeof define && define.amd) define([], t);else {
-        ("undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : this).Parallax = t();
-    }
-}(function () {
-    return function t(e, i, n) {
-        function o(r, a) {
-            if (!i[r]) {
-                if (!e[r]) {
-                    var l = "function" == typeof require && require;if (!a && l) return l(r, !0);if (s) return s(r, !0);var h = new Error("Cannot find module '" + r + "'");throw h.code = "MODULE_NOT_FOUND", h;
-                }var u = i[r] = { exports: {} };e[r][0].call(u.exports, function (t) {
-                    var i = e[r][1][t];return o(i || t);
-                }, u, u.exports, t, e, i, n);
-            }return i[r].exports;
-        }for (var s = "function" == typeof require && require, r = 0; r < n.length; r++) {
-            o(n[r]);
-        }return o;
-    }({ 1: [function (t, e, i) {
-            "use strict";
-            function n(t) {
-                if (null === t || void 0 === t) throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t);
-            }var o = Object.getOwnPropertySymbols,
-                s = Object.prototype.hasOwnProperty,
-                r = Object.prototype.propertyIsEnumerable;e.exports = function () {
-                try {
-                    if (!Object.assign) return !1;var t = new String("abc");if (t[5] = "de", "5" === Object.getOwnPropertyNames(t)[0]) return !1;for (var e = {}, i = 0; i < 10; i++) {
-                        e["_" + String.fromCharCode(i)] = i;
-                    }if ("0123456789" !== Object.getOwnPropertyNames(e).map(function (t) {
-                        return e[t];
-                    }).join("")) return !1;var n = {};return "abcdefghijklmnopqrst".split("").forEach(function (t) {
-                        n[t] = t;
-                    }), "abcdefghijklmnopqrst" === Object.keys(Object.assign({}, n)).join("");
-                } catch (t) {
-                    return !1;
-                }
-            }() ? Object.assign : function (t, e) {
-                for (var i, a, l = n(t), h = 1; h < arguments.length; h++) {
-                    i = Object(arguments[h]);for (var u in i) {
-                        s.call(i, u) && (l[u] = i[u]);
-                    }if (o) {
-                        a = o(i);for (var c = 0; c < a.length; c++) {
-                            r.call(i, a[c]) && (l[a[c]] = i[a[c]]);
-                        }
-                    }
-                }return l;
-            };
-        }, {}], 2: [function (t, e, i) {
-            (function (t) {
-                (function () {
-                    var i, n, o, s, r, a;"undefined" != typeof performance && null !== performance && performance.now ? e.exports = function () {
-                        return performance.now();
-                    } : void 0 !== t && null !== t && t.hrtime ? (e.exports = function () {
-                        return (i() - r) / 1e6;
-                    }, n = t.hrtime, s = (i = function i() {
-                        var t;return 1e9 * (t = n())[0] + t[1];
-                    })(), a = 1e9 * t.uptime(), r = s - a) : Date.now ? (e.exports = function () {
-                        return Date.now() - o;
-                    }, o = Date.now()) : (e.exports = function () {
-                        return new Date().getTime() - o;
-                    }, o = new Date().getTime());
-                }).call(this);
-            }).call(this, t("_process"));
-        }, { _process: 3 }], 3: [function (t, e, i) {
-            function n() {
-                throw new Error("setTimeout has not been defined");
-            }function o() {
-                throw new Error("clearTimeout has not been defined");
-            }function s(t) {
-                if (c === setTimeout) return setTimeout(t, 0);if ((c === n || !c) && setTimeout) return c = setTimeout, setTimeout(t, 0);try {
-                    return c(t, 0);
-                } catch (e) {
-                    try {
-                        return c.call(null, t, 0);
-                    } catch (e) {
-                        return c.call(this, t, 0);
-                    }
-                }
-            }function r(t) {
-                if (d === clearTimeout) return clearTimeout(t);if ((d === o || !d) && clearTimeout) return d = clearTimeout, clearTimeout(t);try {
-                    return d(t);
-                } catch (e) {
-                    try {
-                        return d.call(null, t);
-                    } catch (e) {
-                        return d.call(this, t);
-                    }
-                }
-            }function a() {
-                v && p && (v = !1, p.length ? f = p.concat(f) : y = -1, f.length && l());
-            }function l() {
-                if (!v) {
-                    var t = s(a);v = !0;for (var e = f.length; e;) {
-                        for (p = f, f = []; ++y < e;) {
-                            p && p[y].run();
-                        }y = -1, e = f.length;
-                    }p = null, v = !1, r(t);
-                }
-            }function h(t, e) {
-                this.fun = t, this.array = e;
-            }function u() {}var c,
-                d,
-                m = e.exports = {};!function () {
-                try {
-                    c = "function" == typeof setTimeout ? setTimeout : n;
-                } catch (t) {
-                    c = n;
-                }try {
-                    d = "function" == typeof clearTimeout ? clearTimeout : o;
-                } catch (t) {
-                    d = o;
-                }
-            }();var p,
-                f = [],
-                v = !1,
-                y = -1;m.nextTick = function (t) {
-                var e = new Array(arguments.length - 1);if (arguments.length > 1) for (var i = 1; i < arguments.length; i++) {
-                    e[i - 1] = arguments[i];
-                }f.push(new h(t, e)), 1 !== f.length || v || s(l);
-            }, h.prototype.run = function () {
-                this.fun.apply(null, this.array);
-            }, m.title = "browser", m.browser = !0, m.env = {}, m.argv = [], m.version = "", m.versions = {}, m.on = u, m.addListener = u, m.once = u, m.off = u, m.removeListener = u, m.removeAllListeners = u, m.emit = u, m.prependListener = u, m.prependOnceListener = u, m.listeners = function (t) {
-                return [];
-            }, m.binding = function (t) {
-                throw new Error("process.binding is not supported");
-            }, m.cwd = function () {
-                return "/";
-            }, m.chdir = function (t) {
-                throw new Error("process.chdir is not supported");
-            }, m.umask = function () {
-                return 0;
-            };
-        }, {}], 4: [function (t, e, i) {
-            (function (i) {
-                for (var n = t("performance-now"), o = "undefined" == typeof window ? i : window, s = ["moz", "webkit"], r = "AnimationFrame", a = o["request" + r], l = o["cancel" + r] || o["cancelRequest" + r], h = 0; !a && h < s.length; h++) {
-                    a = o[s[h] + "Request" + r], l = o[s[h] + "Cancel" + r] || o[s[h] + "CancelRequest" + r];
-                }if (!a || !l) {
-                    var u = 0,
-                        c = 0,
-                        d = [];a = function a(t) {
-                        if (0 === d.length) {
-                            var e = n(),
-                                i = Math.max(0, 1e3 / 60 - (e - u));u = i + e, setTimeout(function () {
-                                var t = d.slice(0);d.length = 0;for (var e = 0; e < t.length; e++) {
-                                    if (!t[e].cancelled) try {
-                                        t[e].callback(u);
-                                    } catch (t) {
-                                        setTimeout(function () {
-                                            throw t;
-                                        }, 0);
-                                    }
-                                }
-                            }, Math.round(i));
-                        }return d.push({ handle: ++c, callback: t, cancelled: !1 }), c;
-                    }, l = function l(t) {
-                        for (var e = 0; e < d.length; e++) {
-                            d[e].handle === t && (d[e].cancelled = !0);
-                        }
+}
+
+// nodeList foreach polyfill
+if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
+        thisArg = thisArg || window;
+        for (var i = 0; i < this.length; i++) {
+            callback.call(thisArg, this[i], i, this);
+        }
+    };
+}
+!function (e, n) {
+    "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? n() : "function" == typeof define && define.amd ? define(n) : n();
+}(0, function () {
+    "use strict";
+    function e(e) {
+        var n = this.constructor;return this.then(function (t) {
+            return n.resolve(e()).then(function () {
+                return t;
+            });
+        }, function (t) {
+            return n.resolve(e()).then(function () {
+                return n.reject(t);
+            });
+        });
+    }function n() {}function t(e) {
+        if (!(this instanceof t)) throw new TypeError("Promises must be constructed via new");if ("function" != typeof e) throw new TypeError("not a function");this._state = 0, this._handled = !1, this._value = undefined, this._deferreds = [], u(e, this);
+    }function o(e, n) {
+        for (; 3 === e._state;) {
+            e = e._value;
+        }0 !== e._state ? (e._handled = !0, t._immediateFn(function () {
+            var t = 1 === e._state ? n.onFulfilled : n.onRejected;if (null !== t) {
+                var o;try {
+                    o = t(e._value);
+                } catch (f) {
+                    return void i(n.promise, f);
+                }r(n.promise, o);
+            } else (1 === e._state ? r : i)(n.promise, e._value);
+        })) : e._deferreds.push(n);
+    }function r(e, n) {
+        try {
+            if (n === e) throw new TypeError("A promise cannot be resolved with itself.");if (n && ("object" == (typeof n === "undefined" ? "undefined" : _typeof(n)) || "function" == typeof n)) {
+                var o = n.then;if (n instanceof t) return e._state = 3, e._value = n, void f(e);if ("function" == typeof o) return void u(function (e, n) {
+                    return function () {
+                        e.apply(n, arguments);
                     };
-                }e.exports = function (t) {
-                    return a.call(o, t);
-                }, e.exports.cancel = function () {
-                    l.apply(o, arguments);
-                }, e.exports.polyfill = function () {
-                    o.requestAnimationFrame = a, o.cancelAnimationFrame = l;
-                };
-            }).call(this, "undefined" != typeof global ? global : "undefined" != typeof self ? self : "undefined" != typeof window ? window : {});
-        }, { "performance-now": 2 }], 5: [function (t, e, i) {
-            "use strict";
-            function n(t, e) {
-                if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
-            }var o = function () {
-                function t(t, e) {
-                    for (var i = 0; i < e.length; i++) {
-                        var n = e[i];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(t, n.key, n);
-                    }
-                }return function (e, i, n) {
-                    return i && t(e.prototype, i), n && t(e, n), e;
-                };
-            }(),
-                s = t("raf"),
-                r = t("object-assign"),
-                a = { propertyCache: {}, vendors: [null, ["-webkit-", "webkit"], ["-moz-", "Moz"], ["-o-", "O"], ["-ms-", "ms"]], clamp: function clamp(t, e, i) {
-                    return e < i ? t < e ? e : t > i ? i : t : t < i ? i : t > e ? e : t;
-                }, data: function data(t, e) {
-                    return a.deserialize(t.getAttribute("data-" + e));
-                }, deserialize: function deserialize(t) {
-                    return "true" === t || "false" !== t && ("null" === t ? null : !isNaN(parseFloat(t)) && isFinite(t) ? parseFloat(t) : t);
-                }, camelCase: function camelCase(t) {
-                    return t.replace(/-+(.)?/g, function (t, e) {
-                        return e ? e.toUpperCase() : "";
-                    });
-                }, accelerate: function accelerate(t) {
-                    a.css(t, "transform", "translate3d(0,0,0) rotate(0.0001deg)"), a.css(t, "transform-style", "preserve-3d"), a.css(t, "backface-visibility", "hidden");
-                }, transformSupport: function transformSupport(t) {
-                    for (var e = document.createElement("div"), i = !1, n = null, o = !1, s = null, r = null, l = 0, h = a.vendors.length; l < h; l++) {
-                        if (null !== a.vendors[l] ? (s = a.vendors[l][0] + "transform", r = a.vendors[l][1] + "Transform") : (s = "transform", r = "transform"), void 0 !== e.style[r]) {
-                            i = !0;break;
-                        }
-                    }switch (t) {case "2D":
-                            o = i;break;case "3D":
-                            if (i) {
-                                var u = document.body || document.createElement("body"),
-                                    c = document.documentElement,
-                                    d = c.style.overflow,
-                                    m = !1;document.body || (m = !0, c.style.overflow = "hidden", c.appendChild(u), u.style.overflow = "hidden", u.style.background = ""), u.appendChild(e), e.style[r] = "translate3d(1px,1px,1px)", o = void 0 !== (n = window.getComputedStyle(e).getPropertyValue(s)) && n.length > 0 && "none" !== n, c.style.overflow = d, u.removeChild(e), m && (u.removeAttribute("style"), u.parentNode.removeChild(u));
-                            }}return o;
-                }, css: function css(t, e, i) {
-                    var n = a.propertyCache[e];if (!n) for (var o = 0, s = a.vendors.length; o < s; o++) {
-                        if (n = null !== a.vendors[o] ? a.camelCase(a.vendors[o][1] + "-" + e) : e, void 0 !== t.style[n]) {
-                            a.propertyCache[e] = n;break;
-                        }
-                    }t.style[n] = i;
-                } },
-                l = { relativeInput: !1, clipRelativeInput: !1, inputElement: null, hoverOnly: !1, calibrationThreshold: 100, calibrationDelay: 500, supportDelay: 500, calibrateX: !1, calibrateY: !0, invertX: !0, invertY: !0, limitX: !1, limitY: !1, scalarX: 10, scalarY: 10, frictionX: .1, frictionY: .1, originX: .5, originY: .5, pointerEvents: !1, precision: 1, onReady: null, selector: null },
-                h = function () {
-                function t(e, i) {
-                    n(this, t), this.element = e;var o = { calibrateX: a.data(this.element, "calibrate-x"), calibrateY: a.data(this.element, "calibrate-y"), invertX: a.data(this.element, "invert-x"), invertY: a.data(this.element, "invert-y"), limitX: a.data(this.element, "limit-x"), limitY: a.data(this.element, "limit-y"), scalarX: a.data(this.element, "scalar-x"), scalarY: a.data(this.element, "scalar-y"), frictionX: a.data(this.element, "friction-x"), frictionY: a.data(this.element, "friction-y"), originX: a.data(this.element, "origin-x"), originY: a.data(this.element, "origin-y"), pointerEvents: a.data(this.element, "pointer-events"), precision: a.data(this.element, "precision"), relativeInput: a.data(this.element, "relative-input"), clipRelativeInput: a.data(this.element, "clip-relative-input"), hoverOnly: a.data(this.element, "hover-only"), inputElement: document.querySelector(a.data(this.element, "input-element")), selector: a.data(this.element, "selector") };for (var s in o) {
-                        null === o[s] && delete o[s];
-                    }r(this, l, o, i), this.inputElement || (this.inputElement = this.element), this.calibrationTimer = null, this.calibrationFlag = !0, this.enabled = !1, this.depthsX = [], this.depthsY = [], this.raf = null, this.bounds = null, this.elementPositionX = 0, this.elementPositionY = 0, this.elementWidth = 0, this.elementHeight = 0, this.elementCenterX = 0, this.elementCenterY = 0, this.elementRangeX = 0, this.elementRangeY = 0, this.calibrationX = 0, this.calibrationY = 0, this.inputX = 0, this.inputY = 0, this.motionX = 0, this.motionY = 0, this.velocityX = 0, this.velocityY = 0, this.onMouseMove = this.onMouseMove.bind(this), this.onDeviceOrientation = this.onDeviceOrientation.bind(this), this.onDeviceMotion = this.onDeviceMotion.bind(this), this.onOrientationTimer = this.onOrientationTimer.bind(this), this.onMotionTimer = this.onMotionTimer.bind(this), this.onCalibrationTimer = this.onCalibrationTimer.bind(this), this.onAnimationFrame = this.onAnimationFrame.bind(this), this.onWindowResize = this.onWindowResize.bind(this), this.windowWidth = null, this.windowHeight = null, this.windowCenterX = null, this.windowCenterY = null, this.windowRadiusX = null, this.windowRadiusY = null, this.portrait = !1, this.desktop = !navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|BB10|mobi|tablet|opera mini|nexus 7)/i), this.motionSupport = !!window.DeviceMotionEvent && !this.desktop, this.orientationSupport = !!window.DeviceOrientationEvent && !this.desktop, this.orientationStatus = 0, this.motionStatus = 0, this.initialise();
-                }return o(t, [{ key: "initialise", value: function value() {
-                        void 0 === this.transform2DSupport && (this.transform2DSupport = a.transformSupport("2D"), this.transform3DSupport = a.transformSupport("3D")), this.transform3DSupport && a.accelerate(this.element), "static" === window.getComputedStyle(this.element).getPropertyValue("position") && (this.element.style.position = "relative"), this.pointerEvents || (this.element.style.pointerEvents = "none"), this.updateLayers(), this.updateDimensions(), this.enable(), this.queueCalibration(this.calibrationDelay);
-                    } }, { key: "doReadyCallback", value: function value() {
-                        this.onReady && this.onReady();
-                    } }, { key: "updateLayers", value: function value() {
-                        this.selector ? this.layers = this.element.querySelectorAll(this.selector) : this.layers = this.element.children, this.layers.length || console.warn("ParallaxJS: Your scene does not have any layers."), this.depthsX = [], this.depthsY = [];for (var t = 0; t < this.layers.length; t++) {
-                            var e = this.layers[t];this.transform3DSupport && a.accelerate(e), e.style.position = t ? "absolute" : "relative", e.style.display = "block", e.style.left = 0, e.style.top = 0;var i = a.data(e, "depth") || 0;this.depthsX.push(a.data(e, "depth-x") || i), this.depthsY.push(a.data(e, "depth-y") || i);
-                        }
-                    } }, { key: "updateDimensions", value: function value() {
-                        this.windowWidth = window.innerWidth, this.windowHeight = window.innerHeight, this.windowCenterX = this.windowWidth * this.originX, this.windowCenterY = this.windowHeight * this.originY, this.windowRadiusX = Math.max(this.windowCenterX, this.windowWidth - this.windowCenterX), this.windowRadiusY = Math.max(this.windowCenterY, this.windowHeight - this.windowCenterY);
-                    } }, { key: "updateBounds", value: function value() {
-                        this.bounds = this.inputElement.getBoundingClientRect(), this.elementPositionX = this.bounds.left, this.elementPositionY = this.bounds.top, this.elementWidth = this.bounds.width, this.elementHeight = this.bounds.height, this.elementCenterX = this.elementWidth * this.originX, this.elementCenterY = this.elementHeight * this.originY, this.elementRangeX = Math.max(this.elementCenterX, this.elementWidth - this.elementCenterX), this.elementRangeY = Math.max(this.elementCenterY, this.elementHeight - this.elementCenterY);
-                    } }, { key: "queueCalibration", value: function value(t) {
-                        clearTimeout(this.calibrationTimer), this.calibrationTimer = setTimeout(this.onCalibrationTimer, t);
-                    } }, { key: "enable", value: function value() {
-                        this.enabled || (this.enabled = !0, this.orientationSupport ? (this.portrait = !1, window.addEventListener("deviceorientation", this.onDeviceOrientation), this.detectionTimer = setTimeout(this.onOrientationTimer, this.supportDelay)) : this.motionSupport ? (this.portrait = !1, window.addEventListener("devicemotion", this.onDeviceMotion), this.detectionTimer = setTimeout(this.onMotionTimer, this.supportDelay)) : (this.calibrationX = 0, this.calibrationY = 0, this.portrait = !1, window.addEventListener("mousemove", this.onMouseMove), this.doReadyCallback()), window.addEventListener("resize", this.onWindowResize), this.raf = s(this.onAnimationFrame));
-                    } }, { key: "disable", value: function value() {
-                        this.enabled && (this.enabled = !1, this.orientationSupport ? window.removeEventListener("deviceorientation", this.onDeviceOrientation) : this.motionSupport ? window.removeEventListener("devicemotion", this.onDeviceMotion) : window.removeEventListener("mousemove", this.onMouseMove), window.removeEventListener("resize", this.onWindowResize), s.cancel(this.raf));
-                    } }, { key: "calibrate", value: function value(t, e) {
-                        this.calibrateX = void 0 === t ? this.calibrateX : t, this.calibrateY = void 0 === e ? this.calibrateY : e;
-                    } }, { key: "invert", value: function value(t, e) {
-                        this.invertX = void 0 === t ? this.invertX : t, this.invertY = void 0 === e ? this.invertY : e;
-                    } }, { key: "friction", value: function value(t, e) {
-                        this.frictionX = void 0 === t ? this.frictionX : t, this.frictionY = void 0 === e ? this.frictionY : e;
-                    } }, { key: "scalar", value: function value(t, e) {
-                        this.scalarX = void 0 === t ? this.scalarX : t, this.scalarY = void 0 === e ? this.scalarY : e;
-                    } }, { key: "limit", value: function value(t, e) {
-                        this.limitX = void 0 === t ? this.limitX : t, this.limitY = void 0 === e ? this.limitY : e;
-                    } }, { key: "origin", value: function value(t, e) {
-                        this.originX = void 0 === t ? this.originX : t, this.originY = void 0 === e ? this.originY : e;
-                    } }, { key: "setInputElement", value: function value(t) {
-                        this.inputElement = t, this.updateDimensions();
-                    } }, { key: "setPosition", value: function value(t, e, i) {
-                        e = e.toFixed(this.precision) + "px", i = i.toFixed(this.precision) + "px", this.transform3DSupport ? a.css(t, "transform", "translate3d(" + e + "," + i + ",0)") : this.transform2DSupport ? a.css(t, "transform", "translate(" + e + "," + i + ")") : (t.style.left = e, t.style.top = i);
-                    } }, { key: "onOrientationTimer", value: function value() {
-                        this.orientationSupport && 0 === this.orientationStatus ? (this.disable(), this.orientationSupport = !1, this.enable()) : this.doReadyCallback();
-                    } }, { key: "onMotionTimer", value: function value() {
-                        this.motionSupport && 0 === this.motionStatus ? (this.disable(), this.motionSupport = !1, this.enable()) : this.doReadyCallback();
-                    } }, { key: "onCalibrationTimer", value: function value() {
-                        this.calibrationFlag = !0;
-                    } }, { key: "onWindowResize", value: function value() {
-                        this.updateDimensions();
-                    } }, { key: "onAnimationFrame", value: function value() {
-                        this.updateBounds();var t = this.inputX - this.calibrationX,
-                            e = this.inputY - this.calibrationY;(Math.abs(t) > this.calibrationThreshold || Math.abs(e) > this.calibrationThreshold) && this.queueCalibration(0), this.portrait ? (this.motionX = this.calibrateX ? e : this.inputY, this.motionY = this.calibrateY ? t : this.inputX) : (this.motionX = this.calibrateX ? t : this.inputX, this.motionY = this.calibrateY ? e : this.inputY), this.motionX *= this.elementWidth * (this.scalarX / 100), this.motionY *= this.elementHeight * (this.scalarY / 100), isNaN(parseFloat(this.limitX)) || (this.motionX = a.clamp(this.motionX, -this.limitX, this.limitX)), isNaN(parseFloat(this.limitY)) || (this.motionY = a.clamp(this.motionY, -this.limitY, this.limitY)), this.velocityX += (this.motionX - this.velocityX) * this.frictionX, this.velocityY += (this.motionY - this.velocityY) * this.frictionY;for (var i = 0; i < this.layers.length; i++) {
-                            var n = this.layers[i],
-                                o = this.depthsX[i],
-                                r = this.depthsY[i],
-                                l = this.velocityX * (o * (this.invertX ? -1 : 1)),
-                                h = this.velocityY * (r * (this.invertY ? -1 : 1));this.setPosition(n, l, h);
-                        }this.raf = s(this.onAnimationFrame);
-                    } }, { key: "rotate", value: function value(t, e) {
-                        var i = (t || 0) / 30,
-                            n = (e || 0) / 30,
-                            o = this.windowHeight > this.windowWidth;this.portrait !== o && (this.portrait = o, this.calibrationFlag = !0), this.calibrationFlag && (this.calibrationFlag = !1, this.calibrationX = i, this.calibrationY = n), this.inputX = i, this.inputY = n;
-                    } }, { key: "onDeviceOrientation", value: function value(t) {
-                        var e = t.beta,
-                            i = t.gamma;null !== e && null !== i && (this.orientationStatus = 1, this.rotate(e, i));
-                    } }, { key: "onDeviceMotion", value: function value(t) {
-                        var e = t.rotationRate.beta,
-                            i = t.rotationRate.gamma;null !== e && null !== i && (this.motionStatus = 1, this.rotate(e, i));
-                    } }, { key: "onMouseMove", value: function value(t) {
-                        var e = t.clientX,
-                            i = t.clientY;if (this.hoverOnly && (e < this.elementPositionX || e > this.elementPositionX + this.elementWidth || i < this.elementPositionY || i > this.elementPositionY + this.elementHeight)) return this.inputX = 0, void (this.inputY = 0);this.relativeInput ? (this.clipRelativeInput && (e = Math.max(e, this.elementPositionX), e = Math.min(e, this.elementPositionX + this.elementWidth), i = Math.max(i, this.elementPositionY), i = Math.min(i, this.elementPositionY + this.elementHeight)), this.elementRangeX && this.elementRangeY && (this.inputX = (e - this.elementPositionX - this.elementCenterX) / this.elementRangeX, this.inputY = (i - this.elementPositionY - this.elementCenterY) / this.elementRangeY)) : this.windowRadiusX && this.windowRadiusY && (this.inputX = (e - this.windowCenterX) / this.windowRadiusX, this.inputY = (i - this.windowCenterY) / this.windowRadiusY);
-                    } }, { key: "destroy", value: function value() {
-                        this.disable(), clearTimeout(this.calibrationTimer), clearTimeout(this.detectionTimer), this.element.removeAttribute("style");for (var t = 0; t < this.layers.length; t++) {
-                            this.layers[t].removeAttribute("style");
-                        }delete this.element, delete this.layers;
-                    } }, { key: "version", value: function value() {
-                        return "3.1.0";
-                    } }]), t;
-            }();e.exports = h;
-        }, { "object-assign": 1, raf: 4 }] }, {}, [5])(5);
+                }(o, n), e);
+            }e._state = 1, e._value = n, f(e);
+        } catch (r) {
+            i(e, r);
+        }
+    }function i(e, n) {
+        e._state = 2, e._value = n, f(e);
+    }function f(e) {
+        2 === e._state && 0 === e._deferreds.length && t._immediateFn(function () {
+            e._handled || t._unhandledRejectionFn(e._value);
+        });for (var n = 0, r = e._deferreds.length; r > n; n++) {
+            o(e, e._deferreds[n]);
+        }e._deferreds = null;
+    }function u(e, n) {
+        var t = !1;try {
+            e(function (e) {
+                t || (t = !0, r(n, e));
+            }, function (e) {
+                t || (t = !0, i(n, e));
+            });
+        } catch (o) {
+            if (t) return;t = !0, i(n, o);
+        }
+    }var c = setTimeout;t.prototype["catch"] = function (e) {
+        return this.then(null, e);
+    }, t.prototype.then = function (e, t) {
+        var r = new this.constructor(n);return o(this, new function (e, n, t) {
+            this.onFulfilled = "function" == typeof e ? e : null, this.onRejected = "function" == typeof n ? n : null, this.promise = t;
+        }(e, t, r)), r;
+    }, t.prototype["finally"] = e, t.all = function (e) {
+        return new t(function (n, t) {
+            function o(e, f) {
+                try {
+                    if (f && ("object" == (typeof f === "undefined" ? "undefined" : _typeof(f)) || "function" == typeof f)) {
+                        var u = f.then;if ("function" == typeof u) return void u.call(f, function (n) {
+                            o(e, n);
+                        }, t);
+                    }r[e] = f, 0 == --i && n(r);
+                } catch (c) {
+                    t(c);
+                }
+            }if (!e || "undefined" == typeof e.length) throw new TypeError("Promise.all accepts an array");var r = Array.prototype.slice.call(e);if (0 === r.length) return n([]);for (var i = r.length, f = 0; r.length > f; f++) {
+                o(f, r[f]);
+            }
+        });
+    }, t.resolve = function (e) {
+        return e && "object" == (typeof e === "undefined" ? "undefined" : _typeof(e)) && e.constructor === t ? e : new t(function (n) {
+            n(e);
+        });
+    }, t.reject = function (e) {
+        return new t(function (n, t) {
+            t(e);
+        });
+    }, t.race = function (e) {
+        return new t(function (n, t) {
+            for (var o = 0, r = e.length; r > o; o++) {
+                e[o].then(n, t);
+            }
+        });
+    }, t._immediateFn = "function" == typeof setImmediate && function (e) {
+        setImmediate(e);
+    } || function (e) {
+        c(e, 0);
+    }, t._unhandledRejectionFn = function (e) {
+        void 0 !== console && console && console.warn("Possible Unhandled Promise Rejection:", e);
+    };var l = function () {
+        if ("undefined" != typeof self) return self;if ("undefined" != typeof window) return window;if ("undefined" != typeof global) return global;throw Error("unable to locate global object");
+    }();"Promise" in l ? l.Promise.prototype["finally"] || (l.Promise.prototype["finally"] = e) : l.Promise = t;
 });
 
+(function () {
+    if (!window.document.querySelectorAll) {
+        document.querySelectorAll = document.body.querySelectorAll = Object.querySelectorAll = function querySelectorAllPolyfill(r, c, i, j, a) {
+            var d = document,
+                s = d.createStyleSheet();
+            a = d.all;
+            c = [];
+            r = r.replace(/\[for\b/gi, '[htmlFor').split(',');
+            for (i = r.length; i--;) {
+                s.addRule(r[i], 'k:v');
+                for (j = a.length; j--;) {
+                    a[j].currentStyle.k && c.push(a[j]);
+                }
+                s.removeRule(0);
+            }
+            return c;
+        };
+    }
+})();
+(function (arr) {
+    arr.forEach(function (item) {
+        if (item.hasOwnProperty('remove')) {
+            return;
+        }
+        Object.defineProperty(item, 'remove', {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: function remove() {
+                this.parentNode.removeChild(this);
+            }
+        });
+    });
+})([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
 function SVGInliner(elements) {
     "use strict";
 
@@ -513,48 +420,5 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.querySelector('.svg')) {
         new SVGInliner(document.querySelectorAll('.svg'));
     }
-    window.addEventListener('scroll', menuScrolled);
 });
-
-// burger opened
-document.querySelector('.js-burger__open').addEventListener('click', openMenu);
-function openMenu() {
-    this.classList.toggle('is-opened');
-    document.querySelector('.header').classList.toggle('is-opened');
-    document.querySelector('.header .navigation').classList.toggle('is-opened');
-}
-
-// calc hero section padding
-if (document.querySelector('.hero')) {
-    var headerPaddingCalc = function headerPaddingCalc() {
-        $('.hero__slide').css('padding-top', document.querySelector('.header').clientHeight + 'px');
-    };
-
-    window.addEventListener('resize', headerPaddingCalc);
-
-    headerPaddingCalc();
-}
-
-// hero slider
-if (document.querySelector('.js-hero__slider')) {
-    $('.js-hero__slider').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        // arrows: false,
-        dots: false,
-        prevArrow: '.hero__nav .prev',
-        nextArrow: '.hero__nav .next'
-    });
-}
-
-function menuScrolled(e) {
-    var header = document.querySelector('.header'),
-        headerPos = header.getBoundingClientRect().height;
-    if (window.scrollY > headerPos && window.innerWidth > 1023) {
-        header.classList.add('header--sticky');
-    } else if (window.scrollY > window.innerHeight - headerPos && window.innerWidth < 1023) {
-        header.classList.add('header--sticky');
-    } else {
-        header.classList.remove('header--sticky');
-    }
-}
+//# sourceMappingURL=app.js.map

@@ -1,71 +1,8 @@
-include ./parts/vars.pug
+extends ./layout/layout.pug
 
-doctype html
-html(lang='ru')
-	head
-		title Tila Clinic
+block title
+	title Title
 
-		meta(charset='utf-8')
-		meta(http-equiv='X-UA-Compatible' content='IE=edge')
-		meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')
-
-		//- descr meta fb
-		meta(property='og:image' content='images/jpg')
-		meta(property="og:type" content="website")
-		meta(property='og:image:width' content='300')
-		meta(property='og:image:height' content='300')
-		meta(property='og:title' content="white")
-		meta(property='og:url' content= "")
-		meta(property='og:description' content="")
-
-		//- meta twitter
-		meta(property='twitter:image:src' content='images/jpg')
-		meta(property='twitter:domain' content='300')
-		meta(property='twitter:title' content="Tila")
-		meta(property='twitter:site' content= "")
-		meta(property='twitter:description' content="")
-
-		//- meta google
-		meta(itemprop="image" content='images/jpg')
-		meta(itemprop="name" content="Tila")
-		meta(itemprop="headline" content="Tila")
-		meta(itemprop="description" content="")
-		meta(itemscope itemtype="site url" sizes="16x16")
-
-		//- favicons
-		link(rel="shortcut icon" type="img/ico" href="images/favicon_16.png" sizes="16x16")
-		link(rel="shortcut icon" type="img/ico" href="images/favicon_32.png" sizes="32x32")
-
-		//- fonts
-		link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic")
-		
-		//- css styles
-		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css")
-		link(rel="stylesheet" href="styles/main.css")
-
-	body
-
-		.wrapper
-			
-			//- header
-			//- include ./parts/header.pug
-			header.header
-				.container
-
-
-			main.main
-
-				//- start hero
-				section.hero
-				
-							
-
-			//- footer
-			//- include ./parts/footer.pug
-	
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js")
-		script(src="scripts/app.js")
-
-			
-		
+block content
+		//- start hero
+		h1 some content here

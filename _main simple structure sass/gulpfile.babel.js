@@ -102,6 +102,9 @@ gulp.task('scripts', function() {
     return gulp.src(['app/scripts/src/_libs/**/*.js', 'app/scripts/src/**/*.js', '!app/scripts/**/reame.md'])
 		//prevent pipe breaking caused by errors from gulp plugins
 		.pipe(plumber())
+		
+		//get sourceMaps ready
+		.pipe(sourceMaps.init())
 		//this is the filename of the compressed version of our JS
 		.pipe(concat('app.js'))
 		// babel
@@ -109,6 +112,7 @@ gulp.task('scripts', function() {
 		//catch errors
 		.on('error', gutil.log)
 		//where we will store our finalized, compressed script
+		.pipe(sourceMaps.write('./'))
 		.pipe(gulp.dest('app/scripts'))
 		//notify browserSync to refresh
 		.pipe(browserSync.reload({stream: true}));
@@ -241,7 +245,12 @@ gulp.task('html-deploy', function() {
     gulp.src('app/fonts/**/*')
         //prevent pipe breaking caused by errors from gulp plugins
         .pipe(plumber())
-        .pipe(gulp.dest('dist/fonts'));
+				.pipe(gulp.dest('dist/fonts'));
+				
+		gulp.src('app/video/**/*')
+		//prevent pipe breaking caused by errors from gulp plugins
+		.pipe(plumber())
+		.pipe(gulp.dest('dist/video'));
 
     //grab all of the styles
     gulp.src(['app/styles/*.css', '!app/styles/styles.css'])
@@ -264,7 +273,8 @@ gulp.task('scaffold', function() {
       'mkdir dist/fonts',
       'mkdir dist/images',
       'mkdir dist/scripts',
-      'mkdir dist/styles'
+			'mkdir dist/styles',
+			'mkdir dist/video'
     ]
   );
 });

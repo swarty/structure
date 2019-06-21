@@ -21,22 +21,3 @@ document.addEventListener('DOMContentLoaded', function () {
 		new SVGInliner(document.querySelectorAll('.svg'));
 	}
 })
-
-
-// hero slider
-if(document.querySelector('.js-hero__slider')){
-	$('.js-hero__slider').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		// arrows: false,
-		dots: false,
-		prevArrow: '.hero__nav .prev',
-		nextArrow: '.hero__nav .next'
-	})
-}
-
-
-
-
-
-

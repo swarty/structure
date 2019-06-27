@@ -14,11 +14,17 @@
 	background-color: $violet
 	text-align: center
 	box-sizing: border-box
+	+r(1365)
+		padding: 25px
+	+r(1023)
+		padding: 20px
 	+r(767)
 		padding: 15px 36px
 		font-size: 14px
 	&:hover
 		border: 2px solid $violet
 		background-color: rgba($violet, .8)
+		+r(767)
+			border: 2px solid red
 	&--red
 	&--blue

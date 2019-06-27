@@ -61,7 +61,7 @@ module.exports = env => {
 						{
 							loader: 'css-loader',
 							options: {
-								importLoaders: 1,
+								importLoaders: 0,
 								sourceMap: true,
 								minimize: true,
 								colormin: false,
@@ -73,7 +73,7 @@ module.exports = env => {
 					test: /\.scss$/,
 					use: [
 						env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, // creates style nodes from JS strings
-						{ loader: 'css-loader', options: { importLoaders: 1, minimize: true, sourceMap: true, colormin: false } }, // translates CSS into CommonJS
+						{ loader: 'css-loader', options: { importLoaders: 2, minimize: true, sourceMap: true, colormin: false } }, // translates CSS into CommonJS
 						'postcss-loader',
 						'sass-loader', // compiles Sass to CSS
 					],
@@ -82,7 +82,7 @@ module.exports = env => {
 					test: /\.sass$/,
 					use: [
 						env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, // creates style nodes from JS strings
-						{ loader: 'css-loader', options: { importLoaders: 1, minimize: true, sourceMap: true, colormin: false } }, // translates CSS into CommonJS
+						{ loader: 'css-loader', options: { importLoaders: 2, minimize: true, sourceMap: true, colormin: false } }, // translates CSS into CommonJS
 						'postcss-loader',
 						'sass-loader', // compiles Sass to CSS
 					],

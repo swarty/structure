@@ -19,8 +19,8 @@
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.6.1",
     "gulp-file-include": "^2.0.1",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-imagemin": "^3.1.1",
-    "imagemin-webp": "^5.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^3.1.0",
@@ -30,6 +30,7 @@
     "gulp-uglify": "^2.0.1",
     "gulp-util": "^3.0.8",
     "gulp-wait": "0.0.2",
+    "imagemin-webp": "^5.0.0",
     "uglify-js": "^3.4.9"
   }
 }

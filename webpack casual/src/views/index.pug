@@ -3,10 +3,6 @@ extends ./layouts/master.pug
 block title
 	title My Page - Home
 
-block manifestBrowserconfigFiles
-	link(href='../manifest.json', rel='manifest')
-	meta(name='msapplication-config' content='../browserconfig.xml')
-
 block content
 
 	//- Desktop page
@@ -14,3 +10,5 @@ block content
 		.container
 			h1.page__title # Index page
 			p Thank you for your supporting :)
+
+			img(src="./images/favicons/favicon-16x16.png", alt="")

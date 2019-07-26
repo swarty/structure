@@ -2,8 +2,12 @@
 // +font-face('MuseoSansCyr-medium', '../fonts/museosanscyrl-500-webfont')
 // +font-face('MuseoSansCyr-black', '../fonts/museosanscyrl_0-webfont')
 
+@font-face
+	font-family: 'Quicksand-Bold', sans-serif
+	src: font-url('../fonts/Quicksand-Bold.woff') format('woff')
+
 =regular
-	font-family: 'PT Sans', sans-serif
+	font-family: 'Quicksand-Bold', sans-serif
 	font-weight: 400
 
 =bold
@@ -16,6 +20,7 @@ h1,h2,h3,h4,h5,h6,p
 	padding: 0
 	color: $black
 	line-height: 1.2
+	+regular
 
 a
 	+regular
@@ -30,7 +35,6 @@ p
 	
 
 h1,h2,h3,h4,h5,h6
-	+bold
 	line-height: 1.25
 
 img

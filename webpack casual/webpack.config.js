@@ -22,7 +22,7 @@ module.exports = env => {
 		output: {
 			path: path.resolve(__dirname, './dist'),
 			publicPath: '/',
-			filename: 'assets/js/[name].[hash:7].js'
+			filename: 'js/[name].[hash:7].js'
 		},
 		devServer: {
 			contentBase: path.resolve(__dirname, './src'),
@@ -99,28 +99,26 @@ module.exports = env => {
 					]
 				},
 				{
-					test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
-					loader: 'url-loader',
-					options: {
-						limit: 3000,
-						name: 'assets/images/[name].[hash:7].[ext]'
-					}
+					test: /\.(png|svg|jpg|gif|ico)$/,
+					use: [
+						{
+							loader: 'file-loader',
+							options: {
+									name: 'assets/images/[name].[ext]'
+							}
+						}
+					]
 				},
 				{
-					test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-					loader: 'url-loader',
-					options: {
-						limit: 5000,
-						name: 'assets/fonts/[name].[hash:7].[ext]'
-					}
-				},
-				{
-					test: /\.(mp4)(\?.*)?$/,
-					loader: 'url-loader',
-					options: {
-						limit: 10000,
-						name: 'assets/videos/[name].[hash:7].[ext]'
-					}
+					test: /\.(woff|woff2|eot|ttf|otf)$/,
+					use: [
+						{
+							loader: 'file-loader',
+							options: {
+									name: 'assets/fonts/[name].[ext]'
+							}
+						}
+					]
 				}
 			]
 		},
@@ -138,7 +136,7 @@ module.exports = env => {
 					vendors: false,
 					// vendor chunk
 					vendor: {
-						filename: 'assets/js/vendor.[hash:7].js',
+						filename: 'js/vendor.[hash:7].js',
 						// sync + async chunks
 						chunks: 'all',
 						// import file path containing node_modules
@@ -150,14 +148,12 @@ module.exports = env => {
 
 		plugins: [
 			new CopyWebpackPlugin([
-				{ from: '../manifest.json', to: 'manifest.json' },
-				{ from: '../browserconfig.xml', to: 'browserconfig.xml' },
-				{ from: 'assets/images/favicons/android-chrome-192x192.png', to: 'assets/images/android-chrome-192x192.png' },
-				{ from: 'assets/images/favicons/android-chrome-256x256.png', to: 'assets/images/android-chrome-256x256.png' },
-				{ from: 'assets/images/favicons/mstile-150x150.png', to: 'assets/images/mstile-150x150.png' }
+				{ from: 'assets/images/favicons/', to: 'images/' },
+				{ from: 'assets/fonts/', to: 'fonts/' },
+				// { from: 'assets/videos/', to: 'videos/' }
 			]),
 			new MiniCssExtractPlugin({
-				filename: './assets/css/[name].[hash:7].css',
+				filename: 'css/[name].[hash:7].css',
 				chunkFilename: '[id].css',
 			}),
 
@@ -174,13 +170,6 @@ module.exports = env => {
 
 			...utils.pages(env),
 			// ...utils.pages(env, 'blog'),
-
-			// new webpack.ProvidePlugin({
-			//   $: 'jquery',
-			//   jQuery: 'jquery',
-			//   'window.$': 'jquery',
-			//   'window.jQuery': 'jquery'
-			// }),
 			new WebpackNotifierPlugin({
 				title: 'Your project'
 			})

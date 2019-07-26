@@ -9,9 +9,6 @@ html(lang='ru')
 		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
 		meta(http-equiv='X-UA-Compatible', content='ie=edge')
 
-		meta(name='msapplication-TileColor', content='#0E0E0E')
-		meta(name='theme-color', content='#0E0E0E')
-
 		//- SEO
 
 		//- Basic Seo
@@ -36,19 +33,11 @@ html(lang='ru')
 		meta(property='og:url' content= "")
 		meta(property='og:description' content="")
 
-		//- google
-		meta(itemprop="image" content='images/jpg')
-		meta(itemprop="name" content="Tila")
-		meta(itemprop="headline" content="Tila")
-		meta(itemprop="description" content="")
-		meta(itemscope itemtype="site url" sizes="16x16")
-
-
 		//- Favicons
-		link(rel='apple-touch-icon', sizes='180x180', href=require('images/favicons/apple-touch-icon.png'))
-		link(rel='shortcut icon', type='image/png', sizes='32x32', href=require('images/favicons/favicon-32x32.png'))
-		link(rel='shortcut icon', type='image/png', sizes='16x16', href=require('images/favicons/favicon-16x16.png'))
-		link(rel='shortcut icon', href=require('images/favicons/favicon.ico'))
+		link(rel='apple-touch-icon', sizes='180x180', href='../images/favicons/apple-touch-icon.png')
+		link(rel='shortcut icon', type='image/png', sizes='32x32', href='./images/favicons/favicon-32x32.png')
+		link(rel='shortcut icon', type='image/png', sizes='16x16', href='./images/favicons/favicon-16x16.png')
+		link(rel='shortcut icon', href='./images/favicons/favicon.ico')
 
 		//- Preload fonts
 		//- link(type='font/woff', href=require('source/assets/fonts/Quicksand-Bold.woff'), rel='preload', as='font', crossorigin)
@@ -59,11 +48,6 @@ html(lang='ru')
 		//- Title
 		block title
 			title Your project!
-
-		//- Manifest browserconfig files
-		block manifestBrowserconfigFiles
-			link(rel='manifest', href='./manifest.json')
-			meta(name='msapplication-config' content='./browserconfig.xml')
 
 	body
 

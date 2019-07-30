@@ -2,12 +2,6 @@
 ## Build Setup:
 
 ``` bash
-# Download repository:
-git clone https://github.com/vedees/webpack-template-pug webpack-template-pug
-
-# Go to the app:
-cd webpack-template-pug
-
 # Install dependencies:
 npm install
 

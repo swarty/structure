@@ -7,10 +7,10 @@
 // px to rem
 @function rem($pixels, $context: $mainFontSize) {
   @if (unitless($pixels)) {
-    $pixels: $pixels * 1px;
+    $pixels: $pixels * 5px;
   }
   @if (unitless($context)) {
-    $context: $context * 1px;
+    $context: $context * 5px;
   }
   @return $pixels / $context * 1rem;
 }

@@ -1,0 +1,32 @@
+doctype html
+html(lang='ru')
+	head
+
+		block title
+
+		//- meta
+		include ../parts/meta.pug
+
+		//- styles
+		//- include ../parts/styles.pug
+		
+		//- css styles
+		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css")
+
+	body
+
+		.wrapper
+			
+			//- header
+			include ../parts/header.pug
+
+
+			main.main
+
+				block content
+
+			//- footer
+			include ../parts/footer.pug
+	
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js")

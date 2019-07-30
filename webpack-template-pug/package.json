@@ -11,13 +11,13 @@
     "> 1%",
     "last 3 version"
   ],
-  "author": "https://github.com/vedees",
+  "author": "https://github.com/swarty",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vedees/webpack-template-pug.git"
+    "url": "git+https://github.com/swarty"
   },
   "bugs": {
-    "url": "https://github.com/vedees/webpack-template-pug/issues"
+    "url": "https://github.com/swarty"
   },
   "keywords": [
     "webpack",
@@ -56,8 +56,5 @@
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1",
     "webpack-merge": "^4.2.1"
-  },
-  "dependencies": {
-    "vue": "^2.6.10"
   }
 }

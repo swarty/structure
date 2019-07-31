@@ -12,6 +12,16 @@ const PATHS = {
 	assets: 'assets/'
 }
 
+
+// split js files
+const glob = require('glob');
+const entryArray = glob.sync(`${PATHS.src}/js/*.js`);
+const entryObj = entryArray.reduce( (accum, next, index) => {
+	const name = next.split('.js')[0].split('/js/')[1]; // need to update to reg exp
+	accum[name] = next;
+	return accum;
+}, {})
+
 // Pages const for HtmlWebpackPlugin
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#html-dir-folder
 // const PAGES_DIR = PATHS.src
@@ -23,10 +33,7 @@ module.exports = {
 	externals: {
 		paths: PATHS
 	},
-	entry: {
-		app: PATHS.src,
-		// module: `${PATHS.src}/your-module.js`,
-	},
+	entry: entryObj,
 	output: {
 		filename: `${PATHS.assets}js/[name].[hash].js`,
 		path: PATHS.dist,

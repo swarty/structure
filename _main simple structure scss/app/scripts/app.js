@@ -973,3 +973,4 @@ document.addEventListener('DOMContentLoaded', function () {
         new SVGInliner(document.querySelectorAll('.svg'));
     }
 });
+//# sourceMappingURL=app.js.map

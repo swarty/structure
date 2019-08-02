@@ -1,0 +1,24 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "useBuiltIns": "entry"
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "src": "./src",
+          "styles": "./src/assets/styles",
+          "images": "./src/assets/images",
+          "videos": "./src/assets/videos",
+          "scripts": "./src/assets/scripts"
+        }
+      }
+    ]
+  ]
+}

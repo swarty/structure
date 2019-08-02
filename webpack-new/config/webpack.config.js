@@ -11,8 +11,15 @@ const TerserPlugin = require('terser-webpack-plugin');
 const utils = require('./utils')
 const plugins = require('../postcss.config');
 
+
+
+
 // Configuration
 module.exports = env => {
+
+	const publicPath = env && env['NODE_ENV'] === 'gitlabhost'
+	? '/name of repository/'
+	: '/';
 
   return {
     context: path.resolve(__dirname, '../src'),
@@ -21,7 +28,8 @@ module.exports = env => {
     },
     output: {
       path: path.resolve(__dirname, '../dist'),
-      publicPath: '/',
+      publicPath: publicPath,
+			// publicPath: '/',
 			filename: 'assets/js/[name].[hash:7].bundle.js',
     },
     devServer: {
@@ -92,21 +100,21 @@ module.exports = env => {
           test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-            name: 'assets/images/[name].[hash:7].[ext]'
+						name: `assets/images/[name].[hash:7].[ext]`,
           }
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-            name: 'assets/fonts/[name].[hash:7].[ext]'
+						name: 'assets/fonts/[name].[hash:7].[ext]',
           }
         },
         {
           test: /\.(mp4)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-            name: 'assets/videos/[name].[hash:7].[ext]'
+						name: 'assets/videos/[name].[hash:7].[ext]',
           }
         }
       ]

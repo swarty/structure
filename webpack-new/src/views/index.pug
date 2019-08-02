@@ -16,6 +16,10 @@ block content
 	section.hero
 		h1= hero.title
 
+		picture
+			source(srcset="/assets/images/rectangle-2.jpg", media="(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)")
+			img.lazy(data-src="/assets/images/rectangle-2.jpg", alt="")
+
 
 block script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js")

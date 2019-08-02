@@ -5,20 +5,28 @@
 }
 
 .container{
-	max-width: 1230px;
+	max-width: 70vw;
 	width: 100%;
 	position: relative;
 	margin: 0 auto;
 	padding: 0 15px;
+	@include r(1499){
+		max-width: 67vw;
+	}
 	@include r(1365){
 		padding: 0 30px
 	}
 	@include r(767){
 		padding: 0 20px;
 	}
-	&--small{
-		max-width: 830px;
-	} 
+}
+
+.visibility--hidden{
+	position: absolute;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
 }
 
 
@@ -42,6 +50,12 @@ a{
 b,
 strong{
 	font-size: inherit;
+	font-weight: inherit;
+}
+
+b,
+strong{
+	font-weight: bolder;
 }
 
 ul,ol{
@@ -54,11 +68,36 @@ i{
 	font-weight: inherit;
 }
 
+
 .fw{
-	display: -webkit-flex;
-	display: -ms-flex;
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+	&--s{
+		@extend .fw;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+	&--c{
+		@extend .fw;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&--cc{
+		@extend .fw;
+		align-items: center;
+		justify-content: center;
+	}
+	&--cl{
+		@extend .fw;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	&--ce{
+		@extend .fw;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
 }
+
 

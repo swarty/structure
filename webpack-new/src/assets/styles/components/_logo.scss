@@ -1,0 +1,26 @@
+.logo{
+	overflow: hidden;
+	height: 120px;
+	align-items: center;
+
+	picture,
+	img{
+		height: 100%;
+	}
+
+	img{
+		margin: 0 auto;
+	}
+
+	&__icon{
+		max-width: 130px;
+		width: 100%;
+		padding: 18px 28px;
+		margin: 0 35px 0 0;
+		background-color: $main-color;
+	}
+
+	&__text{
+		padding: 20px 0;
+	}
+}

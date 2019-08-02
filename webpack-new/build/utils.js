@@ -12,21 +12,23 @@ exports.pages = function (env, folder = '') {
       return false;
 
     const viewName = view.split('.')[0];
-    const fileName = folder === '' ? `${viewName}/index.html` : `${folder}/${viewName}/index.html`;
+		// const fileName = folder === '' ? `${viewName}/index.html` : `${folder}/${viewName}/index.html`;
+		const fileName = folder === '' ? `${viewName}.html` : `${folder}/${viewName}.html`;
     const options = {
       filename: fileName,
       template: `views/${rootPagesFolderName}/${folder}/${view}`,
-      inject: true
+			inject: true,
+			minify: false
     };
 
     if (env === 'development') {
       options.minify = {
         removeComments: true,
-        collapseWhitespace: true,
+        collapseWhitespace: false,
         removeAttributeQuotes: true
       };
-    }
-
+		}
+		
     pages.push(new HtmlWebpackPlugin(options));
   })
 

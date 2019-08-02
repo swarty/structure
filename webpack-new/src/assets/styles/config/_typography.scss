@@ -1,60 +1,63 @@
-@include font-face('Geometria-Regular', '../fonts/Geometria-Regular');
+@include font-face('Montserrat-Thin', '../fonts/');
+@include font-face('Montserrat-Light', '../fonts/');
+@include font-face('Montserrat-Regular', '../fonts/');
+@include font-face('Montserrat-Medium', '../fonts/');
+@include font-face('Montserrat-SemiBold', '../fonts/');
+
+
+@mixin mt{
+	font-family: 'Montserrat-Thin', sans-serif;
+}
 
 @mixin ml{
-	font-family: 'Geometria-Regular', 'arial', sans-serif;
+	font-family: 'Montserrat-Light', sans-serif;
 }
 
-// tree of media quires
-@include r(1499){
-	i{
-		display: inline-block;
-	}
-}
-@include r(1365){
-	i{
-		display: inline-block;
-	}
-}
-@include r(1023){
-	i{
-		display: inline-block;
-	}
-}
-@include r(767){
-	i{
-		display: inline-block;
-	}
-}
-@include r(479){
-	i{
-		display: inline-block;
-	}
+@mixin mr{
+	font-family: 'Montserrat-Regular', sans-serif;
 }
 
-
-html,
-body {
-	font-size: $mainFontSize;
-	@include r(1023){
-		font-size: 16px;
-	}
+@mixin mm{
+	font-family: 'Montserrat-Medium', sans-serif;
 }
 
+@mixin msb{
+	font-family: 'Montserrat-SemiBold', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,p, button,a,span,li{
+	line-height: 1.2;
+}
 
 h1,h2,h3,h4,h5,h6,p{
 	margin: 0;
 	padding: 0;
 	color: #1a2731;
-	@include ml;
-	font-size: rem(5);
+}
+
+button, p, a, li{
+	font-size: 16px;
+	@include mr;
+}
+	
+
+h1,h2,h3,h4,h5,h6{
+	@include mm;
+}
+
+picture,
+img{
+	max-width: 100%;
+	height: auto;
+	display: block;
 }
 
 img{
-	max-width: 100%;
-	display: block;
-	height: auto;
+	.lazy{
+		background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7);
+		&.loaded{
+			background-image: none;
+		}
+	}
 }
 
-img.lazy{
-	background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7)
-}

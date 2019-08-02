@@ -1,11 +1,21 @@
 extends ./layout/layout.pug
 
+block vars
+	-
+		var hero = {
+			title: 'Hellow man'
+		}
+
+
 block title
-	title New Title
+	title Wholly Kaw index
 
 block content
-		//- start hero
-		h1 some content here
-		p sdsdsdds
 
-		img(src="/assets/img/logo.png", alt="")
+	// start hero
+	section.hero
+		h1= hero.title
+
+
+block script
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js")

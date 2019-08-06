@@ -135,11 +135,21 @@ template { display: none; }
 /** Add the correct display in IE 10-. */
 [hidden] { display: none; }
 
+html { font-size: 18px; }
+
+@media all and (max-width: 1365px) { html { font-size: 16px; } }
+
+@media all and (max-width: 1279px) { html { font-size: 16px; } }
+
+@media all and (max-width: 1023px) { html { font-size: 14px; } }
+
+@media all and (max-width: 767px) { html { font-size: 14px; } }
+
 h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; color: #202020; line-height: 1.2; }
 
 a { font-family: 'PT Sans', sans-serif; font-weight: 400; }
 
-p { font-size: 18px; line-height: 1.56; font-family: 'PT Sans', sans-serif; font-weight: 400; color: #202020; }
+p { font-size: 1rem; line-height: 1.56; font-family: 'PT Sans', sans-serif; font-weight: 400; color: #202020; }
 
 @media all and (max-width: 767px) { p { font-size: 14px; } }
 
@@ -147,9 +157,11 @@ h1, h2, h3, h4, h5, h6 { font-family: 'PT Sans', sans-serif; font-weight: 700; l
 
 img { max-width: 100%; display: block; height: auto; }
 
-h1, .h1 { font-size: 64px; }
+img.lazy { background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7); }
 
-@media all and (max-width: 767px) { h1, .h1 { font-size: 36px; } }
+img.loaded { background-image: none; }
+
+h1, .h1 { font-size: 1.11111rem; }
 
 h2 { font-size: 64px; }
 
@@ -209,6 +221,6 @@ i { font-family: inherit; font-size: inherit; font-weight: inherit; }
 
 .site-button:hover { border: 2px solid #994894; background-color: rgba(153, 72, 148, 0.8); }
 
-.logo { -ms-flex-item-align: center; -ms-grid-row-align: center; align-self: center; }
+.logo { -ms-flex-item-align: center; align-self: center; }
 
 /*# sourceMappingURL=main.css.map */

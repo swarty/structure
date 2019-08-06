@@ -2,6 +2,19 @@
 // +font-face('MuseoSansCyr-medium', '../fonts/museosanscyrl-500-webfont')
 // +font-face('MuseoSansCyr-black', '../fonts/museosanscyrl_0-webfont')
 
+html
+	font-size: 18px
+
+	+r(1365)
+		font-size: 16px
+	+r(1279)
+		font-size: 16px
+	+r(1023)
+		font-size: 14px
+	+r(767)
+		font-size: 14px
+
+
 =regular
 	font-family: 'PT Sans', sans-serif
 	font-weight: 400
@@ -21,7 +34,7 @@ a
 	+regular
 	
 p
-	font-size: 18px
+	font-size: rem(18)
 	line-height: 1.56
 	+regular
 	color: $black
@@ -38,14 +51,15 @@ img
 	display: block
 	height: auto
 
-img.lazy
-	background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7)
+img
+	&.lazy
+		background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7)
+	&.loaded
+		background-image: none
 
 h1,
 .h1
-	font-size: 64px
-	+r(767)
-		font-size: 36px
+	font-size: rem(20)
 
 h2
 	font-size: 64px

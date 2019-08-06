@@ -1,0 +1,45 @@
+// @import 'config/vars'
+  
+.site-button{
+	@include msb;
+	font-size: rem(16);
+	min-width: 190px;
+	text-transform: capitalize;
+	padding: 20px 20px;
+	display: inline-block;
+	text-align: center;
+	border: 0;
+	cursor: pointer;
+
+	&--orange{
+		@extend .site-button;
+		background-color: $accent-color;
+		color: $white;
+	}
+
+	&--green{
+		@extend .site-button;
+		color: $accent-color;
+		background-color: $main-color;
+
+		span{
+			background-color: $accent-color;
+		}
+	}
+
+	&.is-large{
+		min-width: 280px;
+		@include r(767){
+			min-width: auto;
+		}
+	}
+}
+
+.site-button__span{
+	background-color: $white;
+	position: relative;
+	display: inline-block;
+	width: 15px;
+	height: 1.5px;
+	margin: 0 0 5px 10px;
+}

@@ -1,0 +1,76 @@
+// Add your settings here
+
+.body-overflow{
+	overflow: hidden;
+}
+
+.container{
+	max-width: 1250px;
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	padding: 0 15px;
+	@include r(1499){
+		// max-width: 67vw;
+	}
+	@include r(1365){
+		padding: 0 30px
+	}
+	@include r(767){
+		padding: 0 20px;
+	}
+}
+
+.visibility--hidden{
+	position: absolute;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+}
+
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+button, a{
+	outline: none;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+
+b,
+strong{
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+b,
+strong{
+	font-weight: bolder;
+}
+
+ul,ol{
+	list-style: none;
+}
+
+i{
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+
+.fw{
+	display: flex;
+}
+
+

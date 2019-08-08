@@ -1,0 +1,16 @@
+.tile{
+	display: flex;
+	flex-wrap: wrap;
+	margin: -16px;
+
+	&__box{
+		width: 100%;
+		padding: 16px;
+		display: inline-block;
+	}
+
+	&__wrapper{
+		padding-bottom: 100%;
+		position: relative;
+	}
+}

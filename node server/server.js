@@ -6,8 +6,11 @@ var browserSync = require('browser-sync')
 
 browserSync({
 	server: {
-			baseDir: "./"
+		baseDir: "./",
 	},
+	ghostMode: true,
+	tunnel: true,
+	// port: 8080,
 	options: {
 			reloadDelay: 250
 	},

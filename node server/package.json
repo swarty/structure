@@ -1,0 +1,23 @@
+{
+  "name": "three",
+  "version": "1.0.0",
+  "description": "AudioExperiment",
+  "main": "app.js",
+  "devDependencies": {
+    "browser-sync": "^2.26.7"
+  },
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swarty/audioExperiment.git"
+  },
+  "author": "Dmytro O",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swarty/AudioExperiment/issues"
+  },
+  "homepage": "https://github.com/swarty/AudioExperiment#readme"
+}

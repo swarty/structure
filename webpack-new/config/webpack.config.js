@@ -116,7 +116,15 @@ module.exports = env => {
           options: {
 						name: 'assets/videos/[name].[hash:7].[ext]',
           }
-        }
+				},
+				{
+					test: /\.glsl$/,
+					exclude: /node_modules/,
+					use: [
+						'raw-loader',
+						'glslify-loader'
+					]
+				}
       ]
     },
     optimization: {

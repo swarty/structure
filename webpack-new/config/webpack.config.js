@@ -18,18 +18,17 @@ const plugins = require('../postcss.config');
 module.exports = env => {
 
 	const publicPath = env && env['NODE_ENV'] === 'gitlabhost'
-	? '/name of repository/'
+	? '/wholly-kaw/'
 	: '/';
 
   return {
-    context: path.resolve(__dirname, '../src'),
+		context: path.resolve(__dirname, '../src'),
     entry: {
       app: './app.js'
     },
     output: {
       path: path.resolve(__dirname, '../dist'),
       publicPath: publicPath,
-			// publicPath: '/',
 			filename: 'assets/js/[name].[hash:7].bundle.js',
     },
     devServer: {
@@ -42,7 +41,8 @@ module.exports = env => {
       alias: {
         source: path.resolve(__dirname, '../src'), // Relative path of src
         images: path.resolve(__dirname, '../src/assets/images'), // Relative path of images
-        fonts: path.resolve(__dirname, '../src/assets/fonts'), // Relative path of fonts
+				fonts: path.resolve(__dirname, '../src/assets/fonts'), // Relative path of fonts
+				fonts: path.resolve(__dirname, '../src/assets/media'), // Relative path of mediacontent
       }
     },
 
@@ -60,7 +60,8 @@ module.exports = env => {
               options: { presets: ['@babel/preset-env'] }
             }
           ]
-        },
+				},
+				
         {
           test: /\.css$/,
           use: [
@@ -84,18 +85,18 @@ module.exports = env => {
             'postcss-loader',
             'sass-loader', // compiles Sass to CSS
           ],
-        },
+				},
         {
           test: /\.pug$/,
           use: [
             {
 							loader: 'pug-loader',
 							query: {
-								pretty: true
-							}
+								pretty: true,
+							},
             }
           ]
-        },
+				},
         {
           test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
           loader: 'file-loader',
@@ -141,9 +142,9 @@ module.exports = env => {
           vendors: false,
           // vendor chunk
           vendor: {
-            filename: 'assets/js/vendor.[hash:7].bundle.js',
+            // filename: 'assets/js/vendor.[hash:7].bundle.js',
             // sync + async chunks
-            chunks: 'all',
+            // chunks: 'all',
             // import file path containing node_modules
             test: /node_modules/
           }
@@ -153,16 +154,14 @@ module.exports = env => {
 
     plugins: [
       new CopyWebpackPlugin([
-				{ from: 'assets/images', to: 'assets/images' }
+				{ from: 'assets/images', to: 'assets/images' },
+				{ from: 'assets/media', to: 'assets/media' }
       ]),
       new MiniCssExtractPlugin({
         filename: 'assets/css/[name].[hash:7].bundle.css',
-        chunkFilename: '[id].css',
+        // chunkFilename: 'assets/css/[name].[hash:7].css',
       }),
 
-      /*
-        Pages
-      */
 
       // // Desktop page
       new HtmlWebpackPlugin({

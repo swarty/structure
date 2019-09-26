@@ -1,7 +1,17 @@
 // Add your settings here
 
+
+html, body{
+	position: relative;
+	height: 100%;
+}
+
+// need to add "html {overflow: hidden}",  when disable scroll -> for ios
+
 .body-overflow{
 	overflow: hidden;
+	overscroll-behavior-y: none;
+	-webkit-overflow-scrolling: auto;
 }
 
 .container{

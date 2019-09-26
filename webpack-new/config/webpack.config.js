@@ -42,7 +42,7 @@ module.exports = env => {
         source: path.resolve(__dirname, '../src'), // Relative path of src
         images: path.resolve(__dirname, '../src/assets/images'), // Relative path of images
 				fonts: path.resolve(__dirname, '../src/assets/fonts'), // Relative path of fonts
-				fonts: path.resolve(__dirname, '../src/assets/media'), // Relative path of mediacontent
+				// fonts: path.resolve(__dirname, '../src/assets/media'), // Relative path of mediacontent
       }
     },
 
@@ -142,9 +142,9 @@ module.exports = env => {
           vendors: false,
           // vendor chunk
           vendor: {
-            // filename: 'assets/js/vendor.[hash:7].bundle.js',
+            filename: 'assets/js/vendor.[hash:7].bundle.js',
             // sync + async chunks
-            // chunks: 'all',
+            chunks: 'all',
             // import file path containing node_modules
             test: /node_modules/
           }
@@ -155,11 +155,11 @@ module.exports = env => {
     plugins: [
       new CopyWebpackPlugin([
 				{ from: 'assets/images', to: 'assets/images' },
-				{ from: 'assets/media', to: 'assets/media' }
+				// { from: 'assets/media', to: 'assets/media' }
       ]),
       new MiniCssExtractPlugin({
         filename: 'assets/css/[name].[hash:7].bundle.css',
-        // chunkFilename: 'assets/css/[name].[hash:7].css',
+        chunkFilename: 'assets/css/[name].[hash:7].css',
       }),
 
 

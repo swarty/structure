@@ -12,7 +12,7 @@ import 'styles/app.scss';
 
 
 // libs
-import 'scripts/libs/svg-inliner.js'
+import inlineSVG from 'inline-svg'
 
 
 // modules
@@ -23,5 +23,9 @@ import 'scripts/modules/lazy-load'
 import 'scripts/index'
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-// })
+document.addEventListener('DOMContentLoaded', function () {
+	inlineSVG.init({
+		svgSelector: 'img.svg', // the class attached to all images that should be inlined
+		initClass: 'js-inlinesvg', // class added to <html>
+	});
+})

@@ -5,7 +5,17 @@ html, body{
 	height: 100%;
 }
 
+.wrapper{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: flex-start;
+}
 
+footer{
+	margin: auto 0 0;
+}
 // need to add "html {overflow: hidden}",  when disable scroll -> for ios
 
 .body-overflow{

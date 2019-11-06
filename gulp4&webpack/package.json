@@ -1,10 +1,10 @@
 {
-  "name": "swarty template",
+  "name": "swarty",
   "version": "0.1.1",
   "scripts": {
-    "ghpages": "git subtree push --prefix build origin gh-pages",
+    "gitlab": "gulp build --gitlab",
     "build": "gulp build --production",
-    "start": "gulp",
+    "serve": "gulp",
     "lint": "eslint --ignore-pattern 'src/js/lib/' --cache --format=node_modules/eslint-formatter-pretty src/js/",
     "lint-fix": "npm run lint -- --fix"
   },
@@ -68,7 +68,8 @@
     "through2": "^3.0.1",
     "webpack": "^4.29.6",
     "webpack-bundle-analyzer": "^3.1.0",
-    "webpack-cli": "^3.3.0"
+		"webpack-cli": "^3.3.0",
+		"gulp-group-css-media-queries": "^1.2.2"
   },
   "husky": {
     "hooks": {

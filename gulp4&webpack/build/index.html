@@ -1,28 +1,87 @@
 <!doctype html>
-<html>
+<html lang="ua">
   <head>
     <meta charset="utf-8" />
-    <title>swarty</title>
+    <title> swarty </title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Cache-control" content="public">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="stylesheet" media="all" href="css/app.css" />
+    <meta name="description" content="" />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:creator" content="" />
+    <meta name="twitter:image" content="" />
+    <!-- Open Graph data -->
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="fb:admins" content="" />
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "logo": "logo",
+        "name": "site/brand name",
+        "alternateName": "altername name of name",
+        "url": "site link",
+        "sameAs": ["instagram link", "fb link", "youtube link"],
+        "brand": "your brand",
+        "department": [
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "location":
+          {
+            "@type": "Place",
+            "address":
+            {
+              "@type": "PostalAddress",
+              "addressLocality": "Киев, Украина",
+              "streetAddress": "street, office"
+            },
+            "url": "email",
+            "geo":
+            {
+              "@type": "GeoCoordinates",
+              "latitude": "ltn",
+              "longitude": "lng"
+            }
+          },
+          "name": "company name",
+          "telephone": ["+38 (068) 033-03-38"]
+        }]
+      }
+
+    </script>
     <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="stylesheet" media="all" href="css/app.css" />
   </head>
   <body>
-    <!-- BEGIN content -->
-    <div class="out">
+    <header class="header">
+      <div class="container">
+        <p>header</p>
+      </div>
+    </header>
+    <main class="main">
       <h1>block content</h1>
-    </div>
-    <!-- END content -->
-    <!--    <div class="cursor">
-      <div class="cursor__frame"></div>      
-      <div class="cursor__point"></div>
-    </div> -->
-    <!-- BEGIN scripts -->
+    </main>
+    <footer aria-label="footer">
+      <div class="container">
+        <p>footer</p>
+      </div>
+    </footer>
+    <div class="popup"></div>
     <script type="text/javascript" src="js/app.js"></script>
-    <!-- END scripts -->
   </body>
 </html>

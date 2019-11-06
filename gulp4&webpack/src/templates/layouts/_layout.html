@@ -12,6 +12,7 @@
 			{% endif %}
 		</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<meta http-equiv="Cache-control" content="public">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="format-detection" content="telephone=no"/>
 		
@@ -22,23 +23,17 @@
 
 		{# styles #}
 		<link rel="stylesheet" media="all" href="css/app.css"/>
+
   </head>
   <body>
-    
-    <!-- BEGIN content -->
-    <div class="out">
-      {% block content %}{% endblock %}
-    </div>
-    <!-- END content -->
+		{% include "../partials/_header.html" %}
 
-<!--    <div class="cursor">
-      <div class="cursor__frame"></div>      
-      <div class="cursor__point"></div>
-    </div> -->
+		<main class="main">
+			{% block content %}{% endblock %}
+		</main>
 
-    <!-- BEGIN scripts -->
-    <script type="text/javascript" src="js/app.js"></script>
-    <!-- END scripts -->
-
+		{% include "../partials/_footer.html" %}
+		{% include "../partials/_popups.html" %}
+		{% include "../partials/_scripts.html" %}
   </body>
 </html>

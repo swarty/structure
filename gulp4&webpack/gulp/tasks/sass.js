@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer';
 // import mqpacker from 'css-mqpacker';
 import config from '../config';
 import csso from 'postcss-csso';
+import gcmq from 'gulp-group-css-media-queries';
 
 const isMax = mq => /max-width/.test(mq);
 const isMin = mq => /min-width/.test(mq);
@@ -28,7 +29,19 @@ const sortMediaQueries = (a, b) => {
 
 const processors = [
   autoprefixer({
-    browsers: ['last 4 versions'],
+    Browserslist: {
+			"production": [
+				">0.2%",
+				"not dead",
+				"not op_mini all"
+			],
+			"development": [
+				"last 1 chrome version",
+				"last 1 firefox version",
+				"last 1 safari version",
+				"last 1 ie version"
+			]
+		},
     cascade: false
   }),
   // require('lost'),
@@ -44,7 +57,8 @@ gulp.task('sass', () => gulp
   .pipe(sass({
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
       precision: 5
-  }))
+	}))
+	.pipe(gcmq())
   .on('error', config.errorHandler)
   .pipe(postcss(processors))
   .pipe(sourcemaps.write('./'))

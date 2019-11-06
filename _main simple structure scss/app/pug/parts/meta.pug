@@ -22,3 +22,43 @@ meta(property='twitter:description' content="")
 //- favicons
 link(rel="shortcut icon" type="img/ico" href="images/favicon_16.png" sizes="16x16")
 link(rel="shortcut icon" type="img/ico" href="images/favicon_32.png" sizes="32x32")
+
+script(type="application/ld+json").
+	{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"logo": "logo",
+		"name": "site/brand name",
+		"alternateName": "altername name of name",
+		"url": "site link",
+		"sameAs": [
+			"instagram link",
+			"fb link",
+			"youtube link"
+		],
+		"brand": "your brand",
+		"department": [
+			{
+				"@context": "http://schema.org",
+				"@type": "Organization",
+				"location": {
+					"@type": "Place",
+					"address": {
+						"@type": "PostalAddress",
+						"addressLocality": "Киев, Украина",
+						"streetAddress": "street, office"
+					},
+					"url": "email",
+					"geo": {
+						"@type": "GeoCoordinates",
+						"latitude": "ltn",
+						"longitude": "lng"
+					}
+				},
+				"name": "company name",
+				"telephone": [
+					"+38 (068) 033-03-38"
+				]
+			}
+		]
+	}

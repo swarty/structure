@@ -1,8 +1,11 @@
 import test from './modules/test';
+import {One, Two} from './modules/test2';
 
 
 
-document.addEventListener('DOMContentLoaded', _ => {
+function onDomLoad() {
 	console.log(test());
-})
-// new Words();
+	console.log(new One(), new Two())
+}
+
+document.addEventListener('DOMContentLoaded', onDomLoad);

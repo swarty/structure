@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _test = __webpack_require__(/*! ./modules/test */ \"./modules/test.js\");\n\nvar _test2 = _interopRequireDefault(_test);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\ndocument.addEventListener('DOMContentLoaded', function (_) {\n\tconsole.log((0, _test2.default)());\n});\n// new Words();\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hcHAuanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vc3JjL2pzL2FwcC5qcz8wMzU0Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB0ZXN0IGZyb20gJy4vbW9kdWxlcy90ZXN0JztcclxuXHJcblxyXG5cclxuXHJcblxyXG5kb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdET01Db250ZW50TG9hZGVkJywgXyA9PiB7XHJcblx0Y29uc29sZS5sb2codGVzdCgpKTtcclxufSlcclxuLy8gbmV3IFdvcmRzKCk7Il0sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0E7Ozs7O0FBS0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./app.js\n");
+eval("\n\nvar _test = __webpack_require__(/*! ./modules/test */ \"./modules/test.js\");\n\nvar _test2 = _interopRequireDefault(_test);\n\nvar _test3 = __webpack_require__(/*! ./modules/test2 */ \"./modules/test2.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction onDomLoad() {\n\tconsole.log((0, _test2.default)());\n\tconsole.log(new _test3.One(), new _test3.Two());\n}\n\ndocument.addEventListener('DOMContentLoaded', onDomLoad);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hcHAuanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vc3JjL2pzL2FwcC5qcz8wMzU0Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB0ZXN0IGZyb20gJy4vbW9kdWxlcy90ZXN0JztcclxuaW1wb3J0IHtPbmUsIFR3b30gZnJvbSAnLi9tb2R1bGVzL3Rlc3QyJztcclxuXHJcblxyXG5cclxuZnVuY3Rpb24gb25Eb21Mb2FkKCkge1xyXG5cdGNvbnNvbGUubG9nKHRlc3QoKSk7XHJcblx0Y29uc29sZS5sb2cobmV3IE9uZSgpLCBuZXcgVHdvKCkpXHJcbn1cclxuXHJcbmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCBvbkRvbUxvYWQpO1xyXG4iXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFDQTs7O0FBQUE7QUFDQTs7O0FBR0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./app.js\n");
 
 /***/ }),
 
@@ -107,6 +107,18 @@ eval("\n\nvar _test = __webpack_require__(/*! ./modules/test */ \"./modules/test
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nexports.default = test;\nfunction test() {\n\treturn true;\n}\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9tb2R1bGVzL3Rlc3QuanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vc3JjL2pzL21vZHVsZXMvdGVzdC5qcz80ZjZjIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIHRlc3QoKSB7XHJcblx0cmV0dXJuIHRydWU7XHJcbn0iXSwibWFwcGluZ3MiOiI7Ozs7O0FBQUE7QUFBQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./modules/test.js\n");
+
+/***/ }),
+
+/***/ "./modules/test2.js":
+/*!**************************!*\
+  !*** ./modules/test2.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar One = exports.One = function One() {\n\t_classCallCheck(this, One);\n\n\tthis.str = 'test2';\n\tconsole.log(this.str);\n};\n\nvar Two = exports.Two = function Two() {\n\t_classCallCheck(this, Two);\n\n\tthis.str = 'test3';\n\tconsole.log(this.str);\n};\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9tb2R1bGVzL3Rlc3QyLmpzLmpzIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vL3NyYy9qcy9tb2R1bGVzL3Rlc3QyLmpzP2Q3MGEiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNsYXNzIE9uZSB7XHJcblx0Y29uc3RydWN0b3IoKSB7XHJcblx0XHR0aGlzLnN0ciA9ICd0ZXN0Mic7XHJcblx0XHRjb25zb2xlLmxvZyh0aGlzLnN0cilcclxuXHR9XHJcbn1cclxuXHJcbmV4cG9ydCBjbGFzcyBUd28ge1xyXG5cdGNvbnN0cnVjdG9yKCkge1xyXG5cdFx0dGhpcy5zdHIgPSAndGVzdDMnO1xyXG5cdFx0Y29uc29sZS5sb2codGhpcy5zdHIpO1xyXG5cdH1cclxufSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBQTtBQUNBO0FBQ0E7QUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUVBO0FBQ0E7QUFDQTtBQUFBO0FBQ0E7QUFDQSIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./modules/test2.js\n");
 
 /***/ })
 

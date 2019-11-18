@@ -14,7 +14,7 @@ const handler = (err, stats, cb) => {
         notify.onError({
             title: 'Webpack Error',
             message: '<%= error.message %>',
-            sound: 'Submarine'
+            // sound: 'Submarine'
         }).call(null, errors[0]);
     }
 
@@ -24,7 +24,7 @@ const handler = (err, stats, cb) => {
                 errors: false
         }));
         
-    server.server.reload();
+		server.server.reload();
     if (typeof cb === 'function') cb();
 }
 

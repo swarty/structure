@@ -22,7 +22,8 @@ export function initMap(){
 	
 			const b = document.querySelector('body');
 			const s = document.createElement("script");
-			s.src = 'https://maps.googleapis.com/maps/api/js?key=*********************&amp;libraries=places';
+			s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCJzKZjPJCzXMrH9yzVVffDgaI7oJf_Gqw&amp;libraries=places';
+			s.setAttribute('async', true);
 			b.appendChild(s);
 			s.onload = function(){
 				map();
@@ -31,8 +32,8 @@ export function initMap(){
 		
 		function map() {
 			const mapNode = document.querySelector('#map'),
-					lat = mapNode.dataset.lat,
-					lng = mapNode.dataset.lng,
+					lat = mapNode.dataset.lat || 50.4475748,
+					lng = mapNode.dataset.lng || 30.5244409,
 					icon = mapNode.dataset.mapIcon;
 			const mapOptions = {
 							zoom: 16,
@@ -55,6 +56,11 @@ export function initMap(){
 						});
 		}
 
-		window.IntersectionObserver && createObserver() || loadMap();
+		
+		if(window.IntersectionObserver){
+			createObserver();
+		} else {
+			loadMap();
+		}
 	}
 }

@@ -1,4 +1,4 @@
-export function bodyOverflow(modal, status) {
+export default function bodyOverflow(modal, status) {
 	const body = document.querySelector('body'),
 				html = document.querySelector('html');
 

@@ -2,6 +2,10 @@ import test from './modules/test';
 import {One, Two} from './modules/test2';
 
 
+import './lib/lazy-load';
+
+
+
 
 function onDomLoad() {
 	console.log(test());

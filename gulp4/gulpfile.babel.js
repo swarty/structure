@@ -9,12 +9,15 @@ gulp.task('copy', getTaskBuild('copy'));
 gulp.task('server', () => getTaskBuild('server'));
 gulp.task('nunjucks', () => getTaskBuild('nunjucks'));
 gulp.task('sass', () => getTaskBuild('sass'));
-// gulp.task('sprite:svg', () => getTaskBuild('sprite-svg'));
+gulp.task('svg', () => getTaskBuild('svg'));
+gulp.task('images', () => getTaskBuild('images'));
 gulp.task('webpack', getTaskBuild('webpack'));
 
 gulp.task('copy:watch', getTaskWatch('copy'));
 gulp.task('nunjucks:watch', getTaskWatch('nunjucks'));
 gulp.task('sass:watch', getTaskWatch('sass'));
+gulp.task('svg:watch', getTaskWatch('svg'));
+gulp.task('images:watch', getTaskWatch('images'));
 gulp.task('webpack:watch', getTaskWatch('webpack'));
 
 const setmodeProd = done => {
@@ -34,9 +37,11 @@ gulp.task(
   gulp.series(
     setmodeProd,
     'clean',
-    'sass',
-    'nunjucks',
-    'webpack',
+		'sass',
+		'svg',
+		'nunjucks',
+		'images',
+		'webpack',
     'copy'
   )
 );
@@ -46,9 +51,11 @@ gulp.task(
   gulp.series(
     setmodeDev,
     'clean',
-    'sass',
-    'nunjucks',
-    'webpack',
+		'sass',
+		'svg',
+		'nunjucks',
+		'images',
+		'webpack',
     'copy'
   )
 );
@@ -56,10 +63,11 @@ gulp.task(
 gulp.task(
   'watch',
   gulp.parallel(
-    'copy:watch',
-    'nunjucks:watch',
-    // 'sprite:svg:watch',
-    'webpack:watch',
+		'copy:watch',
+		'svg:watch',
+		'nunjucks:watch',
+		'images:watch',
+		'webpack:watch',
     'sass:watch'
   )
 );

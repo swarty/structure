@@ -1,0 +1,41 @@
+import gulp from 'gulp';
+import config from '../config.js';
+
+import imagemin from 'gulp-imagemin';
+import imageminMozjpeg from 'imagemin-mozjpeg';
+import imageminPngquant from 'imagemin-pngquant';
+
+gulp.task('images', () => gulp
+  .src([
+    config.src.img + '/**/*.{jpg,png,jpeg,svg,gif}',
+    '!' + config.src.img + '/svgo/**/*.*'
+	])
+	.pipe(imagemin([
+		imageminMozjpeg({
+				quality: 85,
+				progressive: true,
+				buffer: true
+		}),
+		imageminPngquant({
+			quality: [0.6, 0.8],
+			input: 'Buffer'
+		}),
+		imagemin.svgo({
+			plugins: [
+				{removeViewBox: false},
+				{removeEditorsNSData: true},
+				{cleanupIDs: true},
+				{removeEmptyAttrs: true},
+				{inlineStyles: true}
+			]
+		})
+	]))
+  .pipe(gulp.dest(config.dest.img))
+);
+
+
+const build = gulp => gulp.series('images');
+const watch = gulp => () => gulp.watch(config.src.img + '/*', gulp.parallel('images'));
+
+module.exports.build = build;
+module.exports.watch = watch;

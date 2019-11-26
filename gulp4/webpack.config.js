@@ -5,13 +5,13 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 function createConfig(env) {
   let isProduction,
-    webpackConfig;
+		webpackConfig;
 
   if (env === undefined) {
     env = process.env.NODE_ENV;
   }
 
-  isProduction = env === 'production';
+	isProduction = env === 'production';
 
   webpackConfig = {
     mode: isProduction?'production':'development',

@@ -1,13 +1,14 @@
 import del from 'del';
-import util from 'gulp-util';
+import color from 'ansi-colors';
+import log from 'fancy-log';
 import config from '../config';
 
 const build = () => {
   return function () {
     return del([
       config.dest.root
-    ])
-    .then(paths => util.log('Deleted:', util.colors.magenta(paths.join('\n'))))
+		])
+		.then(paths => log('Deleted:', color.magenta(paths.join('\n'))))
   };
 };
 

@@ -1,7 +1,11 @@
 import gulp from 'gulp';
 import browseeSync from 'browser-sync';
-import util from  'gulp-util';
 import config  from '../config';
+
+
+// import argv from 'minimist';
+// const lal = argv;
+// console.dir(argv)
 
 const server = browseeSync.create();
 
@@ -22,15 +26,18 @@ gulp.task('server', done => {
       config.dest.css + '/*.css',
       config.dest.img + '/**/*'
     ],
-    port: util.env.port || 8080,
+		ui: false,
+		port: 8080,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,
     logFileChanges: true,
-    open: Boolean(util.env.open),
+    // 
     notify: false,
-    ghostMode: false,
-    online: Boolean(util.env.tunnel),
-    tunnel: util.env.tunnel || null
+		ghostMode: false,
+		// if need to make connection by wifi
+		open: 'local',  // 'tunnel' or 'local' or 'external
+    online: false, // true
+    tunnel: false // true
   });
   done();
 });

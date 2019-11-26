@@ -1,10 +1,6 @@
+import util from 'gulp-util';
 
-import log from 'fancy-log';
-import color from 'ansi-colors';
-import argv from 'minimist';
-const argvConverted = process.argv.slice(2);
-
-const production = argvConverted.production || argvConverted.prod || argvConverted.indexOf('build') !== -1 || false;
+const production = util.env.production || util.env.prod || util.env._.indexOf('build') !== -1 || false;
 
 const destPath = 'build';
 
@@ -53,10 +49,10 @@ const config = {
     },
 
     logEnv: function() {
-				log(
+        util.log(
           'Environment:',
-          color.white.bgRed(' ' + process.env.NODE_ENV + ' ')
-        );
+          util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' ')
+				);
     },
 
     errorHandler: require('./util/handle-errors')

@@ -23,16 +23,13 @@ Task name          | Description
 ### Other tasks
 Task name          | Description                                                      
 :------------------|:----------------------------------
-`sass` 	         | compile .sass/.scss to .css. We also use [postcss](https://github.com/postcss/postcss) for [autoprefixer](https://github.com/postcss/autoprefixer) and [Lost](https://github.com/peterramsing/lost), so feel free to include other awesome postcss [plugins](https://github.com/postcss/postcss#plugins) when needed
+`sass` 	           | compile .sass/.scss to .css. We also use [postcss](https://github.com/postcss/postcss) for [autoprefixer](https://github.com/postcss/autoprefixer) and [Lost](https://github.com/peterramsing/lost), so feel free to include other awesome postcss [plugins](https://github.com/postcss/postcss#plugins) when needed
 `webpack`          | compile .js sources into bundle file
 `copy`             | copy common files from `./src` path to `./build` path
 `swig`             | compile [swig](http://paularmstrong.github.io/swig/)  templates
 `nunjucks`         | compile Mozilla's awesome [nunjucks](https://mozilla.github.io/nunjucks/) templates
-`jade`             | compile [jade](http://jade-lang.com/) templates
 `svgo`             | optimize svg files with [svgo](https://github.com/svg/svgo)
-`iconfont`         | compile iconfonts from svg sources
-`sprite:svg`       | create svg symbol sprites ([css-tricks](https://css-tricks.com/svg-sprites-use-better-icon-fonts/))
-`sprite:png`       | create png sprites
+`images`           | optimized images
 `server`           | run dev-server powered by [BrowserSync](https://www.browsersync.io/)
 `clean`            | remove `./build` folder
 `list-pages`       | create index file with links to all project pages
@@ -53,8 +50,5 @@ You can also use [npm scripts](https://docs.npmjs.com/misc/scripts):
 
 * `npm run start` - same as `gulp default`.
 * `npm run build` - same as `gulp build`.
-* `npm run ghpages` to push only `./build` folder to **gh-pages** branch on github (very useful for previews).
 * `npm run lint` - linting javascript with **eslint**.
 * `npm run lint-fix` - fix as many issues as possible relatives to **eslint** settings.
-
-

@@ -2,11 +2,26 @@
 <!-- title: genn.org 🅸🅸🅸🆇 -->
 title: swarty
 ---
+
+
 {% extends "layouts/_layout.html" %}
+{% import "data/data.html" as data1 %}
 
 {% block content %}
 
 	<h1>block content</h1>
+
+	<ul>
+		{% for test in data1.list1 %}
+			<li>{{test.title}}</li>
+		{% endfor %}
+	</ul>
+
+		<ul>
+		{% for test in data1.list2 %}
+			<li>{{test.title}}</li>
+		{% endfor %}
+	</ul>
 
 	<a href="./about.html">about page</a>
 

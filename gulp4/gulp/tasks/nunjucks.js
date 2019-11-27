@@ -6,13 +6,17 @@ import changed from 'gulp-changed';
 import prettify from 'gulp-prettify';
 import frontMatter from 'gulp-front-matter';
 import config from '../config';
+import color from 'ansi-colors';
+import log from 'fancy-log';
+
+
+nunjucksRender.nunjucks.configure({
+	watch: false,
+	trimBlocks: true,
+	lstripBlocks: false
+});
 
 const renderHtml = onlyChanged => {
-  nunjucksRender.nunjucks.configure({
-    watch: false,
-    trimBlocks: true,
-    lstripBlocks: false
-  });
 
   return gulp
     .src([config.src.templates + '/**/[^_]*.html'])
@@ -23,7 +27,13 @@ const renderHtml = onlyChanged => {
     .pipe(frontMatter({ property: 'data' }))
     .pipe(nunjucksRender({
         PRODUCTION: config.production,
-        path: [config.src.templates]
+				path: [config.src.templates],
+				envOptions: {
+					tags: {
+						variableStart: '{$',
+						variableEnd: '$}'
+					}
+				}
     }))
     .pipe(prettify({
         indent_size: 2,

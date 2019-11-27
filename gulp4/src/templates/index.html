@@ -9,18 +9,20 @@ title: swarty
 
 {% block content %}
 
+	<div id="lal">
+		{{ message }}
+	</div>
+
 	<h1>block content</h1>
 
 	<ul>
 		{% for test in data1.list1 %}
-			<li>{{test.title}}</li>
+			<li>{$ test.title $}</li>
 		{% endfor %}
 	</ul>
 
-		<ul>
-		{% for test in data1.list2 %}
-			<li>{{test.title}}</li>
-		{% endfor %}
+	<ul>
+		<li>{$ data1.list2.lal $}</li>
 	</ul>
 
 	<a href="./about.html">about page</a>

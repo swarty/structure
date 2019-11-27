@@ -1,5 +1,6 @@
 import test from './modules/test';
 import {One, Two} from './modules/test2';
+import './modules/vue';
 
 
 import './lib/lazy-load';

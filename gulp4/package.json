@@ -11,9 +11,6 @@
   "lint-staged": {
     "src/templates/**/*.html": [
       "htmlhint --config .htmlhintrc"
-    ],
-    "src/sass/**/*.sass": [
-      "htmlhint --config .sass-lint.yml"
     ]
   },
   "authors": "Modify by github.com/swarty   Coderiver <html@coderiver.com.ua>",

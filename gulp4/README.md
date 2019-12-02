@@ -28,7 +28,6 @@ Task name          | Description
 `copy`             | copy common files from `./src` path to `./build` path
 `swig`             | compile [swig](http://paularmstrong.github.io/swig/)  templates
 `nunjucks`         | compile Mozilla's awesome [nunjucks](https://mozilla.github.io/nunjucks/) templates
-`svgo`             | optimize svg files with [svgo](https://github.com/svg/svgo)
 `images`           | optimized images
 `server`           | run dev-server powered by [BrowserSync](https://www.browsersync.io/)
 `clean`            | remove `./build` folder

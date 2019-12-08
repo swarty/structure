@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer';
 import config from '../config';
 import csso from 'postcss-csso';
 import gcmq from 'gulp-group-css-media-queries';
+import plumber from 'gulp-plumber';
 
 const isMax = mq => /max-width/.test(mq);
 const isMin = mq => /min-width/.test(mq);
@@ -47,7 +48,10 @@ const processors = [
 ];
 
 gulp.task('sass', () => gulp
-  .src(config.src.sass + '/*.{sass,scss}')
+	.src(config.src.sass + '/*.{sass,scss}')
+	.pipe(plumber({
+		errorHandler: config.errorHandler
+	}))
   .pipe(sourcemaps.init())
   .pipe(sass({
       outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed

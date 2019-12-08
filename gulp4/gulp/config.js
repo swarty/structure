@@ -32,7 +32,8 @@ const config = {
         iconsFont    : 'src/icons',
         fonts        : 'src/fonts',
         lib          : 'src/lib',
-        data         : 'src/data'
+				data         : 'src/data',
+				media        : 'src/video'
     },
     dest: {
         root : destPath,
@@ -42,7 +43,8 @@ const config = {
         img  : destPath + '/img',
         fonts: destPath + '/fonts',
         lib  : destPath + '/lib',
-        data : destPath + '/data'
+        data : destPath + '/data',
+				media: destPath + '/video'
     },
 
     setEnv: function(env) {

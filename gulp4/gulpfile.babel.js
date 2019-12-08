@@ -11,6 +11,7 @@ gulp.task('nunjucks', () => getTaskBuild('nunjucks'));
 gulp.task('sass', () => getTaskBuild('sass'));
 gulp.task('svg', () => getTaskBuild('svg'));
 gulp.task('images', () => getTaskBuild('images'));
+// gulp.task('folders', () => getTaskBuild('folders'));
 gulp.task('webpack', getTaskBuild('webpack'));
 
 gulp.task('copy:watch', getTaskWatch('copy'));
@@ -18,6 +19,7 @@ gulp.task('nunjucks:watch', getTaskWatch('nunjucks'));
 gulp.task('sass:watch', getTaskWatch('sass'));
 gulp.task('svg:watch', getTaskWatch('svg'));
 gulp.task('images:watch', getTaskWatch('images'));
+// gulp.task('folders:watch', getTaskWatch('folders'));
 gulp.task('webpack:watch', getTaskWatch('webpack'));
 
 const setmodeProd = done => {
@@ -42,7 +44,8 @@ gulp.task(
 		'nunjucks',
 		'images',
 		'webpack',
-    'copy'
+		'copy',
+		// 'folders'
   )
 );
 
@@ -56,7 +59,8 @@ gulp.task(
 		'nunjucks',
 		'images',
 		'webpack',
-    'copy'
+    'copy',
+		// 'folders'
   )
 );
 
@@ -68,7 +72,8 @@ gulp.task(
 		'nunjucks:watch',
 		'images:watch',
 		'webpack:watch',
-    'sass:watch'
+    'sass:watch',
+		// 'folders:watch'
   )
 );
 

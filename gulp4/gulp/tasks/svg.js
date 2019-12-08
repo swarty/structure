@@ -2,8 +2,6 @@ import gulp from 'gulp';
 import config from '../config.js';
 
 import imagemin from 'gulp-imagemin';
-import imageminMozjpeg from 'imagemin-mozjpeg';
-import imageminPngquant from 'imagemin-pngquant';
 
 
 gulp.task('svg', () => gulp

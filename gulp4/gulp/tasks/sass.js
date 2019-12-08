@@ -3,7 +3,6 @@ import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
-// import mqpacker from 'css-mqpacker';
 import config from '../config';
 import csso from 'postcss-csso';
 import gcmq from 'gulp-group-css-media-queries';
@@ -44,10 +43,6 @@ const processors = [
 		},
     cascade: false
   }),
-  // require('lost'),
-  // mqpacker({
-  //   sort: sortMediaQueries
-  // }),
   csso
 ];
 

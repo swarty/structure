@@ -7,6 +7,7 @@ import config from '../config';
 import csso from 'postcss-csso';
 import gcmq from 'gulp-group-css-media-queries';
 import plumber from 'gulp-plumber';
+import wait from 'gulp-wait';
 
 const isMax = mq => /max-width/.test(mq);
 const isMin = mq => /min-width/.test(mq);
@@ -49,6 +50,7 @@ const processors = [
 
 gulp.task('sass', () => gulp
 	.src(config.src.sass + '/*.{sass,scss}')
+	.pipe(wait(300))
 	.pipe(plumber({
 		errorHandler: config.errorHandler
 	}))

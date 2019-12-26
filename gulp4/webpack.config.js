@@ -67,7 +67,21 @@ function createConfig(env) {
       },
     },
     optimization :{
-      minimize: isProduction
+			minimize: isProduction,
+			// splitChunks: {
+      //   cacheGroups: {
+      //     default: false,
+      //     vendors: false,
+      //     // vendor chunk
+      //     vendor: {
+      //       filename: 'vendor.bundle.js',
+      //       // sync + async chunks
+      //       chunks: 'all',
+      //       // import file path containing node_modules
+      //       test: /node_modules/
+      //     }
+      //   }
+      // }
     },
     module: {
       rules: [

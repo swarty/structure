@@ -9,7 +9,8 @@ function lazyLoad(){
 	function onLoad() {
 		window.lazy = new LazyLoad({
 			elements_selector: ".lazy",
-			load_delay: 0
+			load_delay: 0,
+			threshold: 300
 		});
 	}
 

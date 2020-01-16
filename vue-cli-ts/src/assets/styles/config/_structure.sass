@@ -1,0 +1,102 @@
+// Add your settings here
+
+
+*
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+
+html, body
+	position: relative
+	height: 100%
+
+.wrapper
+	min-height: 100vh
+	display: flex
+	flex-direction: column
+	align-items: stretch
+	justify-content: flex-start
+
+footer
+	margin: auto 0 0
+
+// need to add "html {overflow: hidden}",  when disable scroll -> for ios
+
+.body-overflow
+	overflow: hidden
+	overscroll-behavior-y: none
+	-webkit-overflow-scrolling: auto
+
+
+.container
+	max-width: 70vw
+	width: 100%
+	position: relative
+	margin: 0 auto
+	padding: 0 15px
+	+r(1499)
+		max-width: 67vw
+	
+	+r(1365)
+		padding: 0 30px
+	
+	+r(767)
+		padding: 0 20px
+
+
+.visibility--hidden
+	position: absolute
+	clip: rect(0 0 0 0)
+	width: 1px
+	height: 1px
+	margin: -1px
+
+.sr-only // content made available only to screen readers
+	position: absolute
+	clip: rect(1px, 1px, 1px, 1px)
+	clip-path: inset(50%)
+	width: 1px
+	height: 1px
+	overflow: hidden
+	padding: 0
+	border: 0
+	white-space: nowrap
+
+
+button, a
+	outline: none
+
+
+a
+	text-decoration: none
+	color: inherit
+	background-color: transparent
+	-webkit-text-decoration-skip: objects
+
+
+b,
+strong
+	font-size: inherit
+	font-weight: inherit
+
+
+b,
+strong
+	font-weight: bolder
+
+
+ul,ol
+	list-style: none
+
+
+i
+	font-family: inherit
+	font-size: inherit
+	font-weight: inherit
+
+
+.fw
+	display: flex
+
+
+

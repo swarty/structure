@@ -27,7 +27,45 @@ const rect3 = <Rect>{}
 
 
 
-// polymorphizm in ts
+// polymorphizm in ts, objects
 interface RectWithArea extends Rect {
 	getArea: () => number
+}
+
+const rect4: RectWithArea = {
+	id: 123,
+	size: {
+		width: 5,
+		height: 5
+	},
+	getArea(): number {
+		return this.size.width * this.size.height;
+	}
+}
+
+
+interface Styles {
+	[key: string]: string
+}
+
+const css: Styles = {
+	border: '1px solid black',
+	marginTop: '2px',
+	borderRadius: '5px'
+}
+
+
+// #3 Classes
+interface IClock {
+	time: Date,
+	setTime(date: Date): void
+}
+
+
+class Clock implements IClock {
+	time: Date = new Date();
+
+	setTime(date: Date): void {
+		this.time = date;
+	}
 }

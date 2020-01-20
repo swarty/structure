@@ -19,7 +19,7 @@ const stringArray: string[] = ['lal', 'lol'];
 // v2
 const stringArra2: Array<string> = ['lal', 'lol'];
 
-
+ 
 // tuple (combine types)
 const newArray: [string, number] = ['kaa', 1];
 
@@ -41,7 +41,7 @@ const id2: ID = 'lal';
 
 // functions and types that return
 function example(str: string): void {
-	console.log(str)
+	console.log(str);
 }
 function example2(str: string): string {
 	return str;
@@ -50,3 +50,11 @@ function example2(str: string): string {
 function example3(str: string): never {
 	throw new Error(str);
 }
+
+
+let someValue: any = "this is a string";
+let strLength1: number = (<string>someValue).length;
+let strLength2: number = (someValue as string).length;
+
+
+const arr: any[] = ['lal', 1, true];

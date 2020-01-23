@@ -2,14 +2,13 @@
   "name": "my-project",
   "version": "0.0.1",
   "description": "My project description",
-  "main": "app.js",
-  "repository": "git@github.com:my-user/my-repo.git",
+  "private": true,
   "license": "MIT",
   "scripts": {
-    "gitlab": "rimraf dist && webpack --config ./config/webpack.config.js --env.NODE_ENV=gitlabhost --mode=production --progress",
-    "build": "rimraf dist && webpack --config ./config/webpack.config.js --env.NODE_ENV=production --mode=production --progress",
-    "dev-network": "webpack-dev-server --config ./config/webpack.config.js --env.NODE_ENV=development --mode=development --progress --open --host 0.0.0.0",
-    "serve": "webpack-dev-server --config ./config/webpack.config.js -env.NODE_ENV=development --mode=development --progress --open"
+    "gitlab": "rimraf dist && webpack --config ./config/webpack.config.js --env.NODE_ENV=gitlabhost --mode=production",
+    "build": "rimraf dist && webpack --config ./config/webpack.config.js --env.NODE_ENV=production --mode=production",
+    "dev-network": "webpack-dev-server --config ./config/webpack.config.js --env.NODE_ENV=development --mode=development --open --host 0.0.0.0",
+    "serve": "webpack-dev-server --config ./config/webpack.config.js --env.NODE_ENV=development --mode=development --open"
   },
   "browserslist": "> 0.25%",
   "devDependencies": {
@@ -26,8 +25,8 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "glslify-loader": "^2.0.0",
-		"html-webpack-plugin": "^3.1.0",
-		"inline-svg": "^2.2.3",
+    "html-webpack-plugin": "^3.1.0",
+    "inline-svg": "^2.2.3",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.1.3",
@@ -44,5 +43,9 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.0",
     "webpack-notifier": "^1.6.0"
+  },
+  "dependencies": {
+    "gsap": "^3.0.5",
+    "lodash.throttle": "^4.1.1"
   }
 }

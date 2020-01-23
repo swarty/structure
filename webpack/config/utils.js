@@ -21,7 +21,7 @@ exports.pages = function (env, folder = '') {
 			minify: false
     };
 
-    if (env === 'development') {
+    if (env['NODE_ENV'] === 'development') {
       options.minify = {
         removeComments: true,
         collapseWhitespace: false,

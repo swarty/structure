@@ -11,15 +11,32 @@ const TerserPlugin = require('terser-webpack-plugin');
 const utils = require('./utils')
 const plugins = require('../postcss.config');
 
-
+// style loader
+const styleLoaders = [
+	// { loader: MiniCssExtractPlugin.loader, options: {hmr: true, reloadAll: true}},
+	MiniCssExtractPlugin.loader,
+	{
+		loader: 'css-loader',
+		options: {
+			sourceMap: true,
+			minimize: true,
+		},
+	}
+];
 
 
 // Configuration
 module.exports = env => {
 
-	const publicPath = env && env['NODE_ENV'] === 'gitlabhost'
-	? '/wholly-kaw/'
-	: '/';
+
+	// debug example;
+	// console.log("Process --------------   ", env['NODE_ENV'])
+	const environment = env['NODE_ENV'],
+				isDev = environment === 'development',
+				fileName = (src, ext) => isDev ? `${src}/[name].${ext}` : `${src}/[name].[hash:7].${ext}`,
+				publicPath = environment === 'gitlabhost'
+					? '/some-folder-name/'
+					: '/';
 
   return {
 		context: path.resolve(__dirname, '../src'),
@@ -29,12 +46,12 @@ module.exports = env => {
     output: {
       path: path.resolve(__dirname, '../dist'),
       publicPath: publicPath,
-			filename: 'assets/js/[name].[hash:7].bundle.js',
+			filename: fileName('assets/js', 'js'),
     },
     devServer: {
 			contentBase: path.resolve(__dirname, '../src'),
 			watchContentBase: true,
-			hot: true
+			// hot: true
     },
     resolve: {
       extensions: ['.js'],
@@ -42,7 +59,7 @@ module.exports = env => {
         source: path.resolve(__dirname, '../src'), // Relative path of src
         images: path.resolve(__dirname, '../src/assets/images'), // Relative path of images
 				fonts: path.resolve(__dirname, '../src/assets/fonts'), // Relative path of fonts
-				// fonts: path.resolve(__dirname, '../src/assets/media'), // Relative path of mediacontent
+				// media: path.resolve(__dirname, '../src/assets/media'), // Relative path of mediacontent
       }
     },
 
@@ -64,24 +81,12 @@ module.exports = env => {
 				
         {
           test: /\.css$/,
-          use: [
-            env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1,
-                sourceMap: true,
-                minimize: true,
-                colormin: false,
-              },
-            },
-          ],
+          use: styleLoaders
         },
         {
           test: /\.scss$/,
           use: [
-            env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, // creates style nodes from JS strings
-            { loader: 'css-loader', options: { importLoaders: 1, minimize: true, sourceMap: true, colormin: false } }, // translates CSS into CommonJS
+            ...styleLoaders,
             'postcss-loader',
             'sass-loader', // compiles Sass to CSS
           ],
@@ -97,25 +102,25 @@ module.exports = env => {
             }
           ]
 				},
-        {
-          test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
-          loader: 'file-loader',
-          options: {
-						name: `assets/images/[name].[hash:7].[ext]`,
-          }
-        },
+        // {
+        //   test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
+        //   loader: 'file-loader',
+        //   options: {
+				// 		name: `assets/images/[name].[ext]`,
+        //   }
+        // },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-						name: 'assets/fonts/[name].[hash:7].[ext]',
+						name: 'assets/fonts/[name].[ext]',
           }
         },
         {
           test: /\.(mp4)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-						name: 'assets/videos/[name].[hash:7].[ext]',
+						name: 'assets/videos/[name].[ext]',
           }
 				},
 				{
@@ -137,18 +142,15 @@ module.exports = env => {
         }),
       ],
       splitChunks: {
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          // vendor chunk
-          vendor: {
-            filename: 'assets/js/vendor.[hash:7].bundle.js',
-            // sync + async chunks
-            chunks: 'all',
-            // import file path containing node_modules
-            test: /node_modules/
-          }
-        }
+				cacheGroups: {
+					commons: {
+						test: /[\\/]node_modules[\\/]/,
+						// cacheGroupKey here is `commons` as the key of the cacheGroup
+						name: 'vendors',
+						chunks: 'all',
+						automaticNameDelimiter: '.',
+					}
+				}
       }
     },
 
@@ -158,8 +160,8 @@ module.exports = env => {
 				// { from: 'assets/media', to: 'assets/media' }
       ]),
       new MiniCssExtractPlugin({
-        filename: 'assets/css/[name].[hash:7].bundle.css',
-        chunkFilename: 'assets/css/[name].[hash:7].css',
+        filename: fileName('assets/css', 'css'),
+        chunkFilename: isDev ? 'assets/css/vendor.css' : 'assets/css/vendor.[hash:7].css',
       }),
 
 

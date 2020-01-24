@@ -3,7 +3,7 @@ const log = console.log,
 			should = require('chai').should(),
 			_ = require('lodash');
 
-import test from '../modules/test';
+import test from '../modules/test.ts';
 
 
 describe('#mocha basics', () => {

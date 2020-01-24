@@ -7,11 +7,13 @@ function lazyLoad(){
 	body.appendChild(scr);
 
 	function onLoad() {
+		/* eslint-disable */
 		window.lazy = new LazyLoad({
 			elements_selector: ".lazy",
 			load_delay: 0,
 			threshold: 300
 		});
+		/* eslint-enable */
 	}
 
 	scr.addEventListener('load', onLoad);

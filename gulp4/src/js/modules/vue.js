@@ -1,9 +1,13 @@
+import Vue from 'vue/dist/vue.esm';
+
 Vue.config.devtools = true;
 
-new Vue({
+const vueApp = new Vue({
 	// delimiters: ['${', '}'],
   el: '#lal',
   data: {
     message: 'Hello Vue!'
   }
 })
+
+console.log(vueApp)

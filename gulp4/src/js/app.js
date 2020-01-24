@@ -1,4 +1,4 @@
-import test from './modules/test';
+import test from './modules/test.ts';
 import {One, Two} from './modules/test2';
 import './modules/vue';
 
@@ -9,7 +9,7 @@ import './lib/lazy-load';
 
 
 function onDomLoad() {
-	console.log(test());
+	console.log(test('lal'));
 	console.log(new One(), new Two())
 }
 
@@ -23,5 +23,7 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
     if(e.scale !== 1) {
       e.preventDefault();
     }
-  }, false);
+	}, false);
+	
+	const testNew = 'lalla';
 }

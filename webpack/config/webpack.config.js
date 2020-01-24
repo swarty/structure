@@ -5,24 +5,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const babelOptions = require('./babel');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Files
 const utils = require('./utils')
 const plugins = require('../postcss.config');
-
-// style loader
-const styleLoaders = [
-	// { loader: MiniCssExtractPlugin.loader, options: {hmr: true, reloadAll: true}},
-	MiniCssExtractPlugin.loader,
-	{
-		loader: 'css-loader',
-		options: {
-			sourceMap: true,
-			minimize: true,
-		},
-	}
-];
 
 
 // Configuration
@@ -30,7 +18,7 @@ module.exports = env => {
 
 
 	// debug example;
-	// console.log("Process --------------   ", env['NODE_ENV'])
+	// console.log("Process --------------   ", process)
 	const environment = env['NODE_ENV'],
 				isDev = environment === 'development',
 				fileName = (src, ext) => isDev ? `${src}/[name].${ext}` : `${src}/[name].[hash:7].${ext}`,
@@ -38,10 +26,81 @@ module.exports = env => {
 					? '/some-folder-name/'
 					: '/';
 
+	// style loader
+	const styleLoaders = _ => {
+		return [
+			{
+				loader: MiniCssExtractPlugin.loader,
+				options: {
+					sourceMap: isDev,
+					hmr: true,
+					reloadAll: true,
+					minimize: true
+				},
+			},
+			{
+				loader: 'css-loader',
+				options: {
+					sourceMap: isDev
+				}
+			}
+		];
+	}
+
+
+	const jsLoaders = _ => {
+		const loaders = [
+			{
+				loader: 'babel-loader',
+				options: babelOptions(false)
+			}
+		];
+
+		if(isDev) loaders.push('eslint-loader');
+
+		return loaders;
+	}
+
+
+	const plugins = _ => {
+		const base = [
+			new CopyWebpackPlugin([
+				{ from: 'assets/images', to: 'assets/images' }
+			]),
+			new MiniCssExtractPlugin({
+				filename: fileName('assets/css', 'css'),
+				chunkFilename: isDev ? 'assets/css/vendor.css' : 'assets/css/vendor.[hash:7].css',
+			}),
+	
+	
+			// // Desktop page
+			new HtmlWebpackPlugin({
+				filename: 'index.html',
+				template: 'views/index.pug',
+				inject: true
+			}),
+	
+			...utils.pages(env),
+	
+			new WebpackNotifierPlugin({
+				title: 'Your project'
+			})
+		];
+
+		if(!isDev) base.push(new BundleAnalyzerPlugin({
+			analyzerMode: 'static',
+			openAnalyzer: false,
+		}));
+		
+
+		return base;
+	}
+
+
   return {
 		context: path.resolve(__dirname, '../src'),
     entry: {
-      app: './app.js'
+			app: ['@babel/polyfill', './app.js']
     },
     output: {
       path: path.resolve(__dirname, '../dist'),
@@ -51,15 +110,16 @@ module.exports = env => {
     devServer: {
 			contentBase: path.resolve(__dirname, '../src'),
 			watchContentBase: true,
-			// hot: true
-    },
+			hot: true
+		},
+		devtool: isDev ? 'source-map': '',
+		stats: 'minimal',
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.js', '.ts'],
       alias: {
         source: path.resolve(__dirname, '../src'), // Relative path of src
         images: path.resolve(__dirname, '../src/assets/images'), // Relative path of images
 				fonts: path.resolve(__dirname, '../src/assets/fonts'), // Relative path of fonts
-				// media: path.resolve(__dirname, '../src/assets/media'), // Relative path of mediacontent
       }
     },
 
@@ -70,25 +130,39 @@ module.exports = env => {
       rules: [
         {
           test: /\.js$/,
+					exclude: [/node_modules/],
+					use: jsLoaders()
+				},
+				{
+          test: /\.ts$/,
           exclude: [/node_modules/],
           use: [
             {
               loader: 'babel-loader',
-              options: { presets: ['@babel/preset-env'] }
+              options: babelOptions(true)
             }
           ]
 				},
-				
         {
           test: /\.css$/,
-          use: styleLoaders
+          use: styleLoaders()
         },
         {
           test: /\.scss$/,
           use: [
-            ...styleLoaders,
-            'postcss-loader',
-            'sass-loader', // compiles Sass to CSS
+						...styleLoaders(),
+						{
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: isDev
+							}
+						},
+            {
+							loader: 'sass-loader',
+							options: {
+								sourceMap: isDev
+							}
+						}
           ],
 				},
         {
@@ -134,13 +208,6 @@ module.exports = env => {
       ]
     },
     optimization: {
-      minimizer: [
-        new TerserPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: true,
-        }),
-      ],
       splitChunks: {
 				cacheGroups: {
 					commons: {
@@ -154,29 +221,6 @@ module.exports = env => {
       }
     },
 
-    plugins: [
-      new CopyWebpackPlugin([
-				{ from: 'assets/images', to: 'assets/images' },
-				// { from: 'assets/media', to: 'assets/media' }
-      ]),
-      new MiniCssExtractPlugin({
-        filename: fileName('assets/css', 'css'),
-        chunkFilename: isDev ? 'assets/css/vendor.css' : 'assets/css/vendor.[hash:7].css',
-      }),
-
-
-      // // Desktop page
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: 'views/index.pug',
-        inject: true
-      }),
-
-			...utils.pages(env),
-
-      new WebpackNotifierPlugin({
-        title: 'Your project'
-      })
-    ]
+    plugins: plugins()
   }
 };

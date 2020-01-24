@@ -4,9 +4,9 @@
   "scripts": {
     "gitlab": "gulp build --production",
     "build": "gulp build --production",
-    "serve": "gulp",
+    "serve": "gulp --development",
     "lint": "eslint --ignore-pattern 'src/js/lib/' --cache --format=node_modules/eslint-formatter-pretty src/js/",
-    "unit-test": "mocha --require babel-register src/js/tests/unit.test.js"
+    "unit-test": "mocha --require @babel/register src/js/tests/unit.test.js"
   },
   "lint-staged": {
     "src/templates/**/*.html": [
@@ -15,15 +15,15 @@
   },
   "authors": "Modify by github.com/swarty   Coderiver <html@coderiver.com.ua>",
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@babel/register": "^7.8.3",
     "ansi-colors": "^4.1.1",
     "autoprefixer": "^9.4.10",
-    "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "browser-sync": "^2.26.3",
     "chai": "^4.2.0",
@@ -54,6 +54,7 @@
     "gulp-prettify": "^0.5.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-wait": "^0.0.2",
     "htmlhint": "^0.11.0",
     "husky": "^1.3.1",
     "imagemin-mozjpeg": "^8.0.0",
@@ -78,9 +79,8 @@
     }
   },
   "dependencies": {
-    "charming": "^3.0.1",
     "gsap": "^2.1.3",
-    "gulp-wait": "^0.0.2",
-    "intersection-observer": "^0.7.0"
+    "intersection-observer": "^0.7.0",
+    "vue": "^2.6.11"
   }
 }

@@ -14,7 +14,6 @@ const handler = (err, stats, cb) => {
 	if (err) throw new gutil.PluginError('webpack', err);
 
 	if (errors.length > 0) {
-		console.dir('NEEEEEEEEW ERRORR!!', color.magenta('lalal'))
 		notify.onError({
 			title: 'Webpack Error',
 			message: '<%= error.message %>',

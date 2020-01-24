@@ -1,4 +1,4 @@
-import test from './modules/test.ts';
+import test from './modules/test';
 import {One, Two} from './modules/test2';
 import './modules/vue';
 

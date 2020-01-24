@@ -1,6 +1,6 @@
 {
   "name": "swarty",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "scripts": {
     "gitlab": "gulp build --production",
     "build": "gulp build --production",
@@ -16,15 +16,15 @@
   "authors": "Modify by github.com/swarty   Coderiver <html@coderiver.com.ua>",
   "devDependencies": {
     "@babel/core": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@babel/register": "^7.8.3",
+    "@babel/runtime": "^7.8.3",
     "ansi-colors": "^4.1.1",
     "autoprefixer": "^9.4.10",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-runtime": "^6.26.0",
+    "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.3",
     "chai": "^4.2.0",
     "css-mqpacker": "^7.0.0",

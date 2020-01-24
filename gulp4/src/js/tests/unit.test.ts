@@ -4,7 +4,7 @@ const log = console.log,
 			should = require('chai').should(),
 			_ = require('lodash');
 
-import test from '../modules/test.js';
+import test from '../modules/test';
 
 
 describe('#mocha basics', () => {

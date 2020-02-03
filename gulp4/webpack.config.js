@@ -4,6 +4,9 @@ const config = require('./gulp/config');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
+const supportedLocales = ['en', 'uk', 'ru'];
+
+
 function createConfig(env) {
   let isProduction,
 		webpackConfig;
@@ -29,7 +32,11 @@ function createConfig(env) {
       'source-map' : '',
 		stats: 'minimal',
     plugins: [
-      new webpack.NoEmitOnErrorsPlugin()
+			new webpack.NoEmitOnErrorsPlugin(),
+			new webpack.ContextReplacementPlugin(
+				/date\-fns[\/\\]/,
+				new RegExp(`[/\\\\\](${supportedLocales.join('|')})[/\\\\\]`)
+			)
     ],
     resolve: {
 			extensions: ['.js', '.ts'],

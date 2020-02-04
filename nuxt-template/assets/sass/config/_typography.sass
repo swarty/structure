@@ -1,0 +1,60 @@
++font-face('Montserrat-Thin', '../fonts/')
++font-face('Montserrat-Light', '../fonts/')
++font-face('Montserrat-Regular', '../fonts/')
++font-face('Montserrat-Medium', '../fonts/')
++font-face('Montserrat-SemiBold', '../fonts/')
+
+
+=mt
+	font-family: 'Montserrat-Thin', sans-serif
+
+
+=ml
+	font-family: 'Montserrat-Light', sans-serif
+
+
+=mr
+	font-family: 'Montserrat-Regular', sans-serif
+
+
+=mm
+	font-family: 'Montserrat-Medium', sans-serif
+
+
+=msb
+	font-family: 'Montserrat-SemiBold', sans-serif
+
+
+h1,h2,h3,h4,h5,h6,p, button,a,span,li
+	line-height: 1.2
+
+
+h1,h2,h3,h4,h5,h6,p
+	margin: 0
+	padding: 0
+	color: #1a2731
+	+r(767)
+		color: $black
+
+button, p, a, li
+	font-size: 16px
+	+mr
+
+h1,h2,h3,h4,h5,h6
+	+mm
+
+
+picture,
+img
+	max-width: 100%
+	height: auto
+	display: block
+
+
+img
+	.lazy
+		background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7)
+		&.loaded
+			background-image: none
+
+

@@ -4,7 +4,13 @@ const config = require('./gulp/config');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
-const supportedLocales = ['en', 'uk', 'ru'];
+const babelPlugins = [
+	"@babel/transform-runtime",
+	"date-fns"
+];
+const babelPresets = [
+	'@babel/preset-env'
+];
 
 
 function createConfig(env) {
@@ -33,10 +39,15 @@ function createConfig(env) {
 		stats: 'minimal',
     plugins: [
 			new webpack.NoEmitOnErrorsPlugin(),
+			// exclude languages from package, try to include needed languages
 			new webpack.ContextReplacementPlugin(
-				/date\-fns[\/\\]/,
-				new RegExp(`[/\\\\\](${supportedLocales.join('|')})[/\\\\\]`)
-			)
+				/date\-fns\/locale/,
+				/ru/
+			),
+			// new BundleAnalyzerPlugin({
+			// 	analyzerMode: 'static',
+			// 	openAnalyzer: true,
+			// })
     ],
     resolve: {
 			extensions: ['.js', '.ts'],
@@ -55,9 +66,8 @@ function createConfig(env) {
 						{
 							loader: 'babel-loader',
 							options: {
-								presets: [
-									'@babel/preset-env'
-								]
+								presets: babelPresets,
+								plugins: babelPlugins
 							}
 						},
 						{
@@ -75,9 +85,10 @@ function createConfig(env) {
 							loader: 'babel-loader',
 							options: {
 								presets: [
-									'@babel/preset-env',
+									...babelPresets,
 									'@babel/preset-typescript'
-								]
+								],
+								plugins: babelPlugins
 							}
 						}
 					]

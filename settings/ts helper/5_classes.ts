@@ -52,8 +52,6 @@ class Cat extends Animal {
 		// dont have access;
 		// this.go();
 	}
-
-
 	public setVoice(voice: string): void {
 		this.voice = voice;
 	}

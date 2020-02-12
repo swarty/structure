@@ -2,7 +2,8 @@
 const isDone: boolean = true;
 
 // numbers
-const someNumber: number = 12;
+let someNumber: number = 12;
+// s 
 const someNumber2: number = 3e10;
 const hex: number = 0xf00d;
 
@@ -11,6 +12,8 @@ const str: string = 'some string';
 
 // arrays numbered
 const numberedArray: number[] = [1, 2, 3, 4];
+
+
 // v2
 const numberedArray2: Array<number> = [1,2,3,4];
 
@@ -37,6 +40,9 @@ const someType2: myType = 'lolol';
 type ID = string | number;
 const id1: ID = 123;
 const id2: ID = 'lal';
+
+
+type SomeType = string | null | undefined;
 
 
 // functions and types that return

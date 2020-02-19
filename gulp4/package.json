@@ -6,8 +6,8 @@
     "build": "gulp build --production",
     "serve": "gulp --development",
     "lint": "eslint --ignore-pattern 'src/js/lib/' --cache --format=node_modules/eslint-formatter-pretty src/js/",
-    "unit-test:js": "mocha --require @babel/register src/js/tests/unit.test.js",
-    "unit-test:ts": "mocha -r ts-node/register src/js/tests/unit.test.ts"
+    "unit-test:js": "mocha --require @babel/register ./tests/unit.test.js",
+    "unit-test:ts": "mocha -r ts-node/register ./tests/unit.test.ts"
   },
   "lint-staged": {
     "src/templates/**/*.html": [

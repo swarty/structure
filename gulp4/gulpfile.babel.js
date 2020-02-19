@@ -77,5 +77,5 @@ gulp.task(
   )
 );
 
-// gulp.task('default', gulp.series(['build:dev', 'server', 'watch']));
-gulp.task('default', gulp.series(['server', 'watch']));
+gulp.task('default', gulp.series(['build:dev', 'server', 'watch']));
+// gulp.task('default', gulp.series(['server', 'watch']));

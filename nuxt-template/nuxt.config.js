@@ -7,8 +7,11 @@ export default {
   head: {
     title: process.env.npm_package_name || '',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+			{ charset: 'utf-8' },
+			{ 'http-equiv': 'X-UA-Compatible', content: 'IE=Edge' },
+			{ 'Cache-control': 'X-UA-Compatible', content: 'public' },
+			{ name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [

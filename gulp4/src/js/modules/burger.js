@@ -10,8 +10,6 @@ export default class Burger {
 	}
 
 	init() {
-		const that = this;
-
 		this.openButton.addEventListener('click', this.openMenu.bind(this));
 		this.closeButton.addEventListener('click', this.closeMenu.bind(this));
 	}

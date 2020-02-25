@@ -27,7 +27,7 @@ function createConfig(env) {
     mode: isProduction? 'production' : 'development',
     context: path.join(__dirname, config.src.js),
     entry: {
-      app: './app.js',
+      app: './app.ts',
     },
     output: {
       path: path.join(__dirname, config.dest.js),
@@ -35,7 +35,7 @@ function createConfig(env) {
       publicPath: 'js/',
     },
     devtool: isProduction ?
-      'source-map' : '',
+      '' : 'source-map',
 		stats: 'minimal',
     plugins: [
 			new webpack.NoEmitOnErrorsPlugin(),

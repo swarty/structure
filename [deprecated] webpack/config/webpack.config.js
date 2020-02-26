@@ -112,7 +112,7 @@ module.exports = env => {
 			watchContentBase: true,
 			hot: true
 		},
-		devtool: isDev ? 'source-map': '',
+		devtool: isDev ? 'source-map': 'source-map',
 		stats: 'minimal',
     resolve: {
       extensions: ['.js', '.ts'],

@@ -176,13 +176,6 @@ module.exports = env => {
             }
           ]
 				},
-        // {
-        //   test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
-        //   loader: 'file-loader',
-        //   options: {
-				// 		name: `assets/images/[name].[ext]`,
-        //   }
-        // },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           loader: 'file-loader',

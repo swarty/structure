@@ -8,8 +8,7 @@
     "gitlab": "rimraf dist && webpack --config ./config/webpack.config.js --env.NODE_ENV=gitlabhost --mode=production",
     "build": "rimraf dist && webpack --config ./config/webpack.config.js --env.NODE_ENV=production --mode=production",
     "dev-network": "webpack-dev-server --config ./config/webpack.config.js --env.NODE_ENV=development --mode=development --open --host 0.0.0.0",
-		"serve": "webpack-dev-server --config ./config/webpack.config.js --env.NODE_ENV=development --mode=development --open",
-		"stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
+		"serve": "webpack-dev-server --config ./config/webpack.config.js --env.NODE_ENV=development --mode=development --open"
   },
   "browserslist": "> 0.25%",
   "devDependencies": {

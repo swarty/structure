@@ -1,6 +1,11 @@
 ---
-<!-- title: genn.org 🅸🅸🅸🆇 -->
 title: swarty
+
+descrItem: lalaoalaoalal
+array: ['lalal', 'lalal', 'lololo']
+object: {
+	someVal: 'asasas'
+}
 ---
 
 
@@ -13,7 +18,8 @@ title: swarty
 		{{ message }}
 	</div>
 
-	<h1>block content</h1>
+	<h1>{$ descrItem $}</h1>
+	<h2>{$ object.someVal $}</h2>
 
 	<ul>
 		{% for test in data1.list1 %}
@@ -22,11 +28,17 @@ title: swarty
 	</ul>
 
 	<ul>
-		<li>{$ data1.list2.lal $}</li>
+		{% for item in array %}
+			<li>{$ item $}</li>
+		{% endfor %}
 	</ul>
 
 	<a href="./about.html">about page</a>
 
-	<img class="lazy" data-src="/img/island-4420629_1920.jpg" alt="test img">
+	<svg class="icon-search">
+		<use xlink:href="img/sprite.svg#search"></use>
+	</svg>
+
+	{# {% include "./svg/animals-1782013.svg" %} #}
 
 {% endblock %}

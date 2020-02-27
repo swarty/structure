@@ -1,0 +1,32 @@
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+.icon-bleach {
+	@extend .icon;
+	// font-size:(512/10)*1rem;
+	// width:(512/512)*1em;
+}
+.icon-chef {
+	@extend .icon;
+	// font-size:(469.33/10)*1rem;
+	// width:(469.33/469.33)*1em;
+}
+.icon-cloud-computing {
+	@extend .icon;
+	// font-size:(60/10)*1rem;
+	// width:(60/60)*1em;
+}
+.icon-password {
+	@extend .icon;
+	// font-size:(512/10)*1rem;
+	// width:(512/512)*1em;
+}
+.icon-search {
+	@extend .icon;
+	// font-size:(512/10)*1rem;
+	// width:(512/512)*1em;
+}

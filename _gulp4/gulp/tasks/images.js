@@ -7,8 +7,7 @@ import imageminPngquant from 'imagemin-pngquant';
 
 gulp.task('images', () => gulp
   .src([
-    config.src.img + '/**/*.{jpg,png,jpeg,svg,gif}',
-    '!' + config.src.img + '/svgo/**/*.*'
+    config.src.img + '/*.{jpg,png,jpeg,svg,gif}'
 	])
 	.pipe(imagemin([
 		imageminMozjpeg({
@@ -19,15 +18,6 @@ gulp.task('images', () => gulp
 		imageminPngquant({
 			quality: [0.6, 0.8],
 			input: 'Buffer'
-		}),
-		imagemin.svgo({
-			plugins: [
-				{removeViewBox: false},
-				{removeEditorsNSData: true},
-				{cleanupIDs: true},
-				{removeEmptyAttrs: true},
-				{inlineStyles: true}
-			]
 		})
 	]))
   .pipe(gulp.dest(config.dest.img))

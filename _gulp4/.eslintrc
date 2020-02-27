@@ -4,14 +4,10 @@
 		"es6": true,
     "browser": true,
     "node": true
-  },
-  "plugins": [
-    "dollar-sign"
-  ],
+	},
+	
   "extends": ["airbnb-base", "prettier", "eslint:recommended"],
   "rules": {
-    "dollar-sign/dollar-sign": [2, "ignoreProperties"],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
 		"no-unused-vars": "warn",
 		"no-console": "off"
   }

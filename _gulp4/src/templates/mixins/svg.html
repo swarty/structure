@@ -1,0 +1,5 @@
+{% macro svg(name) %}
+	<svg class="{$ 'icon-' + name $}">
+		<use xlink:href="{$ 'img/sprite.svg#' + name $}"></use>
+	</svg>
+{% endmacro %}

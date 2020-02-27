@@ -10,6 +10,7 @@ object: {
 
 
 {% extends "layouts/_layout.html" %}
+{% import "mixins/svg.html" as svg %}
 {% import "data/data.html" as data1 %}
 
 {% block content %}
@@ -38,6 +39,8 @@ object: {
 	<svg class="icon-search">
 		<use xlink:href="img/sprite.svg#search"></use>
 	</svg>
+
+	{$ svg.svg('search') $}
 
 	{# {% include "./svg/animals-1782013.svg" %} #}
 

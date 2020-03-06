@@ -8,6 +8,12 @@ gulp.task('copy:fonts', () => gulp
 );
 
 
+gulp.task('copy:api', () => gulp
+  .src(config.src.root + '/api')
+  .pipe(gulp.dest(config.dest.root))
+);
+
+
 gulp.task('copy:media', () => gulp
   .src(
 		[
@@ -29,7 +35,7 @@ gulp.task('copy:media', () => gulp
 //   .pipe(gulp.dest(config.dest.data))
 // );
 
-const build = gulp => gulp.series('copy:fonts', 'copy:media');
+const build = gulp => gulp.series('copy:fonts', 'copy:media', 'copy:api');
 const watch = gulp => () => gulp.watch(config.src.img + '/*', gulp.parallel('copy:fonts', 'copy:media'));
 
 module.exports.build = build;

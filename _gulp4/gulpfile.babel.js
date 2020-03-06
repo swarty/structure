@@ -5,6 +5,7 @@ const getTaskBuild = task => require('./gulp/tasks/' + task).build(gulp);
 const getTaskWatch = task => require('./gulp/tasks/' + task).watch(gulp);
 
 gulp.task('clean', getTaskBuild('clean'));
+gulp.task('cleanHtml', getTaskBuild('cleanHtml'));
 gulp.task('copy', getTaskBuild('copy'));
 gulp.task('server', () => getTaskBuild('server'));
 gulp.task('nunjucks', () => getTaskBuild('nunjucks'));
@@ -43,6 +44,7 @@ gulp.task(
 		'nunjucks',
 		'webpack',
 		'copy',
+		'cleanHtml'
 		// 'folders'
   )
 );

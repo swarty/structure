@@ -8,6 +8,7 @@ const build = () => {
     return del([
 			config.dest.root + '/data',
 			config.dest.root + '/mixins',
+			// config.dest.root + '/api',
 		])
 		.then(paths => log('Deleted:', color.magenta(paths.join('\n'))))
   };

@@ -18,21 +18,13 @@ gulp.task('copy:media', () => gulp
   .src(
 		[
 			config.src.media + '/*'
-			// "!" + config.src.templates + '/*',
-			// "!" + config.src.sass + '/*',
-			// "!" + config.src.js + '/*',
-			// "!" + config.src.img + '/*',
-			// "!" + config.src.icons + '/*',
-			// "!" + config.src.fonts + '/*',
-			// "!" + config.src.lib + '/*',
-			// "!" + config.src.data + '/*.*',
 		])
   .pipe(gulp.dest(config.dest.media))
 );
 
-// gulp.task('copy:data', () => gulp
-//   .src(config.src.data + '/**/*.*')
-//   .pipe(gulp.dest(config.dest.data))
+// gulp.task('copy:api', () => gulp
+//   .src(config.src.root + '/api/*')
+//   .pipe(gulp.dest(config.dest.root + '/api'))
 // );
 
 const build = gulp => gulp.series('copy:fonts', 'copy:media', 'copy:api');

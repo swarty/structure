@@ -31,3 +31,4 @@ www/wp-content/plugins/hello.php
 .env
 deploy_2_lestrotest.sh
 node_modules
+design

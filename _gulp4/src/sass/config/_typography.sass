@@ -1,47 +1,32 @@
-+font-face('Montserrat-Thin', '../fonts/')
-+font-face('Montserrat-Light', '../fonts/')
-+font-face('Montserrat-Regular', '../fonts/')
-+font-face('Montserrat-Medium', '../fonts/')
-+font-face('Montserrat-SemiBold', '../fonts/')
++font-face('OptimaCyr', '../fonts/')
++font-face('OptimaCyrBold', '../fonts/')
++font-face('OptimaCyrItalic', '../fonts/')
 
 
-=mt
-	font-family: 'Montserrat-Thin', sans-serif
+=or
+	font-family: 'OptimaCyr', sans-serif
 
 
-=ml
-	font-family: 'Montserrat-Light', sans-serif
+=ob
+	font-family: 'OptimaCyrBold', sans-serif
 
 
-=mr
-	font-family: 'Montserrat-Regular', sans-serif
+=ori
+	font-family: 'OptimaCyrItalic', sans-serif
 
-
-=mm
-	font-family: 'Montserrat-Medium', sans-serif
-
-
-=msb
-	font-family: 'Montserrat-SemiBold', sans-serif
-
-
-h1,h2,h3,h4,h5,h6,p, button,a,span,li
-	line-height: 1.2
-
+html
+	font-size: 18px
+	line-height: 1.25
 
 h1,h2,h3,h4,h5,h6,p
 	margin: 0
 	padding: 0
-	color: #1a2731
-	+r(767)
-		color: $black
 
 button, p, a, li
-	font-size: 16px
-	+mr
+	font-size: rem(18)
 
-h1,h2,h3,h4,h5,h6
-	+mm
+.h1
+	font-size: rem(36)
 
 
 picture,
@@ -52,9 +37,12 @@ img
 
 
 img
-	.lazy
+	&.lazy
 		background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7)
 		&.loaded
 			background-image: none
 
 
+.slick-slide
+	img.lazy
+		background-image: none

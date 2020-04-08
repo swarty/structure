@@ -3,31 +3,25 @@ import config from '../config.js';
 
 
 gulp.task('copy:fonts', () => gulp
-  .src(config.src.fonts + '/*.{ttf,eot,woff,woff2}')
-  .pipe(gulp.dest(config.dest.fonts))
-);
-
-
-gulp.task('copy:api', () => gulp
-  .src(config.src.root + '/api')
-  .pipe(gulp.dest(config.dest.root))
+	.src(config.src.fonts + '/*.{ttf,eot,woff,woff2}')
+	.pipe(gulp.dest(config.dest.fonts))
 );
 
 
 gulp.task('copy:media', () => gulp
-  .src(
+	.src(
 		[
 			config.src.media + '/*'
 		])
-  .pipe(gulp.dest(config.dest.media))
+	.pipe(gulp.dest(config.dest.media))
 );
 
 // gulp.task('copy:api', () => gulp
-//   .src(config.src.root + '/api/*')
-//   .pipe(gulp.dest(config.dest.root + '/api'))
+// 	.src(config.src.root + '/api/*')
+// 	.pipe(gulp.dest(config.dest.root + '/api'))
 // );
 
-const build = gulp => gulp.series('copy:fonts', 'copy:media', 'copy:api');
+const build = gulp => gulp.series('copy:fonts', 'copy:media');
 const watch = gulp => () => gulp.watch(config.src.img + '/*', gulp.parallel('copy:fonts', 'copy:media'));
 
 module.exports.build = build;

@@ -34,20 +34,3 @@ Task name          | Description
 `list-pages`       | create index file with links to all project pages
 
 _This is a full list of tasks, that we use in our projects, but not all of them should be available in current project. For example, we only use one template engine out of these three [`jade`, `nunjucks`, `swig`]. All available tasks are placed in a folder `./gulp/tasks` as separate *.js files. Usually, file name = task name._
-
-
-## Flags
-
-We have several useful flags.
-
-* `gulp --open` or `gulp server --open` - run dev server and then open preview in browser
-* `gulp --tunnel=[name]` or `gulp server --tunnel [name]` - runs dev server and allows you to easily share a web service on your local development machine (powered by [localtunnel.me](https://localtunnel.me/)). Your local site will be available at `[name].localtunnel.me`.
-* `gulp [task_name] --prod` or `gulp [task_name] --production` - run task in production mode. Some of the tasks (like, sass or js compilation) have additional settings for production mode (such as code minification), so with this flag you can force production mode. `gulp build` uses this mode by default.
-
-##Other
-You can also use [npm scripts](https://docs.npmjs.com/misc/scripts):
-
-* `npm run start` - same as `gulp default`.
-* `npm run build` - same as `gulp build`.
-* `npm run lint` - linting javascript with **eslint**.
-* `npm run lint-fix` - fix as many issues as possible relatives to **eslint** settings.

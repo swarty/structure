@@ -1,38 +1,35 @@
-{% import "partials/_mixins.html" as mixins %}
-
 <!doctype html>
 <html lang="uk">
-  <head>
-    <meta charset="utf-8"/>
-    <title>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
 			{% if title %}
 				{$ title $}
 			{% else %}
 				Template
 			{% endif %}
 		</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 		<meta http-equiv="Cache-control" content="public">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		
+
 		{% include "../partials/_meta-tags.html" %}
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-
-
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
 		{# styles #}
-		<link rel="stylesheet" media="all" href="css/app.css"/>
+		<link rel="stylesheet" media="all" href="./css/app.css"/>
+	</head>
+	<body>
+		<div class="wrapper">
+			{% include "../partials/_header.html" %}
 
-  </head>
-  <body>
-		{% include "../partials/_header.html" %}
+			<main class="main">
+				{% block content %}{% endblock %}
+			</main>
 
-		<main class="main">
-			{% block content %}{% endblock %}
-		</main>
-
-		{% include "../partials/_footer.html" %}
+			{% include "../partials/_footer.html" %}
+		</div>
 		{% include "../partials/_popups.html" %}
 		{% include "../partials/_scripts.html" %}
-  </body>
+	</body>
 </html>

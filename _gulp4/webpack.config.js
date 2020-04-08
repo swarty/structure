@@ -14,32 +14,28 @@ const babelPresets = [
 
 
 function createConfig(env) {
-  let isProduction,
-		webpackConfig;
+	let isProduction, webpackConfig;
 
-  if (env === undefined) {
-    env = process.env.NODE_ENV;
-  }
-
+	if (env === undefined) env = process.env.NODE_ENV;
 	isProduction = env === 'production';
 
-  webpackConfig = {
-    mode: isProduction? 'production' : 'development',
-    context: path.join(__dirname, config.src.js),
-    entry: {
-      app: './app.ts',
-    },
-    output: {
-      path: path.join(__dirname, config.dest.js),
-      filename: '[name].js',
-      publicPath: 'js/',
-    },
-    devtool: isProduction ?
-      '' : 'source-map',
+	webpackConfig = {
+		// mode: isProduction ? 'production' : 'development',
+		mode: env,
+		context: path.join(__dirname, config.src.js),
+		entry: {
+			app: './app.ts',
+		},
+		output: {
+			path: path.join(__dirname, config.dest.js),
+			filename: '[name].js',
+			publicPath: 'js/',
+		},
+		devtool: isProduction ? '' : 'source-map',
 		stats: 'minimal',
-    plugins: [
+		plugins: [
 			new webpack.NoEmitOnErrorsPlugin(),
-			// exclude languages from package, try to include needed languages
+			// exclude to much languages from package, try to include needed languages
 			new webpack.ContextReplacementPlugin(
 				/date\-fns\/locale/,
 				/ru/
@@ -48,19 +44,19 @@ function createConfig(env) {
 			// 	analyzerMode: 'static',
 			// 	openAnalyzer: true,
 			// })
-    ],
-    resolve: {
+		],
+		resolve: {
 			extensions: ['.js', '.ts'],
-      alias: {
-        // TweenLite: path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js')
-      },
-    },
-    module: {
-      rules: [
+			alias: {
+				// TweenLite: path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js')
+			},
+		},
+		module: {
+			rules: [
 				{
-          test: /\.js$/,
-          exclude: [
-            path.resolve(__dirname, 'node_modules')
+					test: /\.js$/,
+					exclude: [
+						path.resolve(__dirname, 'node_modules')
 					],
 					use: [
 						{
@@ -76,9 +72,9 @@ function createConfig(env) {
 					]
 				},
 				{
-          test: /\.ts$/,
-          exclude: [
-            path.resolve(__dirname, 'node_modules')
+					test: /\.ts$/,
+					exclude: [
+						path.resolve(__dirname, 'node_modules')
 					],
 					use: [
 						{
@@ -93,28 +89,28 @@ function createConfig(env) {
 						}
 					]
 				},
-        { test: /\.(glsl|frag|vert)$/, loader: 'raw-loader', exclude: /node_modules/ },
-        { test: /\.(glsl|frag|vert)$/, loader: 'glslify-loader', exclude: /node_modules/ }
+				{ test: /\.(glsl|frag|vert)$/, loader: 'raw-loader', exclude: /node_modules/ },
+				{ test: /\.(glsl|frag|vert)$/, loader: 'glslify-loader', exclude: /node_modules/ }
 			]
-    }
-  };
+		}
+	};
 
-  if (isProduction) {
-    webpackConfig.plugins.push(
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-      })
+	if (isProduction) {
+		webpackConfig.plugins.push(
+			new webpack.LoaderOptionsPlugin({
+				minimize: true,
+			})
 		);
 		
 		webpackConfig.plugins.push(
 			new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        openAnalyzer: false,
-      })
+				analyzerMode: 'static',
+				openAnalyzer: false,
+			})
 		)
-  }
+	}
 
-  return webpackConfig;
+	return webpackConfig;
 }
 
 module.exports = createConfig();

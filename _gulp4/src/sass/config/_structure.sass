@@ -12,10 +12,15 @@ html, body
 
 .wrapper
 	min-height: 100vh
+	position: relative
+	z-index: 1
 	display: flex
 	flex-direction: column
 	align-items: stretch
 	justify-content: flex-start
+
+article
+	overflow: hidden
 
 footer
 	margin: auto 0 0
@@ -27,31 +32,19 @@ footer
 	overscroll-behavior-y: none
 	-webkit-overflow-scrolling: auto
 
-
 .container
-	max-width: 70vw
+	max-width: 1160px
 	width: 100%
 	position: relative
 	margin: 0 auto
-	padding: 0 15px
-	+r(1499)
-		max-width: 67vw
-	
-	+r(1365)
-		padding: 0 30px
-	
+	padding: 0 30px
+	+r(1023)
+		padding: 0 25px
 	+r(767)
 		padding: 0 20px
 
-
-.visibility--hidden
-	position: absolute
-	clip: rect(0 0 0 0)
-	width: 1px
-	height: 1px
-	margin: -1px
-
-.sr-only // content made available only to screen readers
+.sr-only,
+select // content made available only to screen readers
   position: absolute
   clip: rect(1px, 1px, 1px, 1px)
   clip-path: inset(50%)
@@ -62,6 +55,9 @@ footer
   border: 0
   white-space: nowrap
 
+.contain-picture
+	object-fit: contain!important
+
 
 a
 	text-decoration: none
@@ -69,7 +65,9 @@ a
 	background-color: transparent
 	-webkit-text-decoration-skip: objects
 
-
+button
+	cursor: pointer
+	
 b,
 strong
 	font-size: inherit
@@ -93,6 +91,3 @@ i
 
 .fw
 	display: flex
-
-
-

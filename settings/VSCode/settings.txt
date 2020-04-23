@@ -2,7 +2,6 @@
 	"files.autoSave": "off",
 	"editor.tabSize": 2,
 	"editor.minimap.enabled": false,
-	"team.showWelcomeMessage": false,
 	"window.zoomLevel": 0,
 	"editor.multiCursorModifier": "ctrlCmd",
 	"explorer.confirmDelete": false,
@@ -17,10 +16,17 @@
 	"workbench.activityBar.visible": true,
 	"breadcrumbs.enabled": true,
 	"workbench.sideBar.location": "left",
-	"workbench.colorTheme": "Default High Contrast",
+	"workbench.colorTheme": "Monokai Dimmed",
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"editor.renderWhitespace": "boundary",
 	"files.defaultLanguage": "html",
+	"files.associations": {
+		"*.html": "html"
+	},
+	"html.suggest.html5": true,
+	"emmet.includeLanguages": {
+    "nunjucks": "html"
+ 	}
 }

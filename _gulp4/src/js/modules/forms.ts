@@ -58,9 +58,6 @@ export default class Forms {
 	submitForm(currentform: HTMLElement, that: any, e: Event) {
 		e.preventDefault();
 		const inputs: Array<HTMLElement> = Array.from(currentform.querySelectorAll('input, textarea, select'));
-		// inputs.forEach( (input: HTMLInputElement) => {
-		// 	console.log(input.name, that.inputChecker.call(that, input))
-		// });
 
 		const checkInputs = inputs.map( (input: HTMLInputElement) => {
 			const valid = that.inputChecker(input);
@@ -77,12 +74,11 @@ export default class Forms {
 					};
 
 		inputs.forEach( (input: HTMLInputElement) => {
-			data.append(input.name, input.value !== '' ? input.value : null);
+			data.append(input.name, input.value !== '' ? input.value : '');
 		});
 
 		fetch(route, fetchSettings)
 		.then( response => {
-			// console.log('1', response)
 			if(response.status >= 200 && response.status < 400) {
 				bodyOverflow(that.thanks, true);
 				inputs.forEach( (input: HTMLInputElement) => {

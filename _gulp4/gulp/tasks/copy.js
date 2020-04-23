@@ -16,6 +16,15 @@ gulp.task('copy:media', () => gulp
 	.pipe(gulp.dest(config.dest.media))
 );
 
+// gulp.task('copy:styles', () => gulp
+// 	.src(
+// 		[
+// 			config.src.sass + '/*.css',
+// 			config.src.sass + '/*.map'
+// 		])
+// 	.pipe(gulp.dest(config.dest.css))
+// );
+
 // gulp.task('copy:api', () => gulp
 // 	.src(config.src.root + '/api/*')
 // 	.pipe(gulp.dest(config.dest.root + '/api'))

@@ -1,7 +1,6 @@
 
 import log from 'fancy-log';
 import color from 'ansi-colors';
-import argv from 'minimist';
 const argvConverted = process.argv.slice(2);
 const production = argvConverted.production || argvConverted.prod || argvConverted.indexOf('build') !== -1 || false;
 

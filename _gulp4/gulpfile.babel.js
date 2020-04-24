@@ -1,11 +1,15 @@
 import gulp from 'gulp';
 import config from './gulp/config';
 
+// tasks
+import clean from './gulp/tasks/clean'
+import cleanHtml from './gulp/tasks/cleanHtml'
+
 const getTaskBuild = task => require('./gulp/tasks/' + task).build(gulp);
 const getTaskWatch = task => require('./gulp/tasks/' + task).watch(gulp);
 
-gulp.task('clean', getTaskBuild('clean'));
-gulp.task('cleanHtml', getTaskBuild('cleanHtml'));
+gulp.task('clean', clean);
+gulp.task('cleanHtml', cleanHtml);
 gulp.task('copy', getTaskBuild('copy'));
 gulp.task('server', () => getTaskBuild('server'));
 gulp.task('nunjucks', () => getTaskBuild('nunjucks'));
@@ -48,7 +52,6 @@ gulp.task(
 		'webpack',
 		'copy',
 		'cleanHtml'
-		// 'folders'
 	)
 );
 
@@ -64,7 +67,6 @@ gulp.task(
 		'nunjucks',
 		'webpack',
 		'copy',
-		// 'folders'
 	)
 );
 
@@ -77,10 +79,7 @@ gulp.task(
 		'nunjucks:watch',
 		'webpack:watch',
 		'sass:watch',
-		// 'styles:watch',
-		// 'folders:watch'
 	)
 );
 
 gulp.task('default', gulp.series(['build:dev', 'server', 'watch']));
-// gulp.task('default', gulp.series(['server', 'watch']));

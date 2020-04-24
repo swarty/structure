@@ -1,8 +1,8 @@
 {
 	"clearMocks": true,
 	"displayName": {
-		"name": "FRONT END:",
-		"color": "green"
+		"name": "FRONTEND TEST:",
+		"color": "cyan"
 	},
 	"collectCoverage": false,
 	"collectCoverageFrom": [

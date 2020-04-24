@@ -17,7 +17,6 @@ nunjucksRender.nunjucks.configure({
 });
 
 const renderHtml = onlyChanged => {
-
   return gulp
     .src([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/data/data.html'])
     .pipe(plumber({

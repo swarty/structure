@@ -10,7 +10,7 @@ import aosAnimation from './modules/aosAnimation';
 
 
 
-function onDomLoad() {
+export function onDomLoad() {
 	// new PhoneMask();
 	// new Forms();
 	// accessibleLables();

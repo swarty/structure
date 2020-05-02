@@ -91,3 +91,17 @@ i
 
 .fw
 	display: flex
+
+
+.dc
+	display: flex
+	@supports(display: grid)
+		display: grid
+	&.vc
+		align-items: center
+	&.hs
+		justify-content: flex-start
+	&.hc
+		justify-content: center
+	&.he
+		justify-content: flex-end

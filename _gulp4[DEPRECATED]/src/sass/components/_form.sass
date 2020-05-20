@@ -1,0 +1,62 @@
+.form
+	flex-wrap: wrap
+	&__row
+		width: 100%
+		margin: 0 0 40px
+		&:last-child
+			margin: 0
+	&__label
+		display: inline-block
+		width: 100%
+		height: 100%
+		position: relative
+		&.is-error
+			.form__error
+				opacity: 1
+	&__input,
+	&__textarea
+		display: block
+		width: 100%
+		height: 100%
+		padding: 10px 0
+		border: 0
+		background-color: transparent
+		border-bottom-width: 1px
+		border-style: solid
+		font-size: rem(16)
+		+or
+		&::placeholder
+			font-size: inherit
+			color: inherit
+	&__textarea
+		// min-height: 3em
+		resize: none
+	&__error
+		position: absolute
+		width: auto
+		top: 100%
+		left: 0
+		color: tomato
+		pointer-events: none
+		opacity: 0
+		transition: opacity	.25s
+		color: tomato
+		&.is-white
+			color: $white
+		&.is-opened
+			opacity: 1
+	&.is-cols
+		margin: 0 -10px
+		+r(1023)
+			margin: 0
+		.form__row
+			width: 50%
+			padding: 0 10px
+			+r(1023)
+				width: 100%
+				padding: 0
+			&:last-child
+				padding-top: 50px
+				width: 100%
+				+r(1023)
+					padding: 0

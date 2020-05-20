@@ -1,0 +1,27 @@
+---
+title: Angelika Yeskova
+---
+
+
+{% extends "layouts/_layout.html" %}
+{% import "mixins/svg.html" as svg %}
+{% import "mixins/forms.html" as forms %}
+{% import "data/data.html" as data %}
+
+{% block content %}
+
+	{$ svg.svg('play-button') $}
+
+	<picture>
+		<source data-srcset="" media="(max-width: 768px)">
+		<source srcset="" data-srcset="" media="(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)">
+		<img class="lazy" data-src="" alt="">
+	</picture>
+
+	{# start hero #}
+	<article id="hero" class="hero">
+		<h1>lalal</h1>
+	</article>
+	{# end hero #}
+
+{% endblock %}

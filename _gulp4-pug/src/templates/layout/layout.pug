@@ -1,0 +1,29 @@
+include ../mixins/svg.pug
+
+doctype html
+html(lang='ru')
+	head
+		meta(charset='utf-8')
+		block title
+			title
+			meta(name="description" content="Some description")
+			meta(name="keywords" content="keywords")
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(http-equiv="Cache-control" content="public")
+		meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')
+		meta(name="apple-mobile-web-app-capable" content="yes")
+		//- meta
+		include ../parts/meta.pug
+		//- fonts
+		//- styles
+		link(rel="stylesheet", href="./css/app.css")
+	body
+		block vars
+		.wrapper
+			//- header
+			include ../parts/header.pug
+			//- main
+			block content
+			//- footer
+			include ../parts/footer.pug
+		script(type="text/javascript" src="./js/app.js")

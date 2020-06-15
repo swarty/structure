@@ -1,0 +1,43 @@
+.arrows
+	.arrow
+		border-color: $white
+		&::after
+			border-color: inherit
+	
+.arrow
+	width: 32px
+	height: 32px
+	display: block
+	border-radius: 50%
+	background-color: transparent
+	margin: 0 25px 0 0
+	border: 1px solid $white
+	position: relative
+	+r(767)
+		width: 30px
+		height: 30px
+		margin: 0 8px 0 0
+	&:last-child
+		margin: 0
+	&:focus
+		opacity: .5
+
+	&::after
+		content: ""
+		position: absolute
+		top: 50%
+		left: 50%
+		width: 8px
+		height: 8px
+		border-left: 1px solid $white
+		border-bottom: 1px solid $white
+		+r(767)
+			width: 5px
+			height: 5px
+
+	&.is-prev
+		&::after
+			transform: translate(-30%, -50%) rotate(45deg)
+	&.is-next
+		&::after
+			transform: translate(-70%, -50%) rotate(-135deg)

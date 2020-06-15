@@ -1,0 +1,29 @@
+.tabs-nav
+	padding: 0 0 0 100px
+	position: relative
+	&::before
+		content: ""
+		position: absolute
+		left: 0
+		top: 10px
+		width: 50px
+		height: 2px
+		display: block
+		transform: translateX(50%)
+	&__list
+		flex-wrap: wrap
+		justify-content: flex-start
+		margin: 0
+	&__item
+		margin: 0 15px 15px 0
+		+or
+	&__button
+		font-family: inherit
+		border: 0
+		background-color: transparent
+		font-size: rem(14)
+		text-transform: uppercase
+		cursor: pointer
+		&:hover
+		&.is-active
+			+ob

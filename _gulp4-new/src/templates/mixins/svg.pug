@@ -1,0 +1,7 @@
+mixin svg(name, viewbox="")
+	if viewbox === ""
+		svg(class="icon-" + name)
+			use(xlink:href="./img/sprite.svg#" + name)
+	else
+		svg(class="icon-" + name viewbox=viebox)
+			use(xlink:href="./img/sprite.svg#" + name)

@@ -1,0 +1,22 @@
+{
+	"clearMocks": true,
+	"displayName": {
+		"name": "FRONTEND TEST:",
+		"color": "cyan"
+	},
+	"collectCoverage": false,
+	"collectCoverageFrom": [
+		"!**/node_modules/**",
+		"!./src/js/lib/*",
+		"./src/js/**/*"
+	],
+	"notify": true,
+	"coverageDirectory": "./tests/result/",
+	"coverageThreshold": {
+		"./src/js": {
+			"branches": 80,
+			"functions": 80,
+			"lines": 50
+		}
+	}
+}

@@ -1,0 +1,32 @@
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+.icon-dots {
+	@extend .icon;
+	// font-size:(13.1/10)*1rem;
+	// width:(13.1/13.1)*1em;
+}
+.icon-facebook {
+	@extend .icon;
+	// font-size:(24/10)*1rem;
+	// width:(24/24)*1em;
+}
+.icon-instagram {
+	@extend .icon;
+	// font-size:(24/10)*1rem;
+	// width:(24/24)*1em;
+}
+.icon-play-button {
+	@extend .icon;
+	// font-size:(73/10)*1rem;
+	// width:(73/73)*1em;
+}
+.icon-youtube {
+	@extend .icon;
+	// font-size:(24/10)*1rem;
+	// width:(24/24)*1em;
+}

@@ -1,0 +1,23 @@
+# Numerous always-ignore extensions
+*.err
+*.log
+
+# OS or Editor folders
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+.idea
+.lock
+
+
+# Folders to ignore
+.sass-cache
+.tmp
+_tmp
+node_modules
+package-lock.json
+design

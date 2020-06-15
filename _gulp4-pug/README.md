@@ -27,7 +27,7 @@ Task name          | Description
 `webpack`          | compile .js sources into bundle file
 `copy`             | copy common files from `./src` path to `./build` path
 `swig`             | compile [swig](http://paularmstrong.github.io/swig/)  templates
-`nunjucks`         | compile Mozilla's awesome [nunjucks](https://mozilla.github.io/nunjucks/) templates
+`pug`         | PUG
 `images`           | optimized images
 `server`           | run dev-server powered by [BrowserSync](https://www.browsersync.io/)
 `clean`            | remove `./build` folder

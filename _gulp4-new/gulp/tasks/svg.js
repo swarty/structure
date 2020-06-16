@@ -1,8 +1,8 @@
-import gulp from 'gulp';
-import svgSprite from 'gulp-svg-sprite';
-import svgmin from 'gulp-svgmin';
-import cheerio from 'gulp-cheerio';
-import replace from 'gulp-replace';
+import gulp from 'gulp'
+import svgSprite from 'gulp-svg-sprite'
+import svgmin from 'gulp-svgmin'
+import cheerio from 'gulp-cheerio'
+import replace from 'gulp-replace'
 import { server } from './server'
 
 

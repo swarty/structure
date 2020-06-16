@@ -83,10 +83,9 @@ export default function createConfig() {
 								plugins: babelPlugins
 							}
 						},
-						// TODO: return comment
-						// {
-						// 	loader: 'eslint-loader'
-						// }
+						{
+							loader: 'eslint-loader'
+						}
 					]
 				},
 				{ test: /\.(glsl|frag|vert)$/, loader: 'raw-loader', exclude: /node_modules/ },

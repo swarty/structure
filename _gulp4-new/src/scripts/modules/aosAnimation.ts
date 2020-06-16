@@ -1,6 +1,6 @@
 import aos from 'aos'
 
-export default function aosAnimation() {
+export default function aosAnimation(): void {
 	aos.init({
 		debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
 		throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)

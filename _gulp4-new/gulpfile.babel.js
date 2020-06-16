@@ -6,23 +6,45 @@ import { copy } from './gulp/tasks/copy'
 import images from './gulp/tasks/images'
 import svgs from './gulp/tasks/svg'
 import clean from './gulp/tasks/clean'
-import { serverFunc } from './gulp/tasks/server'
+import { startServer } from './gulp/tasks/server'
 import { setDev, setProd } from './gulp/tasks/setEnv'
 
 
 // images
-gulp.task('images', gulp.series([svgs, images]))
+function media(done) {
+	return gulp.series(
+		svgs,
+		images
+	)(done)
+}
+
 
 // default tasks for work
-gulp.task('init', gulp.parallel([pug, styles, scriptTask, copy, 'images']))
+function init (done) {
+	return gulp.parallel([
+		pug,
+		styles,
+		scriptTask,
+		copy,
+		media
+	])(done)
+}
+
+
+// production task
+export function build() {
+	return gulp.series([
+		setProd,
+		clean,
+		init
+	])
+}
+
 
 // dev task
-gulp.task('default', gulp.series([setDev, clean, 'init', serverFunc]))
-// prod task
-gulp.task('build', gulp.series([setProd, clean, 'init']))
-
-// const argvConverted = process.argv;
-// const production = argvConverted.production || argvConverted.prod || argvConverted.indexOf('build') !== -1 || false;
-
-// console.log(process)
-// console.log(module)
+exports.default =  gulp.series([
+	setDev, 
+	clean,
+	init,
+	startServer
+])

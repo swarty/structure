@@ -1,14 +1,22 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "env": {
 		"es6": true,
     "browser": true,
     "node": true
 	},
-	
-  "extends": ["airbnb-base", "prettier", "eslint:recommended"],
+	"plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+	],
   "rules": {
-		"no-unused-vars": "warn",
-		"no-console": "off"
+		"no-any": 0,
+		"no-new": 0,
+		"no-unused-vars": 1,
+		"no-console": 0
   }
 }

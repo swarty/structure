@@ -8,11 +8,11 @@ export default class PhoneMask {
 		this.phones.length !== 0 && this.init();
 	}
 
-	init() {
+	init(): void {
 		this.addMask();
 	}
 
-	addMask() {
+	addMask(): void {
 		this.phones.forEach( input => {
 			const mask = new Inputmask("+38(099)-99-99-999");
 			mask.mask(input);

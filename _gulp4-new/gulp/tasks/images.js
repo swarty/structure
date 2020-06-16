@@ -1,7 +1,7 @@
 import gulp from 'gulp'
-import imagemin from 'gulp-imagemin';
-import imageminMozjpeg from 'imagemin-mozjpeg';
-import imageminPngquant from 'imagemin-pngquant';
+import imagemin from 'gulp-imagemin'
+import imageminMozjpeg from 'imagemin-mozjpeg'
+import imageminPngquant from 'imagemin-pngquant'
 import del from 'del'
 import { server } from './server'
 

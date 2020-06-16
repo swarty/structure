@@ -30,5 +30,5 @@ export function copyDocs() {
 
 
 export function copy (done) {
-	return gulp.parallel([copyFonts, copyMedia, copyApi, copyDocs])(done);
+	return gulp.parallel([copyFonts, copyMedia, copyApi, copyDocs])(done)
 }

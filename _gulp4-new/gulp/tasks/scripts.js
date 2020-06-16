@@ -26,7 +26,7 @@ const handler = (err, stats, cb) => {
 
 
 export function scriptTask () { return new Promise(resolve => webpack(webpackRunnner, (err, stats) => handler(err, stats, resolve))) };
-export function scriptTaskWatch () { return new Promise(resolve => webpack(webpackRunnner).watch({
+export function scriptsTaskWatch () { return new Promise(resolve => webpack(webpackRunnner).watch({
 		aggregateTimeout: 100,
 		poll: false
 	}, handler))

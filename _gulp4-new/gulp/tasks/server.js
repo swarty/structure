@@ -3,7 +3,7 @@ import browserSync from 'browser-sync'
 import { copyFonts, copyMedia, copyApi, copyDocs } from './copy'
 import images from './images'
 import pug from './pug'
-import { scriptTaskWatch } from './scripts'
+import { scriptsTaskWatch } from './scripts'
 import styles from './styles'
 import svg from './svg'
 
@@ -12,16 +12,16 @@ import config from '../config'
 export const server = browserSync.create();
 
 
-export function serverFunc (done) {
+export function startServer (done) {
 	server.init({
 		server: {
 			baseDir: !config.production ? [config.dest.root, config.src.root] : config.dest.root,
 		},
 		ui: false,
 		port: 8080,
-    logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
+    logLevel: 'info',
     notify: false,
-		open: true,  // 'tunnel' or 'local' or 'external
+		open: true,
     cors: true
 	});
 	done();
@@ -41,7 +41,7 @@ export function serverFunc (done) {
 	gulp.watch(config.src.templates + '/*.pug', gulp.series(pug)).on('change', server.reload) /* .on('change', server.reload) */
 	
 	// scripts
-	gulp.watch(config.src.js + '/**/*.{ts,js}', gulp.series(scriptTaskWatch))
+	gulp.watch(config.src.js + '/**/*.{ts,js}', gulp.series(scriptsTaskWatch))
 	
 	// styles
 	gulp.watch(config.src.sass + '/**/*.{scss,sass}', gulp.series(styles)).on('change', server.reload)

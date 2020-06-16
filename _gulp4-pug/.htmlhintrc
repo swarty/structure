@@ -1,10 +1,10 @@
 {
 		"attr-lowercase": ["viewBox", "stdDeviation"],
-		"tagname-lowercase": false,
-		"attr-value-double-quotes": false,
+		"tagname-lowercase": true,
+		"attr-value-double-quotes": true,
 		"attr-no-duplication": true,
 		"tag-pair": true,
 		"tag-self-close": false,
-		"id-unique": false,
+		"id-unique": true,
 		"doctype-first": false
 }

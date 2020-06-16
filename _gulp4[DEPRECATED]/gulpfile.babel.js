@@ -1,7 +1,5 @@
 import gulp from 'gulp';
 import config from './gulp/config';
-
-// tasks
 import clean from './gulp/tasks/clean'
 import cleanHtml from './gulp/tasks/cleanHtml'
 
@@ -12,17 +10,15 @@ gulp.task('clean', clean);
 gulp.task('cleanHtml', cleanHtml);
 gulp.task('copy', getTaskBuild('copy'));
 gulp.task('server', () => getTaskBuild('server'));
-gulp.task('nunjucks', () => getTaskBuild('nunjucks'));
+gulp.task('pug', () => getTaskBuild('pug'));
 gulp.task('sass', () => getTaskBuild('sass'));
-// gulp.task('styles', () => getTaskBuild('styles'));
 gulp.task('svg', () => getTaskBuild('svg'));
 gulp.task('images', () => getTaskBuild('images'));
 gulp.task('webpack', getTaskBuild('webpack'));
 
 gulp.task('copy:watch', getTaskWatch('copy'));
-gulp.task('nunjucks:watch', getTaskWatch('nunjucks'));
+gulp.task('pug:watch', getTaskWatch('pug'));
 gulp.task('sass:watch', getTaskWatch('sass'));
-// gulp.task('styles:watch', getTaskWatch('styles'));
 gulp.task('svg:watch', getTaskWatch('svg'));
 gulp.task('images:watch', getTaskWatch('images'));
 gulp.task('webpack:watch', getTaskWatch('webpack'));
@@ -45,10 +41,9 @@ gulp.task(
 		setmodeProd,
 		'clean',
 		'sass',
-		// 'styles',
 		'svg',
 		'images',
-		'nunjucks',
+		'pug',
 		'webpack',
 		'copy',
 		'cleanHtml'
@@ -61,10 +56,9 @@ gulp.task(
 		setmodeDev,
 		'clean',
 		'sass',
-		// 'styles',
 		'svg',
 		'images',
-		'nunjucks',
+		'pug',
 		'webpack',
 		'copy',
 	)
@@ -76,7 +70,7 @@ gulp.task(
 		'copy:watch',
 		'svg:watch',
 		'images:watch',
-		'nunjucks:watch',
+		'pug:watch',
 		'webpack:watch',
 		'sass:watch',
 	)

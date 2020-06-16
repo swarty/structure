@@ -6,8 +6,6 @@ import changed from 'gulp-changed';
 import prettify from 'gulp-prettify';
 import frontMatter from 'gulp-front-matter';
 import config from '../config';
-import color from 'ansi-colors';
-import log from 'fancy-log';
 
 
 nunjucksRender.nunjucks.configure({

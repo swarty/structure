@@ -15,6 +15,7 @@ export function onDomLoad() {
 	// new Forms();
 	// accessibleLables();
 	// aosAnimation();
+	console.log('lala')
 }
 
 document.addEventListener('DOMContentLoaded', onDomLoad);

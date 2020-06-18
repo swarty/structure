@@ -14,18 +14,26 @@ import config from '../config'
 sass.compiler = nodeSass;
 
 export default function () {
-	return gulp.src(config.src.sass + '/*.{scss,sass}')
-	.pipe(plumber())
-	.pipe(sourcemaps.init())
-	.pipe(sass({ outputStyle: 'expanded', /* nested, expanded, compact, compressed */ }))
-	.pipe(autoprefixer({ cascade: false }))
-	.pipe(shorthand())
-	.pipe(cleanCSS({
-		debug: true,
-		compatibility: '*'
-	}, details => {
-		console.log(color.green(`Styles: Original size:${details.stats.originalSize} - Minified size: ${details.stats.minifiedSize}`));
-	}))
-	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest(config.dest.css))
+	const styles = gulp.src(config.src.sass + '/*.{scss,sass}')
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(sass({ outputStyle: 'expanded', /* nested, expanded, compact, compressed */ }))
+		.pipe(autoprefixer({ cascade: false }))
+
+	if(config.production) {
+		styles
+			.pipe(shorthand())
+			.pipe(cleanCSS({
+				debug: true,
+				compatibility: '*'
+			}, details => {
+				console.log(color.green(`Styles: Original size:${details.stats.originalSize} - Minified size: ${details.stats.minifiedSize}`));
+			}))
+	}
+
+	styles
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(config.dest.css))
+
+	return styles;
 }

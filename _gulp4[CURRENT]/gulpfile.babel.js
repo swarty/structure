@@ -32,12 +32,12 @@ function init (done) {
 
 
 // production task
-export function build() {
-	return gulp.series([
+export function build(done) {
+	gulp.series([
 		setProd,
 		clean,
 		init
-	])
+	])(done)
 }
 
 

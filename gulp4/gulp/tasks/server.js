@@ -10,7 +10,7 @@ export default function (cb) {
 		},
 		online: false,
 		port: 8080,
-		open: false,
+		open: true,
 		logLevel: 'info',
 		notify: false,
 	});

@@ -87,9 +87,9 @@
 /******/ ({
 
 /***/ "../../node_modules/@babel/runtime/helpers/typeof.js":
-/*!****************************************************************************************************!*\
-  !*** /Users/dmytro/Documents/work/own/structure/new/node_modules/@babel/runtime/helpers/typeof.js ***!
-  \****************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/dmytro/Documents/work/own/structure/gulp4/node_modules/@babel/runtime/helpers/typeof.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -114,9 +114,9 @@ module.exports = _typeof;
 /***/ }),
 
 /***/ "../../node_modules/process/browser.js":
-/*!**************************************************************************************!*\
-  !*** /Users/dmytro/Documents/work/own/structure/new/node_modules/process/browser.js ***!
-  \**************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** /Users/dmytro/Documents/work/own/structure/gulp4/node_modules/process/browser.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -309,9 +309,9 @@ process.umask = function() { return 0; };
 /***/ }),
 
 /***/ "../../node_modules/setimmediate/setImmediate.js":
-/*!************************************************************************************************!*\
-  !*** /Users/dmytro/Documents/work/own/structure/new/node_modules/setimmediate/setImmediate.js ***!
-  \************************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** /Users/dmytro/Documents/work/own/structure/gulp4/node_modules/setimmediate/setImmediate.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -507,9 +507,9 @@ process.umask = function() { return 0; };
 /***/ }),
 
 /***/ "../../node_modules/timers-browserify/main.js":
-/*!*********************************************************************************************!*\
-  !*** /Users/dmytro/Documents/work/own/structure/new/node_modules/timers-browserify/main.js ***!
-  \*********************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** /Users/dmytro/Documents/work/own/structure/gulp4/node_modules/timers-browserify/main.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

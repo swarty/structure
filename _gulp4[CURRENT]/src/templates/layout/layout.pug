@@ -1,7 +1,49 @@
 include ../mixins/svg.pug
+include ../mixins/headline.pug
+
+-
+	var contacts = {
+		inputs: [
+			{
+				type: "text",
+				name: "name",
+				placeholder: "Ваше имя",
+				class: "is-half",
+				error: "Данные указаны неверно"
+			},
+			{
+				type: "text",
+				name: "tel",
+				placeholder: "Ваше телефон",
+				class: "is-half",
+				error: "Данные указаны неверно"
+			},
+			{
+				type: "text",
+				name: "email",
+				placeholder: "Ваше email",
+				class: "",
+				error: "Данные указаны неверно"
+			},
+			{
+				type: "textarea",
+				name: "message",
+				placeholder: "Ваше сообщение",
+				class: "",
+				error: "Данные указаны неверно"
+			},
+			{
+				type: "checkbox",
+				name: "agree",
+				placeholder: "Согласны с правилами обработки ваших личных данных",
+				class: "is-half is-checkbox",
+				error: "Обязательное поле"
+			},
+		]
+	}
 
 doctype html
-html(lang='ru')
+html(lang='ru' ontouchmove)
 	head
 		meta(charset='utf-8')
 		block title
@@ -17,13 +59,29 @@ html(lang='ru')
 		//- fonts
 		//- styles
 		link(rel="stylesheet", href="./css/app.css")
+		//- style.
+		//- 	[data-aos] {
+		//- 		opacity: 0;
+		//- 	}
+		//- noscript.
+		//- 	<style>
+		//- 		[data-aos] {
+		//- 			opacity: 0;
+		//- 		}
+		//- 	</style>
 	body
 		block vars
 		.wrapper
-			//- header
+			// start header
 			include ../parts/header.pug
-			//- main
+			// end header
+			// start main
 			block content
-			//- footer
+			// end main
+			// start footer
 			include ../parts/footer.pug
+			// end footer
+			// start popups
+			include ../parts/popups.pug
+			// end popups
 		script(type="text/javascript" src="./scripts/app.js")

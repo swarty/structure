@@ -3,18 +3,19 @@ import pug from './gulp/tasks/pug'
 import styles from './gulp/tasks/styles'
 import { scriptTask } from './gulp/tasks/scripts'
 import { copy } from './gulp/tasks/copy'
-import images from './gulp/tasks/images'
 import svgs from './gulp/tasks/svg'
+import images from './gulp/tasks/images'
 import clean from './gulp/tasks/clean'
 import { startServer } from './gulp/tasks/server'
 import { setDev, setProd } from './gulp/tasks/setEnv'
+import watch from './gulp/tasks/watch'
 
 
 // images
 function media(done) {
 	return gulp.series(
-		svgs,
-		images
+		images,
+		svgs
 	)(done)
 }
 
@@ -46,5 +47,6 @@ exports.default =  gulp.series([
 	setDev, 
 	clean,
 	init,
-	startServer
+	startServer,
+	watch
 ])

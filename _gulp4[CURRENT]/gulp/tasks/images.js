@@ -2,15 +2,19 @@ import gulp from 'gulp'
 import imagemin from 'gulp-imagemin'
 import imageminMozjpeg from 'imagemin-mozjpeg'
 import imageminPngquant from 'imagemin-pngquant'
+import wait from 'gulp-wait'
 import del from 'del'
-import { server } from './server'
 
 
 import config from '../config.js'
 
 export default function (done) {
-	del(config.dest.img).then( _ => {
+	del([
+		config.dest.img + '/*',
+		!config.dest.img + 'sprite.svg'
+	]).then( _ => {
 		const images = gulp.src(config.src.img + '/*.{jpg,png,jpeg,svg,gif}')
+		images.pipe(wait(300));
 
 		if(config.production) {
 			images
@@ -28,9 +32,6 @@ export default function (done) {
 		}
 
 		images.pipe(gulp.dest(config.dest.img))
-
 		done();
-		server && server.reload();
 	})
-	
 }

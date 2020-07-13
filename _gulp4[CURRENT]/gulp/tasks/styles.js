@@ -2,29 +2,28 @@ import gulp from 'gulp'
 import sass from 'gulp-sass'
 import nodeSass from 'node-sass'
 import sourcemaps from 'gulp-sourcemaps'
-import shorthand from 'gulp-shorthand'
 import autoprefixer from 'gulp-autoprefixer'
 import cleanCSS from 'gulp-clean-css'
 import plumber from 'gulp-plumber'
+import wait from 'gulp-wait'
 import color from 'ansi-colors'
 
 import config from '../config'
 
-
 sass.compiler = nodeSass;
 
-export default function () {
+export default function (done) {
 	const styles = gulp.src(config.src.sass + '/*.{scss,sass}')
 		.pipe(plumber())
+		.pipe(wait(300))
 		.pipe(sourcemaps.init())
-		.pipe(sass({ outputStyle: 'expanded', /* nested, expanded, compact, compressed */ }))
+		.pipe(sass({ outputStyle: 'compact', /* nested, expanded, compact, compressed */ }))
 		.pipe(autoprefixer({ cascade: false }))
 
 	if(config.production) {
 		styles
-			.pipe(shorthand())
 			.pipe(cleanCSS({
-				debug: true,
+				debug: false,
 				compatibility: '*'
 			}, details => {
 				console.log(color.green(`Styles: Original size:${details.stats.originalSize} - Minified size: ${details.stats.minifiedSize}`));
@@ -34,6 +33,7 @@ export default function () {
 	styles
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(config.dest.css))
-
-	return styles;
+	
+	done();
+	// return styles;
 }

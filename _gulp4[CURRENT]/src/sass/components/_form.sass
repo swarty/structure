@@ -1,62 +1,195 @@
 .form
-	flex-wrap: wrap
-	&__row
-		width: 100%
-		margin: 0 0 40px
-		&:last-child
-			margin: 0
-	&__label
-		display: inline-block
+	max-width: 550px
+	&.is-dark
+		.form
+			&__checker
+				background-color: $white
+			&__input,
+			&__textarea
+				border-color: rgba($white, .5)
+			&__help
+				&-text
+					background-color: rgba($blue-color, 1)
+					color: $white
+		.is-checkbox
+			.form__input
+				&:checked
+					+ .form__checker
+						&::before
+							background-color: $black
+	&__inner
+		position: relative
+		flex-direction: column
+		align-items: stretch
+		&.dc
+			grid-template-columns: repeat(2, calc(50% - 20px))
+			gap: 50px 40px
+			+r(639)
+				grid-template-columns: minmax(0, 1fr)
+		> .form__error
+			top: auto
+			bottom: 100%
+			transform: translateY(-10px)
+
+	&.is-error
+		.form__inner
+			> .form__error
+				opacity: 1
+
+	&__label,
+	&__input,
+	&__textarea
 		width: 100%
 		height: 100%
+		display: inline-block
+
+	&__input,
+	&__textarea
+		padding: 0 0 15px
+
+	&__label
 		position: relative
+		z-index: 1
+		cursor: pointer
+		margin: 0 0 40px
+		+grid
+			margin: 0
+			grid-column: 1 / 3
+			+r(639)
+				grid-column: 1 / 2
 		&.is-error
 			.form__error
 				opacity: 1
+		&.is-half
+			+grid
+				grid-column: span 1
+				// +r(639)
+				// 	grid-column: 1 / 2
+
 	&__input,
 	&__textarea
-		display: block
-		width: 100%
-		height: 100%
-		padding: 10px 0
+		border: 0
+		border-radius: 0
+		background-color: transparent
+		border-bottom: 1px solid $green-color
+		font-size: rem(16)
+		color: $text-black
+		+gr
+		color: $text-black
+		&::placeholder
+			color: inherit
+			font: inherit
+
+	&__textarea
+		resize: none
+		height: 35px
+
+	.is-checkbox
+		align-content: center
+		justify-self: center
+		align-self: flex-start
+		width: auto
+		height: auto
+		+grid
+			align-self: center
+		+r(639)
+			justify-self: start
+		.form__placeholder
+			text-align: left
+			padding-left: 40px
+			display: inline-block
+			font-size: rem(12)
+			+gr
+			color: $text-black
+		input
+			opacity: 0
+			@supports (appearance: none)
+				appearance: none
+				opacity: 1
+			position: absolute
+			border: 0
+			background-color: transparent
+			&:checked
+				+ .form__checker
+					&::before
+						opacity: 1
+
+	&__checker
+		position: absolute
+		top: 0
+		left: 0
+		width: 20px
+		height: 20px
 		border: 0
 		background-color: transparent
-		border-bottom-width: 1px
-		border-style: solid
-		font-size: rem(16)
-		+or
-		&::placeholder
-			font-size: inherit
-			color: inherit
-	&__textarea
-		// min-height: 3em
-		resize: none
+		border: 1px solid $green-color
+		&::before
+			content: ""
+			position: absolute
+			z-index: 1
+			top: 50%
+			left: 50%
+			display: block
+			width: 13px
+			height: 13px
+			background-color: $green-color
+			transform: translate(-50%, -50%)
+			opacity: 0
+			transition: opacity .25s
+
+
 	&__error
 		position: absolute
 		width: auto
+		max-height: 2.5em
+		overflow: hidden
 		top: 100%
 		left: 0
+		+gr
+		font-size: rem(12)
 		color: tomato
 		pointer-events: none
 		opacity: 0
 		transition: opacity	.25s
-		color: tomato
-		&.is-white
-			color: $white
 		&.is-opened
 			opacity: 1
-	&.is-cols
-		margin: 0 -10px
-		+r(1023)
-			margin: 0
-		.form__row
-			width: 50%
-			padding: 0 10px
-			+r(1023)
-				width: 100%
-				padding: 0
-			&:last-child
-				padding-top: 50px
-				width: 100%
-				+r(1023)
-					padding: 0
+
+	&__help
+		position: absolute
+		top: 0
+		right: 0
+		display: flex
+		align-items: center
+		justify-content: flex-end
+		width: 100%
+		height: 100%
+		pointer-events: none
+		&:hover
+			.form__help-text
+				opacity: 1
+		+ .form__input
+			padding-right: 20px
+		&-icon
+			pointer-events: auto
+			position: relative
+			z-index: 2
+			&:hover
+				.form__help-text
+					opacity: 1
+		&-text
+			background-color: $green-color
+			position: absolute
+			z-index: 1
+			width: 100%
+			height: 100%
+			pointer-events: none
+			font-size: rem(13)
+			+gr
+			padding: 3px 20px 3px 3px
+			opacity: 0
+			transition: opacity .25s
+			text-overflow: ellipsis
+			overflow: hidden
+			-webkit-box-orient: vertical
+			-webkit-line-clamp: 2
+			display: -webkit-box

@@ -1,0 +1,63 @@
+.hero
+	position: relative
+	z-index: 1
+	&__container
+		position: relative
+	.bg-video
+		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%)
+		+r(767)
+			clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%)
+	.container
+		position: relative
+		z-index: 2
+	.block
+		&-container
+			height: calc(100vh - 40px)
+			padding: calc(10vh + 90px) 0 15vh
+			@supports (min-height: 40vh)
+				height: auto
+				min-height: calc(100vh - 40px)
+			+grid
+				grid-template-columns: repeat(2, 1fr)
+				align-items: center
+			+r(1279)
+				height: auto
+				padding: 150px 0 120px
+				@supports (min-height: 100vh)
+					min-height: auto
+				+grid
+					grid-template-columns: minmax(0, 1fr)
+			+r(767)
+				padding: 135px 0 120px
+		&-content
+			&.is-media-container
+				padding: 0 0 100px
+				+r(1279)
+					padding: 0
+			+r(1279)
+				max-width: 750px
+				width: 100%
+				margin: 0 auto 85px
+				&:last-child
+					margin-bottom: 0
+		&-header
+			max-width: 450px
+		&-arrow
+			+r(767)
+				padding: 45px 0 0
+
+	&__bg-icon
+		position: absolute
+		z-index: 1
+		bottom: 0
+		left: 0
+		pointer-events: none
+		display: block
+		width: 33vw
+		height: 70vh
+		object-fit: contain
+		object-position: 0 100%
+		+r(1279)
+			width: 240px
+			height: 240px
+		

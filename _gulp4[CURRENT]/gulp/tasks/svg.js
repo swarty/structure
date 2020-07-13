@@ -3,13 +3,15 @@ import svgSprite from 'gulp-svg-sprite'
 import svgmin from 'gulp-svgmin'
 import cheerio from 'gulp-cheerio'
 import replace from 'gulp-replace'
-import { server } from './server'
 
 
 import config from '../config.js';
 
-export default function () {
-	return gulp.src(config.src.svg + '/*.svg')
+export default function (done) {
+	const svg = gulp.src([
+		config.src.svg + '/*.svg',
+		!config.src.svg + '/sprite*.svg'
+	])
 	// minify svg
 		.pipe(svgmin({
 			js2svg: {
@@ -31,15 +33,16 @@ export default function () {
 		.pipe(svgSprite({
 			mode: {
 				symbol: {
-					sprite: "../../sprite.svg",
+					sprite: "../sprite.svg",
 					render: {
 						scss: {
-							dest: '../../../sass/config/_sprite.scss',
+							dest: '../../../src/sass/config/_sprite.scss',
 							template: config.src.sass + "/config/_sprite_template.scss"
 						}
 					}
 				}
 			}
 		}))
-		.pipe(gulp.dest(config.src.svg))
-}(server && server.reload)
+		.pipe(gulp.dest(config.dest.img))
+		done();
+}

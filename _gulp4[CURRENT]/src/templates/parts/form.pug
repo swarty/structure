@@ -1,0 +1,32 @@
+form.form.js__form(data-route="./api/api.json")
+	.form__inner.dc
+		<input type="hidden" name="_token" value="cwIqopoentbRAZYaZwiFZfYRWKZT8sAdPC6xDUXr">
+		span.form__error Какая-то ошибка при отправке формы
+		each item in contacts.inputs
+			if item.type === 'checkbox'
+				label.form__label(class=item.class)
+					input.form__input(type=item.type name=item.name)
+					span.form__checker
+					span.form__placeholder= item.placeholder
+					span.form__error= item.error
+			else if item.type === 'textarea'
+				label.form__label(class=item.class)
+					textarea.form__textarea(name=item.name placeholder=item.placeholder)
+					span.form__error= item.error
+			else if item.name === 'tel'
+				label.form__label(class=item.class)
+					span.form__help(title="Укажите номер вместе с кодом страны Укажите номер вместе с кодом страны Укажите номер вместе с кодом страны")
+						span.form__help-icon
+							+svg('info')
+						span.form__help-text Укажите номер вместе с кодом страны
+					input.form__input(type=item.type name=item.name placeholder=item.placeholder)
+					span.form__error= item.error
+			else
+				label.form__label(class=item.class)
+					input.form__input(type=item.type name=item.name placeholder=item.placeholder)
+					span.form__error= item.error
+			
+		button.site-button.is-white.shadow.more-shadow
+			span.site-button__text Отправить
+			span.site-button__arrow
+				+svg('button-arrow')

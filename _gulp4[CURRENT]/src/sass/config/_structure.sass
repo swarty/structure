@@ -6,6 +6,15 @@
 	margin: 0
 	padding: 0
 
+
+a,
+button,
+input,
+textarea
+	&:focus
+		outline: .2px solid rgba($green-color, .5)
+
+
 html, body
 	position: relative
 	height: 100%
@@ -18,6 +27,7 @@ html, body
 	flex-direction: column
 	align-items: stretch
 	justify-content: flex-start
+	overflow: hidden
 
 article
 	overflow: hidden
@@ -37,11 +47,9 @@ footer
 	width: 100%
 	position: relative
 	margin: 0 auto
-	padding: 0 30px
-	+r(1023)
-		padding: 0 25px
+	padding: 0 20px
 	+r(767)
-		padding: 0 20px
+		padding: 0 15px
 
 .sr-only,
 select // content made available only to screen readers
@@ -91,23 +99,23 @@ i
 
 .fw
 	display: flex
+	&.is-reverse
+		flex-direction: row-reverse
+	&.is-hz-end
+		justify-content: flex-end
+	&.is-hz-center
+		justify-content: center
 
 
 .dc
 	display: flex
-	@supports(display: grid)
+	+grid
 		display: grid
 		grid-template-columns: minmax(0, 1fr)
-	&.vc
-		align-items: center
-	&.hs
-		justify-content: flex-start
-	&.hc
-		justify-content: center
-		@supports(display: grid)
-			justify-items: center
-	&.he
-		justify-content: flex-end
 	&.wrap
 		display: flex
 		flex-wrap: wrap
+	&.is-centered-content
+		justify-content: center
+		justify-items: center
+		align-items: center

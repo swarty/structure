@@ -1,4 +1,4 @@
-import aos from 'aos'
+import aos from '../../../node_modules/aos/dist/aos'
 
 export default function aosAnimation(): void {
 	aos.init({

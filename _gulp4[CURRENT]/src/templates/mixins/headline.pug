@@ -1,0 +1,16 @@
+mixin headline(name, link = '')
+	// start hero
+	article.headline(data-aos="fade-down" data-aos-delay="150" data-aos-duration="550")
+		.headline__container
+			img.headline__icon(src="./img/headline-picture.png", alt="icon")
+			.container
+				.block-container.dc
+					.block-header.is-white.is-text-center
+						ul.crumbs
+							li.crumbs__item
+								a(href="./index.html") Главная
+							li.crumbs__item
+								a(href=link)= name
+						.block-text
+							h1= name
+	// end hero

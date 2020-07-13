@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import webpackConfig from '../../webpack.config'
 import notify from 'gulp-notify'
 import log from 'fancy-log'
-import { server } from './server'
+// import { server } from './server'
 
 const webpackRunnner = webpackConfig();
 const handler = (err, stats, cb) => {
@@ -19,15 +19,15 @@ const handler = (err, stats, cb) => {
 		chunks: false,
 		errors: false
 	}));
-	server && server.reload();
+
 	if (typeof cb === 'function') cb();
 }
 
 
 
 export function scriptTask () { return new Promise(resolve => webpack(webpackRunnner, (err, stats) => handler(err, stats, resolve))) };
-export function scriptsTaskWatch () { return new Promise(resolve => webpack(webpackRunnner).watch({
-		aggregateTimeout: 100,
-		poll: false
-	}, handler))
-};
+// export function scriptsTaskWatch () { return new Promise(resolve => webpack(webpackRunnner).watch({
+// 		aggregateTimeout: 100,
+// 		poll: false
+// 	}, handler))
+// };

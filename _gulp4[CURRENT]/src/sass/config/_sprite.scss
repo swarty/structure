@@ -5,25 +5,20 @@
 	fill: currentColor;
 }
 
-.icon-dots {
-	@extend .icon;
-	// font-size:(13.1/10)*1rem;
-	// width:(13.1/13.1)*1em;
-}
 .icon-facebook {
 	@extend .icon;
-	// font-size:(24/10)*1rem;
-	// width:(24/24)*1em;
+	// font-size:(16.879/10)*1rem;
+	// width:(10.14/16.879)*1em;
 }
 .icon-instagram {
 	@extend .icon;
-	// font-size:(24/10)*1rem;
-	// width:(24/24)*1em;
+	// font-size:(16/10)*1rem;
+	// width:(16/16)*1em;
 }
-.icon-play-button {
+.icon-sprite {
 	@extend .icon;
-	// font-size:(73/10)*1rem;
-	// width:(73/73)*1em;
+	// font-size:(0/10)*1rem;
+	// width:(0/0)*1em;
 }
 .icon-youtube {
 	@extend .icon;

@@ -10,13 +10,5 @@
 		"!./src/js/lib/*",
 		"./src/js/**/*"
 	],
-	"notify": true,
-	"coverageDirectory": "./tests/result/",
-	"coverageThreshold": {
-		"./src/js": {
-			"branches": 80,
-			"functions": 80,
-			"lines": 50
-		}
-	}
+	"notify": true
 }

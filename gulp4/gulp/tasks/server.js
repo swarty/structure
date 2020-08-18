@@ -1,9 +1,9 @@
 import browserSync from 'browser-sync'
 import config from '../config'
 
-const server = browserSync.create();
+export const server = browserSync.create();
 
-export default function (cb) {
+export function initServer (cb) {
 	server.init({
 		server: {
 			baseDir: config.dest.root,
@@ -15,6 +15,7 @@ export default function (cb) {
 		notify: false,
 	});
 
-	server.watch(config.dest.root, server.reload);
+	server.watch(config.dest.js, server.reload);
+	// server.watch(config.dest.img, server.reload);
 	cb();
 }

@@ -8,10 +8,7 @@ import replace from 'gulp-replace'
 import config from '../config.js';
 
 export default function () {
-	return src([
-		config.src.svg + '/*.svg',
-		'!' + config.src.svg + '/sprite.svg'
-	])
+	return src(config.src.svg + '/*.svg')
 	// minify svg
 	.pipe(svgmin({
 		js2svg: {

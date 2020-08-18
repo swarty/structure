@@ -13,11 +13,11 @@ const handler = (err, stats, cb) => {
 			message: '<%= error.message %>',
 		}).call(null, errors[0]);
 	}
-	log('[webpack]', stats.toString({
-		colors: true,
-		chunks: false,
-		errors: false
-	}));
+	// log('[webpack]', stats.toString({
+	// 	colors: true,
+	// 	chunks: false,
+	// 	errors: false
+	// }));
 
 	if (typeof cb === 'function') cb();
 }

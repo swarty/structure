@@ -1,6 +1,6 @@
 function onDomLoad():void {
 	const a: string = 'lal';
-	setTimeout( _ => {
+	setTimeout( () => {
 		console.log(a);
 	}, 0)
 }

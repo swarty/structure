@@ -19,7 +19,7 @@ export default function () {
 	], series(pug))
 	
 	// scripts
-	watch(config.src.js + '/**/*.js', series(scripts))
+	watch(config.src.js + '/**/*.(js|ts)', series(scripts))
 	
 	// styles
 	watch(config.src.sass + '/**/*.{s[ca]ss}', series(styles))

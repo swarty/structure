@@ -27,7 +27,7 @@ export default function createConfig() {
 		mode: env,
 		context: path.join(__dirname, config.src.js),
 		entry: {
-			app: './app.js',
+      app: './app.ts',
 		},
 		output: {
 			path: path.join(__dirname, config.dest.js),
@@ -45,7 +45,7 @@ export default function createConfig() {
 			)
 		],
 		resolve: {
-			extensions: ['.js']
+			extensions: ['.js', '.ts'],
 		},
 		module: {
 			rules: [
@@ -62,8 +62,24 @@ export default function createConfig() {
 								plugins: babelPlugins
 							}
 						},
+						'eslint-loader',
+					]
+				},
+        {
+          test: /\.ts$/,
+          exclude: [
+            path.resolve(__dirname, 'node_modules')
+					],
+					use: [
 						{
-							loader: 'eslint-loader'
+							loader: 'babel-loader',
+							options: {
+								presets: [
+									...babelPresets,
+									'@babel/preset-typescript'
+								],
+								plugins: babelPlugins
+							}
 						}
 					]
 				},

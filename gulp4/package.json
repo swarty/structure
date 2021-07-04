@@ -8,7 +8,7 @@
 				"build": "gulp build --production",
 				"serve": "gulp --development",
 				"test": "jest --detectOpenHandles --config ./jest.config.json ./tests/unit.test.js",
-				"lint": "eslint src/scripts/modules/*.js src/scripts/app.js"
+				"lint": "eslint src/scripts/modules/*.js src/scripts/app.ts"
 		},
 		"husky": {
 				"hooks": {
@@ -19,6 +19,7 @@
 				"@babel/core": "^7.10.2",
 				"@babel/plugin-transform-runtime": "^7.10.1",
 				"@babel/preset-env": "^7.10.2",
+        "@babel/preset-typescript": "^7.8.3",
 				"@babel/register": "^7.10.1",
 				"@babel/runtime": "^7.10.2",
 				"ansi-colors": "^4.1.1",
@@ -54,7 +55,8 @@
 				"path": "^0.12.7",
 				"raw-loader": "^4.0.1",
 				"webpack": "^4.43.0",
-				"webpack-bundle-analyzer": "^3.8.0"
+				"webpack-bundle-analyzer": "^3.8.0",
+        "ts-node": "^8.6.2"
 		},
 		"dependencies": {
 				"date-fns": "^2.14.0",

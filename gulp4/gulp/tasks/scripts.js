@@ -1,7 +1,6 @@
 import webpack from 'webpack'
 import webpackConfig from '../../webpack.config'
 import notify from 'gulp-notify'
-import log from 'fancy-log'
 
 const webpackRunnner = webpackConfig();
 const handler = (err, stats, cb) => {
@@ -13,11 +12,6 @@ const handler = (err, stats, cb) => {
 			message: '<%= error.message %>',
 		}).call(null, errors[0]);
 	}
-	// log('[webpack]', stats.toString({
-	// 	colors: true,
-	// 	chunks: false,
-	// 	errors: false
-	// }));
 
 	if (typeof cb === 'function') cb();
 }

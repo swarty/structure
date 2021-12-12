@@ -7,13 +7,7 @@
 				"gitlab": "gulp build --production",
 				"build": "gulp build --production",
 				"serve": "gulp --development",
-				"test": "jest --detectOpenHandles --config ./jest.config.json ./tests/unit.test.js",
 				"lint": "eslint src/scripts/modules/*.js src/scripts/app.ts"
-		},
-		"husky": {
-				"hooks": {
-						"pre-commit": "yarn test && yarn lint"
-				}
 		},
 		"devDependencies": {
 				"@babel/core": "^7.10.2",
@@ -47,7 +41,6 @@
 				"gulp-svg-sprite": "^1.5.0",
 				"gulp-svgmin": "^2.2.0",
 				"gulp-wait": "^0.0.2",
-				"husky": "^4.2.5",
 				"imagemin-mozjpeg": "^9.0.0",
 				"imagemin-pngquant": "^9.0.0",
 				"jest": "^26.0.1",

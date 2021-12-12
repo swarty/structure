@@ -9,7 +9,7 @@ export default {
 	src: {
 			root         : 'src',
 			templates    : 'src/templates',
-			sass         : 'src/sass',
+			sass         : 'src/styles',
 			// path for sass files that will be generated automatically via some of tasks
 			js           : 'src/scripts',
 			svg          : 'src/svg',

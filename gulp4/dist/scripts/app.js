@@ -94,10 +94,7 @@
 /***/ (function(module, exports) {
 
 function onDomLoad() {
-  var a = 'lal';
-  setTimeout(function (_) {
-    console.log(a);
-  }, 0);
+  console.log('dom loaded');
 }
 
 document.addEventListener('DOMContentLoaded', onDomLoad);

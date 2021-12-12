@@ -1,8 +1,5 @@
-function onDomLoad():void {
-	const a: string = 'lal';
-	setTimeout( () => {
-		console.log(a);
-	}, 0)
+function onDomLoad() {
+  console.log('dom loaded');
 }
 
 document.addEventListener('DOMContentLoaded', onDomLoad);

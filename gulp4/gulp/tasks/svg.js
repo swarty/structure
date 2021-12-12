@@ -18,8 +18,6 @@ export default function () {
 	// remove all fill, style and stroke declarations in out shapes
 	.pipe(cheerio({
 		run: function ($) {
-			$('[fill]').removeAttr('fill');
-			$('[stroke]').removeAttr('stroke');
 			$('[style]').removeAttr('style');
 		},
 		parserOptions: {xmlMode: true}
@@ -33,7 +31,7 @@ export default function () {
 				sprite: "../sprite.svg",
 				render: {
 					scss: {
-						dest: '../../../src/sass/config/_sprite.scss',
+						dest: '../../../src/styles/config/_sprite.scss',
 						template: config.src.sass + "/config/_sprite_template.scss"
 					}
 				}

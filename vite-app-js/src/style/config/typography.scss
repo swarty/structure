@@ -1,0 +1,10 @@
+@use './font-face.scss';
+
+@include font-face.font-face('Montserrat-Thin', '@fonts/');
+@include font-face.font-face('Montserrat-Regular', '@fonts/');
+@include font-face.font-face('Montserrat-Medium', '@fonts/');
+@include font-face.font-face('Montserrat-SemiBold', '@fonts/');
+
+@mixin mt {
+  font-family: 'Montserrat-Thin', sans-serif;
+}

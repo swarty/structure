@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@script/*": ["./src/script/*"],
+      "@style/*": ["./src/style/*"],
+      "@fonts/*": ["./src/fonts/*"],
+      "@image/*": ["./src/image/*"],
+    },
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}

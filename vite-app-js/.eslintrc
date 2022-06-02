@@ -1,0 +1,36 @@
+{
+  "env": {
+		"es2021": true,
+    "browser": true,
+    "node": true
+	},
+  "extends": [
+		"eslint:recommended",
+    "airbnb-base"
+	],
+  "rules": {
+		"no-new": 0,
+		"no-unused-vars": 1,
+    "max-len": "off",
+    "no-shadow": "off",
+    "space-before-function-paren": 0,
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "info"
+        ]
+      }
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "quotes": [
+      2,
+      "single"
+    ]
+  }
+}

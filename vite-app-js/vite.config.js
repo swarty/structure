@@ -48,6 +48,10 @@ export default defineConfig(({ _, mode }) => {
             if (/\.css$/.test(name ?? '')) {
                 return 'assets/css/[name]-[hash][extname]';   
             }
+
+            if (/\.(woff|woff2|eof|ttf|eot)$/.test(name ?? '')) {
+              return 'assets/fonts/[name]-[hash][extname]';   
+            }
    
             // default value
             // ref: https://rollupjs.org/guide/en/#outputassetfilenames

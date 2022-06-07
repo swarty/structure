@@ -1,13 +1,9 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
-import { defineConfig } from 'vite';
 import eslintPlugin from 'vite-plugin-eslint';
 
 const SRC = 'src';
-const DIST = 'dist';
-const root = resolve(__dirname, SRC);
-const outDir = resolve(__dirname, DIST);
 const MODE_MAP = {
   DEVELOPMENT: 'development',
   PRODUCTION: 'production',
@@ -16,22 +12,38 @@ const MODE_MAP = {
 // https://vitejs.dev/config/
 export default defineConfig(({ _, mode }) => {
   return {
-    root,
     server: {
       open: true,
     },
     resolve:{
       alias: {
         '@' : resolve(__dirname, `./${SRC}/`),
-        '@fonts' : resolve(__dirname, `./${SRC}/fonts/`),
-        '@image' : resolve(__dirname, `./${SRC}/image/`),
-        '@script' : resolve(__dirname, `./${SRC}/script/`),
-        '@style' : resolve(__dirname, `./${SRC}/style/`),
       },
     },
     build: {
-      outDir,
-      emptyOutDir: true,
+      rollupOptions: {
+        output: {
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          assetFileNames: ({name}) => {
+            if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')){
+                return 'assets/images/[name]-[hash][extname]';
+            }
+            
+            if (/\.css$/.test(name ?? '')) {
+                return 'assets/css/[name]-[hash][extname]';   
+            }
+
+            if (/\.(woff2?|eof|ttf|eot)$/.test(name ?? '')) {
+              return 'assets/fonts/[name]-[hash][extname]';   
+            }
+   
+            // default value
+            // ref: https://rollupjs.org/guide/en/#outputassetfilenames
+            return 'assets/[name]-[hash][extname]';
+          },
+        },
+      },
       target: 'es6',
       cssTarget: 'chrome80',
       minify: 'terser',

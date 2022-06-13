@@ -12,8 +12,6 @@ body {
   background-color: vars.$black;
   display: grid;
   grid-template-columns: repeat(1, auto);
-  h1 {
-    color: vars.$white;
-    @include typography.mt();
-  }
+  color: vars.$white;
+  @include typography.mt();
 }

@@ -7,10 +7,19 @@
   "extends": [
 		"eslint:recommended",
     "airbnb-base",
-    "plugin:vue/vue3-strongly-recommended"
+    "plugin:vue/vue3-strongly-recommended",
+    "plugin:@typescript-eslint/recommended"
 	],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+    "warnOnUnsupportedTypeScriptVersion": false
+  },
   "plugins": [
-    "vue"
+    "vue",
+    "@typescript-eslint"
   ],
   "rules": {
 		"no-new": 0,
@@ -43,6 +52,9 @@
     "space-before-function-paren": 0,
     "vue/max-attributes-per-line": "off",
     "vue/html-indent": "off",
-    "vue/html-self-closing": "off"
+    "vue/html-self-closing": "off",
+    "vue/component-definition-name-casing": [
+      "error", "kebab-case"
+    ]
   }
 }

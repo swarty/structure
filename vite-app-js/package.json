@@ -10,7 +10,6 @@
   "devDependencies": {
     "eslint": "^8.16.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0",
     "reset-css": "^5.0.1",
     "sass": "^1.52.1",
     "vite": "^2.9.9",

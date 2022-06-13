@@ -24,13 +24,12 @@
         ]
       }
     ],
-    "linebreak-style": [
-      2,
-      "unix"
-    ],
+    "linebreak-style": "off",
     "quotes": [
       2,
       "single"
-    ]
+    ],
+    "import/extensions": "off",
+    "import/no-unresolved": "off"
   }
 }

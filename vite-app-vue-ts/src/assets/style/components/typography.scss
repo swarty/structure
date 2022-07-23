@@ -1,0 +1,26 @@
+@use '@/assets/style/config/vars.scss';
+
+.cc-header-1 {
+  font-size: 32px;
+}
+
+.cc-header-2 {
+  font-style: 26px;
+}
+
+.cc-header-3 {
+  font-size: 24px;
+}
+
+.cc-text {
+  font-size: 18px;
+}
+
+.cc-link {
+  @extend .cc-text;
+  text-decoration: underline;
+  color: vars.$color-accent;
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import eslintPlugin from 'vite-plugin-eslint';
+import svgLoader from 'vite-svg-loader';
 
 const SRC = 'src';
 const MODE_MAP = {
@@ -11,11 +12,15 @@ const MODE_MAP = {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ _, mode }) => {
+  const isProduction = MODE_MAP.PRODUCTION === mode;
   return {
     server: {
       open: true,
     },
     resolve:{
+      dedupe: [
+        'vue',
+      ],
       alias: {
         '@' : resolve(__dirname, `./${SRC}/`),
       },
@@ -45,13 +50,21 @@ export default defineConfig(({ _, mode }) => {
         },
       },
       target: 'es6',
+      assetsDir: 'src',
       cssTarget: 'chrome80',
-      minify: 'terser',
-      sourcemap: MODE_MAP.PRODUCTION === mode,
+      minify: 'esbuild',
+      sourcemap: !isProduction,
+      emptyOutDir: isProduction,
+      manifest: true,
+      outDir: './dist',
     },
     plugins: [
       vue(),
       eslintPlugin(),
+      svgLoader({
+        defaultImport: 'url',
+        svgo: false,
+      }),
     ],
   };
 });

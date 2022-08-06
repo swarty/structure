@@ -5,9 +5,6 @@ import handlebarsPlugin from 'vite-plugin-handlebars';
 import eslintPlugin from 'vite-plugin-eslint';
 
 const SRC = 'src';
-const DIST = 'dist';
-const root = resolve(__dirname, SRC);
-const outDir = resolve(__dirname, DIST);
 const MODE_MAP = {
   DEVELOPMENT: 'development',
   PRODUCTION: 'production',
@@ -15,28 +12,21 @@ const MODE_MAP = {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ _, mode }) => {
+  const isProduction = MODE_MAP.PRODUCTION === mode;
   return {
-    root,
     server: {
       open: true,
     },
     resolve:{
       alias: {
         '@' : resolve(__dirname, `./${SRC}/`),
-        '@fonts' : resolve(__dirname, `./${SRC}/fonts/`),
-        '@image' : resolve(__dirname, `./${SRC}/image/`),
-        '@script' : resolve(__dirname, `./${SRC}/script/`),
-        '@style' : resolve(__dirname, `./${SRC}/style/`),
       },
     },
+    base: isProduction
+      ? '//swarty.github.io/some-folder/'
+      : '',
     build: {
-      outDir,
-      emptyOutDir: true,
-      rollupOptions: {
-        input: {
-          main: resolve(root, 'index.html'),
-          about: resolve(root, 'about.html'),
-        },
+      rollupOptions: { 
         output: {
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
@@ -49,7 +39,7 @@ export default defineConfig(({ _, mode }) => {
                 return 'assets/css/[name]-[hash][extname]';   
             }
 
-            if (/\.(woff|woff2|eof|ttf|eot)$/.test(name ?? '')) {
+            if (/\.(woff2?|eof|ttf|eot)$/.test(name ?? '')) {
               return 'assets/fonts/[name]-[hash][extname]';   
             }
    
@@ -60,9 +50,13 @@ export default defineConfig(({ _, mode }) => {
         },
       },
       target: 'es6',
+      assetsDir: 'src',
       cssTarget: 'chrome80',
-      minify: 'terser',
-      sourcemap: MODE_MAP.PRODUCTION === mode,
+      minify: 'esbuild',
+      sourcemap: !isProduction,
+      emptyOutDir: isProduction,
+      manifest: true,
+      outDir: './dist',
     },
     plugins: [
       htmlPlugin({

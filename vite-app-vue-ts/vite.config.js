@@ -25,6 +25,9 @@ export default defineConfig(({ _, mode }) => {
         '@' : resolve(__dirname, `./${SRC}/`),
       },
     },
+    base: isProduction
+      ? '//swarty.github.io/some-folder/'
+      : '',
     build: {
       rollupOptions: {
         output: {

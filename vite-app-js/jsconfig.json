@@ -12,10 +12,6 @@
     "experimentalDecorators": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@script/*": ["./src/script/*"],
-      "@style/*": ["./src/style/*"],
-      "@fonts/*": ["./src/fonts/*"],
-      "@image/*": ["./src/image/*"],
     },
   },
   "exclude": ["node_modules", ".nuxt", "dist"]

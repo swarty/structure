@@ -10,13 +10,12 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "parser": "@typescript-eslint/parser",
-    "sourceType": "module",
+    "sourceType": "module"
   },
   "extends": [
-    "airbnb-base",
 		"eslint:recommended",
     "plugin:vue/vue3-recommended",
-    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended"
 	],
   "plugins": [
     // "vue",
@@ -58,8 +57,6 @@
     "@typescript-eslint/no-non-null-assertion": "off",
     "prefer-destructuring": "off",
     "vue/attributes-order": "off",
-    "import/order": "off",
-    // "import/no-unresolved": "off", // due to vite imports and extensions error with ts files in vue
-    "import/extensions": "off" // to dissable errors for imported ts files
+    "import/order": "off"
   }
 }

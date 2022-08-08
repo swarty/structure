@@ -5,8 +5,7 @@
     "node": true
 	},
   "extends": [
-		"eslint:recommended",
-    "airbnb-base"
+		"eslint:recommended"
 	],
   "rules": {
 		"no-new": 0,

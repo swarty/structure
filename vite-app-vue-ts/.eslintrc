@@ -18,20 +18,9 @@
     "plugin:@typescript-eslint/recommended"
 	],
   "plugins": [
-    // "vue",
     "import",
     "@typescript-eslint"
   ],
-  "settings": {
-    "import/resolver": {
-      "typescript": {},
-      "alias": {
-        "map": [
-          ["@", "./src"]
-        ]
-      }
-    }
-  },
   "rules": {
 		"no-new": 0,
 		"no-unused-vars": 1,

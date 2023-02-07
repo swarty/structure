@@ -2,7 +2,7 @@ import {
   useState, 
 } from 'react'
 import reactLogo from '@/images/react.svg'
-import '@/styles/App.css'
+import './App.css'
 
 function App() {
   const [

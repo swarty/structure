@@ -1,0 +1,45 @@
+{
+  "root": true,
+  "env": {
+		"es2022": true,
+    "browser": true,
+    "node": true
+	},
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "extends": [
+		"eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+	],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "max-len": "off",
+    "no-shadow": "off",
+    "no-console": [ "warn", {
+      "allow": [ "warn", "error", "info", "table"]
+    }],
+    "block-spacing": "error",
+    "quotes": [ 2, "single"],
+    "comma-dangle": ["error", {
+      "arrays": "always",
+      "objects": "always",
+      "imports": "always",
+      "exports": "always",
+      "functions": "never"
+    }],
+    "max-statements-per-line": ["error", { "max": 2 }],
+    "object-curly-newline": ["error", "always"],
+    "space-before-function-paren": 0,
+    "function-call-argument-newline": ["error", "always"],
+    "function-paren-newline": ["error", { "minItems": 2 }],
+    "array-bracket-spacing":"error",
+    "array-bracket-newline": ["error", "always"],
+    "array-element-newline": ["error", "always"]
+  }
+}

@@ -1,0 +1,60 @@
+// Add your settings here
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+html, body {
+  position: relative;
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+footer {
+  margin: auto 0 0;
+}
+
+.body-overflow {
+  overflow: hidden;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: auto;
+}
+
+// content made available only to screen readers
+.sr-only {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+}
+
+picture,
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+img {
+  &.lazy {
+    background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7);
+    &.loaded {
+      background-image: none;
+    }
+  }
+}
